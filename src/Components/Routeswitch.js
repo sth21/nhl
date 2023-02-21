@@ -6,10 +6,12 @@ import Standings from './Standings';
 import Stats from './Stats';
 import Players from './Players';
 import Fantasy from './Fantasy';
+import Scoreboard from './Scoreboard';
 
 export default function Routeswitch() {
     return (
         <BrowserRouter>
+            <Scoreboard />
             <Routes>
                 <Route path="/" element={ <Home /> } />
                 <Route path="/scores" element={ <Scores /> } />
