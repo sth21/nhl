@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import useFetch from '../Utils/useFetch';
 
 export default function Scoreboard() {
-    const [ gameData ] = useFetch("https://statsapi.web.nhl.com/api/v1/schedule");
+    const [ gameInformation ] = useFetch("http://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard", 60000);
     
     useEffect(() => {
-        if ( gameData === null ) return;
-        console.log(gameData.dates[0].games);
-    }, [ gameData ]);
+        if ( gameInformation === null ) return;
+        console.log(gameInformation.events);
+    }, [ gameInformation ]);
 
     function utcToLocal(timeString) {
         const utc = new Date(timeString);
@@ -17,18 +17,24 @@ export default function Scoreboard() {
 
     const render = () => {
         return (
-            ( gameData !== null )
+            ( gameInformation !== null )
             ? <div>
                 {
-                    gameData.dates[0].games.map((game) => (
+                    gameInformation.events.map((game) => (
                         <div>
                             <div>
-                                <p>{ utcToLocal(game.gameDate) }</p>
-                                <p>{ game.venue.name }</p>
+                                <p>{ utcToLocal(game.date) }</p>
+                                <p>{ game.competitions[0].venue.fullName }</p>
                             </div>
                             <div>
-                                <p>{ game.teams.home.team.name }</p>
-                                <p>{ game.teams.away.team.name }</p>
+                                <div>
+                                    <p>{`${game.competitions[0].competitors[0].team.location} ${game.competitions[0].competitors[0].team.name}`}</p>
+                                    <p>{ game.competitions[0].competitors[0].score }</p>
+                                </div>
+                                <div>
+                                    <p>{`${game.competitions[0].competitors[1].team.location} ${game.competitions[0].competitors[1].team.name}`}</p>
+                                    <p>{ game.competitions[0].competitors[1].score }</p>
+                                </div>
                             </div>
                         </div>
                     ))
