@@ -1,12 +1,12 @@
 /* Props: 
-    game ( all game data )
+    game ( one games data )
     gameState ( "pre" || "in" || "post" )
     isPlayoff ( boolean )
 */
 
-import { useEffect } from 'react';
-
 export default function ScoreboardGameHeader(props) {
+
+    const gameInfo = props.game.competitions[0];
 
     function appendSuperscriptOrdinal(number) {
         if ( number === 1 ) {
@@ -33,20 +33,18 @@ export default function ScoreboardGameHeader(props) {
         );
     }
 
-    const gameInfo = props.game.competitions[0];
-
     return (
         <div>
             {
                 ( props.gameState === "pre" )
                 ? <div>
                     <p>{ utcToLocal(props.game.date) }</p>
-                    <p>{ (props.isPlayoff) ? "Playoff game" : props.game.competitions[0].venue.fullName } </p>
+                    <p>{ (props.isPlayoff) ? gameInfo.notes[0].headline : gameInfo.venue.fullName } </p>
                   </div>
                 : ( props.gameState === "in" )
                     ? <div>
                         <p>{ `${props.game.status.displayClock} - ${appendSuperscriptOrdinal(props.game.status.period)}`}</p>
-                        <p>{ (props.isPlayoff) ? "Playoff game" : gameInfo.broadcasts[0].names[0] }</p>
+                        <p>{ (props.isPlayoff) ? gameInfo.notes[0].headline : gameInfo.broadcasts[0].names[0] }</p>
                       </div>
                     : <div>
                         <p>{ props.game.status.type.detail }</p>
