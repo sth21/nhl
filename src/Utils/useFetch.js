@@ -20,5 +20,5 @@ export default function useFetch( url, interval = null ) {
         }
     }, [ url, interval ]);
 
-    return [ data ];
+    return data;
 }
