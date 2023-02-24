@@ -14,6 +14,7 @@ export default function useLogo(id) {
             const logo = logoDoc.data().logo;
             setLogo(logo);
         };
+        
         fetchLogo();
     }, [ id ]);
 
