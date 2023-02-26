@@ -14,7 +14,7 @@ const StyledScoreboardGameWrapper = styled.div`
     box-sizing: border-box;
     background: var(--white);
     padding: 1em;
-    border: 1px solid var(--grey);
+    border: 2px solid var(--grey);
     min-width: 200px;
 `;
 

@@ -10,17 +10,19 @@ export default function ScoreboardGameHeader(props) {
 
     const gameInfo = props.game.competitions[0];
 
-    function appendSuperscriptOrdinal(number) {
-        if ( number === 1 ) {
-            return number + "st";
-        } else if ( number === 2 ) {
-            return number + "nd";
-        } else if (number === 3 ) {
-            return number + "rd";
-        } else if ( number === 4 ) {
+    function appendSuperscriptOrdinal(period) {
+        if ( period === 1 ) {
+            return period + "st";
+        } else if ( period === 2 ) {
+            return period + "nd";
+        } else if (period === 3 ) {
+            return period + "rd";
+        } else if ( period === 4 ) {
             return "OT";
-        } else {
+        } else if (period === 5) {
             return "SO";
+        } else {
+            return "Delayed";
         }
     }
 
@@ -45,7 +47,7 @@ export default function ScoreboardGameHeader(props) {
                   </StyledScoreboardInfo>
                 : ( props.gameState === "in" )
                     ? <StyledScoreboardInfo>
-                        <StyledTime>{ `${props.game.status.displayClock} - ${appendSuperscriptOrdinal(props.game.status.period)}`}</StyledTime>
+                        <StyledTime>{ `${ (props.game.status.period !== 0) ? `${props.game.status.displayClock} - ` : ""} ${appendSuperscriptOrdinal(props.game.status.period)}`}</StyledTime>
                         <p>{ (props.isPlayoff) ? gameInfo.notes[0].headline : gameInfo.broadcasts[0].names[0] }</p>
                       </StyledScoreboardInfo>
                     : <StyledScoreboardInfo>

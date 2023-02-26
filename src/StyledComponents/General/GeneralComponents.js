@@ -66,6 +66,7 @@ const GlobalStyle = createGlobalStyle`
         --black: #000000;
         --white: #FFFFFF;
         --red: #d00;
+        background: var(--grey);
     }
 `;
 
