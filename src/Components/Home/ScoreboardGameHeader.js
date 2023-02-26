@@ -1,3 +1,5 @@
+import { StyledScoreboardInfo, StyledTime } from "../../StyledComponents/Home/ScoreboardComponents";
+
 /* Props: 
     game ( one games data )
     gameState ( "pre" || "in" || "post" )
@@ -37,18 +39,18 @@ export default function ScoreboardGameHeader(props) {
         <div>
             {
                 ( props.gameState === "pre" )
-                ? <div>
+                ? <StyledScoreboardInfo>
                     <p>{ utcToLocal(props.game.date) }</p>
-                    <p>{ (props.isPlayoff) ? gameInfo.notes[0].headline : gameInfo.venue.fullName } </p>
-                  </div>
+                    <p>{ (props.isPlayoff) ? gameInfo.notes[0].headline : gameInfo.broadcasts[0].names[0] } </p>
+                  </StyledScoreboardInfo>
                 : ( props.gameState === "in" )
-                    ? <div>
-                        <p>{ `${props.game.status.displayClock} - ${appendSuperscriptOrdinal(props.game.status.period)}`}</p>
+                    ? <StyledScoreboardInfo>
+                        <StyledTime>{ `${props.game.status.displayClock} - ${appendSuperscriptOrdinal(props.game.status.period)}`}</StyledTime>
                         <p>{ (props.isPlayoff) ? gameInfo.notes[0].headline : gameInfo.broadcasts[0].names[0] }</p>
-                      </div>
-                    : <div>
+                      </StyledScoreboardInfo>
+                    : <StyledScoreboardInfo>
                         <p>{ props.game.status.type.detail }</p>
-                      </div>
+                      </StyledScoreboardInfo>
             }
         </div>
     );
