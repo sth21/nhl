@@ -1,4 +1,4 @@
-import { StyledScoreboardInfo, StyledTime } from "../../StyledComponents/Home/ScoreboardComponents";
+import { StyledScoreboardInfo, StyledTime } from "../../../StyledComponents/Home/ScoreboardComponents";
 
 /* Props: 
     game ( one games data )

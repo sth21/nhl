@@ -1,6 +1,6 @@
 import ScoreboardGame from './ScoreboardGame';
 import uniqid from 'uniqid';
-import { StyledScoreboard } from '../../StyledComponents/Home/ScoreboardComponents';
+import { StyledScoreboard } from '../../../StyledComponents/Home/ScoreboardComponents';
 
 /* Props:
     gameInformation ( information from all games )

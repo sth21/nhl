@@ -1,7 +1,7 @@
-import NHL_LOGO from '../../Media/nhl.svg';
-import GOOGLE_LOGO from '../../Media/google.png';
+import NHL_LOGO from '../Media/nhl.svg';
+import GOOGLE_LOGO from '../Media/google.png';
 
-import { StyledNav, StyledLogo, StyledIcon, StyledNavWrapper, StyledLink, StyledLoginContainer } from "../../StyledComponents/Home/NavComponents";
+import { StyledNav, StyledLogo, StyledIcon, StyledNavWrapper, StyledLink, StyledLoginContainer } from "../StyledComponents/NavComponents";
 
 export default function Nav() {
     
@@ -14,6 +14,7 @@ export default function Nav() {
                 <StyledLink to="/standings">Standings</StyledLink>
                 <StyledLink to="/stats">Stats</StyledLink>
                 <StyledLink to="/players">Players</StyledLink>
+                <StyledLink to="draft">Draft</StyledLink>
                 <StyledLink to="fantasy">Fantasy</StyledLink>
             </StyledNavWrapper>
             <StyledNavWrapper>

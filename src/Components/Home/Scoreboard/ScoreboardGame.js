@@ -1,6 +1,6 @@
-import useLogo from '../../Utils/useLogo';
+import useLogo from './../../../Utils/useLogo';
 import ScoreboardGameHeader from './ScoreboardGameHeader';
-import { StyledScoreboardGameWrapper, StyledScoreboardGameBody, StyledScoreboardInfo, StyledScoreboardTeam } from '../../StyledComponents/Home/ScoreboardComponents';
+import { StyledScoreboardGameWrapper, StyledScoreboardGameBody, StyledScoreboardInfo, StyledScoreboardTeam } from './../../../StyledComponents/Home/ScoreboardComponents';
 
 /* Props:
     game ( one games data )

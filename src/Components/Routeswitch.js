@@ -9,6 +9,7 @@ import Standings from './Standings';
 import Stats from './Stats';
 import Players from './Players';
 import Fantasy from './Fantasy';
+import Nav from './Nav';
 
 export default function Routeswitch() {
     return (
@@ -20,6 +21,7 @@ export default function Routeswitch() {
             </Helmet>
             <GlobalStyle />
             <BrowserRouter>
+                <Nav />
                 <Routes>
                     <Route path="/" element={ <Home /> } />
                     <Route path="/scores" element={ <Scores /> } />
