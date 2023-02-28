@@ -10,22 +10,27 @@ import { useEffect } from 'react';
 
 export default function WidgetContainer() {
     
+    // For HeadlinesWidget
+    const todaysHeadlines = useFetch("https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/news");
+
     // For StatsWidget
     const goalLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=goals&limit=5");
     const assistLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=assists&limit=5");
     const pointsLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=points&limit=5");
     const winsLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=wins&limit=5");
     const savePercentLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=savePct&limit=5");
-    
-    // For HeadlinesWidget
-    const todaysHeadlines = useFetch("https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/news");
 
-    useEffect(() => console.log(goalLeaders), [ goalLeaders ]);
+    useEffect(() => console.log(todaysHeadlines), [ todaysHeadlines ]);
         
     return (
         <div>
             <StandingsWidget />
-            <HeadlinesWidget />
+            
+            {
+                ( todaysHeadlines )
+                ? <HeadlinesWidget headlines = { todaysHeadlines } />
+                : <></>
+            }
             {
                 ( goalLeaders && assistLeaders && pointsLeaders && winsLeaders && savePercentLeaders )
                 ?  <StatsWidget 
