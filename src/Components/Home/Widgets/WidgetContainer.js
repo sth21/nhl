@@ -26,13 +26,17 @@ export default function WidgetContainer() {
         <div>
             <StandingsWidget />
             <HeadlinesWidget />
-            <StatsWidget 
-                goalLeaders = { goalLeaders } 
-                assistLeaders = { assistLeaders }
-                pointsLeaders = { pointsLeaders }
-                winsLeaders = { winsLeaders }
-                savePercentLeaders = { savePercentLeaders }
-            />
+            {
+                ( goalLeaders && assistLeaders && pointsLeaders && winsLeaders && savePercentLeaders )
+                ?  <StatsWidget 
+                        goalLeaders = { goalLeaders } 
+                        assistsLeaders = { assistLeaders }
+                        pointsLeaders = { pointsLeaders }
+                        winsLeaders = { winsLeaders }
+                        savePercentLeaders = { savePercentLeaders }
+                    />
+                :  <></>
+            }
             <DraftWidget />
             <PlayersWidget />
             <FantasyWidget />
