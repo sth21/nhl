@@ -52,6 +52,7 @@ export default function ScoreboardGameHeader(props) {
                       </StyledScoreboardInfo>
                     : <StyledScoreboardInfo>
                         <p>{ props.game.status.type.detail }</p>
+                        <p>{ (props.isPlayoff) ? gameInfo.notes[0].headline : "" }</p>
                       </StyledScoreboardInfo>
             }
         </div>

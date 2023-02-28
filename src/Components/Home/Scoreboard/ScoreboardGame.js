@@ -13,7 +13,7 @@ export default function ScoreboardGame(props) {
     const awayLogo = useLogo(gameInfo.competitors[1].id);
 
     return (
-        <StyledScoreboardGameWrapper>
+        <StyledScoreboardGameWrapper role="complementary" >
             <ScoreboardGameHeader game = { props.game } gameState = { props.game.status.type.state } isPlayoff = {!!gameInfo.series} />
             <StyledScoreboardGameBody>
                 <StyledScoreboardInfo>
