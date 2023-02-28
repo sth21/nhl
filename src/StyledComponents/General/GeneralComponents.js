@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
 
     body, #root {
         line-height: 1;
-        max-width: inherit;
+        width: inherit;
         min-height: inherit;
     }
 
@@ -66,7 +66,7 @@ const GlobalStyle = createGlobalStyle`
         --black: #000000;
         --white: #FFFFFF;
         --red: #d00;
-        background: var(--grey);
+        background-color: var(--grey);
     }
 `;
 

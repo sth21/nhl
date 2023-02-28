@@ -8,9 +8,9 @@ import { StyledScoreboardGameWrapper, StyledScoreboardGameBody, StyledScoreboard
 
 export default function ScoreboardGame(props) {
     
-    const homeLogo = useLogo(props.game.competitions[0].competitors[0].id);
-    const awayLogo = useLogo(props.game.competitions[0].competitors[1].id);
     const gameInfo = props.game.competitions[0];
+    const homeLogo = useLogo(gameInfo.competitors[0].id);
+    const awayLogo = useLogo(gameInfo.competitors[1].id);
 
     return (
         <StyledScoreboardGameWrapper>

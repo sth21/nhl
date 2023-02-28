@@ -10,7 +10,7 @@ const StyledNav = styled.nav`
     gap: 3em;
     min-height: 60px;
     align-items: center;
-    max-width: inherit;
+    width: 100%;
 `;
 
 const StyledLogo = styled.img`

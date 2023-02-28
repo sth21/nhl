@@ -4,6 +4,6 @@
     year: (ex. 20222023)
 */
 
-export default function usePlayerImage(id, team, year) {
+export default function getPlayerImage(id, team, year) {
     return `https://assets.nhle.com/mugs/nhl/${year}/${team}/${id}.png`;
 }

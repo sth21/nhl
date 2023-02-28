@@ -1,4 +1,4 @@
-export default function useTeamAbbreviation(fullName) {
+export default function getTeamAbbreviation(fullName) {
     let teamAbbreviation;
 
     switch (fullName) {

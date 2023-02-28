@@ -4,7 +4,6 @@ import { StyledScoreboard } from '../../../StyledComponents/Home/ScoreboardCompo
 
 /* Props:
     gameInformation ( information from all games )
-
 */
 
 export default function Scoreboard(props) {
