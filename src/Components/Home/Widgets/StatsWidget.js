@@ -4,7 +4,7 @@ import getTeamAbbreviation from './../../../Utils/getTeamAbbreviation';
 import { useState } from 'react';
 
 export default function StatsWidget(props) {
-    const [ activeStat, setActiveStat ] = useState((props.pointsLeaders) ? props.pointsLeaders.leagueLeaders[0] : null);
+    const [ activeStat, setActiveStat ] = useState(props.pointsLeaders.leagueLeaders[0]);
 
     return (
         (activeStat)

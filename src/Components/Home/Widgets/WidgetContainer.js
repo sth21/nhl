@@ -10,6 +10,9 @@ import { useEffect } from 'react';
 
 export default function WidgetContainer() {
     
+    // For StandingsWidget
+    const standings = useFetch("https://statsapi.web.nhl.com/api/v1/standings/byDivision");
+
     // For HeadlinesWidget
     const todaysHeadlines = useFetch("https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/news");
 
@@ -20,12 +23,15 @@ export default function WidgetContainer() {
     const winsLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=wins&limit=5");
     const savePercentLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=savePct&limit=5");
 
-    useEffect(() => console.log(todaysHeadlines), [ todaysHeadlines ]);
+    useEffect(() => console.log(standings), [ standings ]);
         
     return (
         <div>
-            <StandingsWidget />
-            
+            {
+                ( standings )
+                ? <StandingsWidget standings = { standings } />
+                : <></>
+            }         
             {
                 ( todaysHeadlines )
                 ? <HeadlinesWidget headlines = { todaysHeadlines } />

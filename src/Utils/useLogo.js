@@ -9,11 +9,10 @@ export default function useLogo(id) {
     useEffect(() => {
         if ( !id ) return;
 
-        const fetchLogo = async () => {
-            const logoDoc = await getDoc(doc(DB, "team-logos", id));
-            const logo = logoDoc.data().logo;
-            setLogo(logo);
-        };
+        const fetchLogo = () => getDoc(doc(DB, "team-logos", id))
+        .then((res) => res.data())
+        .then((data) => setLogo(data.logo))
+        .catch((err) => console.log(err));
         
         fetchLogo();
     }, [ id ]);
