@@ -6,8 +6,6 @@ import DraftWidget from './DraftWidget';
 import PlayersWidget from './PlayersWidget';
 import FantasyWidget from './FantasyWidget';
 
-import { useEffect } from 'react';
-
 export default function WidgetContainer() {
     
     // For StandingsWidget
@@ -22,8 +20,6 @@ export default function WidgetContainer() {
     const pointsLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=points&limit=5");
     const winsLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=wins&limit=5");
     const savePercentLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=savePct&limit=5");
-
-    useEffect(() => console.log(standings), [ standings ]);
         
     return (
         <div>

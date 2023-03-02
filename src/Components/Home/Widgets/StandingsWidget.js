@@ -1,9 +1,12 @@
-import { useState } from 'react';
-import useLogo from '../../../Utils/useLogo';
+import { useState, useEffect } from 'react';
+import useLogos from '../../../Utils/useLogos.js'
 import uniqid from 'uniqid';
 
 export default function StandingsWidget(props) {
     const [ activeDivision, setActiveDivision ] = useState(props.standings.records[1].teamRecords);
+    const logos = useLogos("nhl");
+
+    useEffect(() => console.log(logos), [ logos ]);
 
     return (
         <div>
@@ -18,7 +21,7 @@ export default function StandingsWidget(props) {
                 <tbody>
                     {
                         activeDivision.map((team) => (
-                            <StandingsTeam team = { team } key = { uniqid() } />
+                            <StandingsTeam logos = { logos } team = { team } key = { uniqid() } />
                         ))
                     }
                 </tbody>
@@ -29,13 +32,13 @@ export default function StandingsWidget(props) {
 }
 
 function StandingsTeam(props) {
-    const logo = useLogo(props.team.team.id.toString());
+    const logos = (props.logos) ? props.logos[props.team.team.id.toString()] : "#";
 
     return (
         <tr>
             <td>
                 { props.team.team.name }
-                <img src={ ( logo ) ? logo : "#" } alt={ "Team logo" }></img>
+                <img src={ logos } alt={ "Team logo" }></img>
             </td>
             <td>{ props.team.gamesPlayed }</td>
             <td>{ props.team.leagueRecord.wins }</td>

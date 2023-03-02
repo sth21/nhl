@@ -2,20 +2,22 @@ import { useState, useEffect } from 'react';
 import { DB } from '../firebase';
 import { doc, getDoc } from "firebase/firestore";
 
-export default function useLogo(id) {
+export default function useLogo(ID, OPTION) {
+
     const [ logo, setLogo ] = useState(null)
 
     // Fetch url from id
     useEffect(() => {
-        if ( !id ) return;
+        if ( !(ID && OPTION) ) return;
 
-        const fetchLogo = () => getDoc(doc(DB, "team-logos", id))
+        const fetchLogo = () => getDoc(doc(DB, "team-logos", ID))
         .then((res) => res.data())
-        .then((data) => setLogo(data.logo))
+        .then((data) => setLogo(data.logo[OPTION]))
         .catch((err) => console.log(err));
         
         fetchLogo();
-    }, [ id ]);
+    }, [ ID, OPTION ]);
 
     return logo;
+
 }
