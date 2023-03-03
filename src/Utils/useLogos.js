@@ -3,19 +3,26 @@ import { DB } from '../firebase';
 import { collection, getDocs } from "firebase/firestore";
 
 export default function useLogos(OPTION) {
-    console.log("useLogos called")
+    
     const [ logos, setLogos ] = useState(null);
     
     useEffect(() => {
-        const getLogos = async () => {
-            console.log("Y");
-            const rawData = await getDocs(collection(DB, "team-logos"));
-            console.log(rawData);
-            setLogos("Y");
+        const getLogos = () => {
+            getDocs(collection(DB, "team-logos"))
+            .then((res) => res.docs.map((doc) => {
+                return {
+                    id: doc.id,
+                    ...doc.data()
+                }
+            }))
+            .then((res) => res.filter((doc) => doc.logo[OPTION]))
+            .then((res) => setLogos(res.reduce((acc, cur) => { acc[cur.id] = cur.logo; return acc; }, {})))
+            .catch((err) => console.log(err));
         }
 
        getLogos();
     }, [OPTION]);
     
     return logos;
+
 }
