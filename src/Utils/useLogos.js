@@ -16,7 +16,7 @@ export default function useLogos(OPTION) {
                 }
             }))
             .then((res) => res.filter((doc) => doc.logo[OPTION]))
-            .then((res) => setLogos(res.reduce((acc, cur) => { acc[cur.id] = cur.logo; return acc; }, {})))
+            .then((res) => setLogos(res.reduce((acc, cur) => { acc[cur.id] = cur.logo[OPTION]; return acc; }, {})))
             .catch((err) => console.log(err));
         }
 
