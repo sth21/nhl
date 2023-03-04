@@ -13,7 +13,7 @@ export default function Scoreboard(props) {
         ? <StyledScoreboard>
             {
                 props.gameInformation.events.map((game) => (
-                    <ScoreboardGame key = { uniqid() } game = { game } />
+                    <ScoreboardGame key = { uniqid() } game = { game } logos = { props.logos } />
                 ))
             }
           </StyledScoreboard>

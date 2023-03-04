@@ -4,7 +4,6 @@ import uniqid from 'uniqid';
 
 export default function StandingsWidget(props) {
     const [ activeDivision, setActiveDivision ] = useState(props.standings.records[1].teamRecords);
-    const logos = useLogos("nhl");
 
     return (
         <div>
@@ -16,10 +15,21 @@ export default function StandingsWidget(props) {
                 <button onClick = { () => setActiveDivision(props.standings.records[2].teamRecords) }>Central</button>
             </div>
             <table>
+                <thead>
+                    <tr>
+                        <th>Team</th>
+                        <th>Games Played</th>
+                        <th>Wins</th>
+                        <th>Losses</th>
+                        <th>OT</th>
+                        <th>Points</th>
+                        <th>Streak</th>
+                    </tr>
+                </thead>
                 <tbody>
                     {  
                         activeDivision.map((team) => (
-                            <StandingsTeam logos = { logos } team = { team } key = { uniqid() } />
+                            <StandingsTeam logos = { props.logos } team = { team } key = { uniqid() } />
                         ))
                     }
                 </tbody>
@@ -34,8 +44,8 @@ function StandingsTeam(props) {
     return (
         <tr>
             <td>
+               <img src={(props.logos) ? props.logos[props.team.team.id] : "#"} alt={ "Team logo" }></img>
                 { props.team.team.name }
-                <img src={(props.logos) ? props.logos[props.team.team.id] : "#"} alt={ "Team logo" }></img>
             </td>
             <td>{ props.team.gamesPlayed }</td>
             <td>{ props.team.leagueRecord.wins }</td>

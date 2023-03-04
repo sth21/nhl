@@ -1,4 +1,3 @@
-import useLogo from './../../../Utils/useLogo';
 import ScoreboardGameHeader from './ScoreboardGameHeader';
 import { StyledScoreboardGameWrapper, StyledScoreboardGameBody, StyledScoreboardInfo, StyledScoreboardTeam } from './../../../StyledComponents/Home/ScoreboardComponents';
 
@@ -9,8 +8,6 @@ import { StyledScoreboardGameWrapper, StyledScoreboardGameBody, StyledScoreboard
 export default function ScoreboardGame(props) {
     
     const gameInfo = props.game.competitions[0];
-    const homeLogo = useLogo(gameInfo.competitors[0].id, "espn");
-    const awayLogo = useLogo(gameInfo.competitors[1].id, "espn");
 
     return (
         <StyledScoreboardGameWrapper role="complementary" >
@@ -18,14 +15,14 @@ export default function ScoreboardGame(props) {
             <StyledScoreboardGameBody>
                 <StyledScoreboardInfo>
                     <StyledScoreboardTeam>
-                        <img src={ (homeLogo) ? homeLogo : "#" } alt="home team logo"></img>
+                        <img src={ (props.logos) ? props.logos[parseInt(gameInfo.competitors[0].id, 10)] : "#" } alt="home team logo"></img>
                         <p>{gameInfo.competitors[0].team.abbreviation}</p>
                     </StyledScoreboardTeam>
                     <p>{ (props.game.status.type.state === "pre") ? gameInfo.competitors[0].records[0].summary : gameInfo.competitors[0].score }</p>
                 </StyledScoreboardInfo>
                 <StyledScoreboardInfo>
                     <StyledScoreboardTeam>
-                        <img src={ (awayLogo) ? awayLogo : "#" } alt="away team logo"></img>
+                        <img src={ (props.logos) ? props.logos[gameInfo.competitors[1].id] : "#" } alt="away team logo"></img>
                         <p>{gameInfo.competitors[1].team.abbreviation}</p>
                     </StyledScoreboardTeam>
                     <p>{ (props.game.status.type.state === "pre") ? gameInfo.competitors[1].records[0].summary : gameInfo.competitors[1].score }</p>

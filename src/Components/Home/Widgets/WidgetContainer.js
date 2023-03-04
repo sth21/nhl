@@ -6,7 +6,7 @@ import DraftWidget from './DraftWidget';
 import PlayersWidget from './PlayersWidget';
 import FantasyWidget from './FantasyWidget';
 
-export default function WidgetContainer() {
+export default function WidgetContainer(props) {
     
     // For StandingsWidget
     const standings = useFetch("https://statsapi.web.nhl.com/api/v1/standings/byDivision");
@@ -25,7 +25,7 @@ export default function WidgetContainer() {
         <div>
             {
                 ( standings )
-                ? <StandingsWidget standings = { standings } />
+                ? <StandingsWidget standings = { standings } logos = { props.logos } />
                 : <></>
             }         
             {
