@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledScoreboard = styled.div`
     display: grid;
-    grid-template: 1fr / repeat(auto-fill, minmax(200px, 1fr));
+    grid-template: 1fr / repeat(auto-fit, minmax(200px, 1fr));
     overflow-x: auto;
     grid-auto-flow: column;
 `;

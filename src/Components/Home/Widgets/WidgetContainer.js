@@ -1,3 +1,5 @@
+import { StyledWidgetContainer } from '../../../StyledComponents/Home/WidgetComponents';
+
 import useFetch from './../../../Utils/useFetch';
 import StandingsWidget from './StandingsWidget';
 import HeadlinesWidget from './HeadlinesWidget';
@@ -22,7 +24,7 @@ export default function WidgetContainer(props) {
     const savePercentLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=savePct&limit=5");
         
     return (
-        <div>
+        <StyledWidgetContainer>
             {
                 ( standings )
                 ? <StandingsWidget standings = { standings } logos = { props.logos } />
@@ -47,7 +49,7 @@ export default function WidgetContainer(props) {
             <DraftWidget />
             <PlayersWidget />
             <FantasyWidget />
-        </div>
+        </StyledWidgetContainer>
     );
 
 }

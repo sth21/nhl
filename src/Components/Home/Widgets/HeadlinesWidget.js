@@ -15,16 +15,3 @@ export default function HeadlinesWidget(props) {
     );
     
 }
-
-/* TODO:
-Go onto firestore, add a string for NHL team id, and modify logo to ESPN id
-Reform useLogo to have an option parameter for NHL / ESPN
-
-Finish Standings Widget (thead)
-
-Players Widget (Starting goaltenders?? or just players??)
-
-Draft Widget ( option to view draft rankings (NHL team / Prospect) )
-
-Fantasy Widget ( may scrap )
-*/

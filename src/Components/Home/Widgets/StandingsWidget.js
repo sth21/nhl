@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import useLogos from '../../../Utils/useLogos.js'
+import { useState } from 'react';
 import uniqid from 'uniqid';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 export default function StandingsWidget(props) {
     const [ activeDivision, setActiveDivision ] = useState(props.standings.records[1].teamRecords);
@@ -14,45 +14,40 @@ export default function StandingsWidget(props) {
                 <button onClick = { () => setActiveDivision(props.standings.records[3].teamRecords) }>Pacific</button>
                 <button onClick = { () => setActiveDivision(props.standings.records[2].teamRecords) }>Central</button>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Team</th>
-                        <th>Games Played</th>
-                        <th>Wins</th>
-                        <th>Losses</th>
-                        <th>OT</th>
-                        <th>Points</th>
-                        <th>Streak</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {  
-                        activeDivision.map((team) => (
-                            <StandingsTeam logos = { props.logos } team = { team } key = { uniqid() } />
-                        ))
-                    }
-                </tbody>
-            </table>
+            <TableContainer>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Team</TableCell>
+                            <TableCell>Games Played</TableCell>
+                            <TableCell>Wins</TableCell>
+                            <TableCell>Losses</TableCell>
+                            <TableCell>OT</TableCell>
+                            <TableCell>Points</TableCell>
+                            <TableCell>Streak</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {  
+                            activeDivision.map((team) => (
+                                <TableRow key = { uniqid() }>
+                                    <TableCell>
+                                        <img src={(props.logos) ? props.logos[team.team.id] : "#"} alt={ "Team logo" }></img>
+                                        { team.team.name }
+                                    </TableCell>
+                                    <TableCell>{ team.gamesPlayed }</TableCell>
+                                    <TableCell>{ team.leagueRecord.wins }</TableCell>
+                                    <TableCell>{ team.leagueRecord.losses }</TableCell>
+                                    <TableCell>{ team.leagueRecord.ot }</TableCell>
+                                    <TableCell>{ team.points }</TableCell>
+                                    <TableCell>{ team.streak.streakCode }</TableCell>
+                                </TableRow>
+                            ))
+                        }
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div>
     );
     
-}
-
-function StandingsTeam(props) {
-    
-    return (
-        <tr>
-            <td>
-               <img src={(props.logos) ? props.logos[props.team.team.id] : "#"} alt={ "Team logo" }></img>
-                { props.team.team.name }
-            </td>
-            <td>{ props.team.gamesPlayed }</td>
-            <td>{ props.team.leagueRecord.wins }</td>
-            <td>{ props.team.leagueRecord.losses }</td>
-            <td>{ props.team.leagueRecord.ot }</td>
-            <td>{ props.team.points }</td>
-            <td>{ props.team.streak.streakCode }</td>
-        </tr>
-    );
 }
