@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
+import { StyledHeadlinesContainer, StyledHeader, StyledLink } from '../../../StyledComponents/Home/WidgetComponents';
 import uniqid from 'uniqid';
 
 export default function HeadlinesWidget(props) {
     
     return (
-        <div>
-            <h4>Headlines</h4>
+        <StyledHeadlinesContainer>
+            <StyledHeader>Headlines</StyledHeader>
             {
                 props.headlines.articles.map((article) => (
-                    <Link to={ article.links.web.href } key = { uniqid() }>{ article.headline }</Link>
+                    <StyledLink to={ article.links.web.href } key = { uniqid() }>{ article.headline }</StyledLink>
                 ))
             }
-        </div>
+        </StyledHeadlinesContainer>
     );
     
 }
