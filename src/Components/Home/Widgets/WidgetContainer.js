@@ -43,6 +43,7 @@ export default function WidgetContainer(props) {
                         pointsLeaders = { pointsLeaders }
                         winsLeaders = { winsLeaders }
                         savePercentLeaders = { savePercentLeaders }
+                        logos = { props.logos }
                     />
                 :  <></>
             }

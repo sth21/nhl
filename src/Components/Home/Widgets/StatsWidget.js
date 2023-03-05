@@ -1,8 +1,8 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Table, TableBody, TableHead, TableRow } from '@mui/material';
+import { StyledHeader, StyledTableCell, StyledTableHeader, StyledTableContainer } from '../../../StyledComponents/Home/WidgetComponents';
+import { StyledOptionContainer, StyledOption } from '../../../StyledComponents/General/GeneralComponents';
 
 import uniqid from 'uniqid';
-import getPlayerImage from '../../../Utils/getPlayerImage';
-import getTeamAbbreviation from './../../../Utils/getTeamAbbreviation';
 import { useState } from 'react';
 
 export default function StatsWidget(props) {
@@ -27,41 +27,38 @@ export default function StatsWidget(props) {
     return (
         (activeStat)
         ? <div>
-            <h4>2022-2023 League Leaders</h4>
-            <div>
-                <button onClick={ () => setActiveStat(props.pointsLeaders.leagueLeaders[0]) }>Points</button>
-                <button onClick={ () => setActiveStat(props.goalLeaders.leagueLeaders[0]) }>Goals</button>
-                <button onClick={ () => setActiveStat(props.assistsLeaders.leagueLeaders[0]) }>Assists</button>
-                <button onClick={ () => setActiveStat(props.winsLeaders.leagueLeaders[0]) }>Wins</button>
-                <button onClick={ () => setActiveStat(props.savePercentLeaders.leagueLeaders[0]) }>Save %</button>
-            </div>
-            <TableContainer>
+            <StyledHeader>Stats</StyledHeader>
+            <StyledOptionContainer>
+                <StyledOption bold={ (activeStat.leaderCategory === "points") } onClick={ () => setActiveStat(props.pointsLeaders.leagueLeaders[0]) }>Points</StyledOption>
+                <StyledOption bold={ (activeStat.leaderCategory === "goals") } onClick={ () => setActiveStat(props.goalLeaders.leagueLeaders[0]) }>Goals</StyledOption>
+                <StyledOption bold={ (activeStat.leaderCategory === "assists") } onClick={ () => setActiveStat(props.assistsLeaders.leagueLeaders[0]) }>Assists</StyledOption>
+                <StyledOption bold={ (activeStat.leaderCategory === "wins") } onClick={ () => setActiveStat(props.winsLeaders.leagueLeaders[0]) }>Wins</StyledOption>
+                <StyledOption bold={ (activeStat.leaderCategory === "savePct") } onClick={ () => setActiveStat(props.savePercentLeaders.leagueLeaders[0]) }>Save %</StyledOption>
+            </StyledOptionContainer>
+            <StyledTableContainer>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Rank</TableCell>
-                            <TableCell>Team</TableCell>
-                            <TableCell>Player</TableCell>
-                            <TableCell>{ statTypeReducer(activeStat.leaderCategory) }</TableCell>
+                            <StyledTableHeader>Rank</StyledTableHeader>
+                            <StyledTableHeader>Team</StyledTableHeader>
+                            <StyledTableHeader>Player</StyledTableHeader>
+                            <StyledTableHeader>{ statTypeReducer(activeStat.leaderCategory) }</StyledTableHeader>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {
                             activeStat.leaders.map((player, index) => ( 
                                 <TableRow key = { uniqid() }>
-                                    <TableCell>{ index + 1 }</TableCell>
-                                    <TableCell>
-                                        <img src={ getPlayerImage(player.person.id, getTeamAbbreviation(player.team.name), activeStat.season.replace('-', '')) } alt={ player.person.fullName }></img>
-                                        { getTeamAbbreviation(player.team.name) }
-                                    </TableCell>
-                                    <TableCell>{ player.person.fullName }</TableCell>
-                                    <TableCell>{ player.value }</TableCell>
+                                    <StyledTableCell>{ index + 1 }</StyledTableCell>
+                                    <StyledTableCell><img src={ (props.logos) ? props.logos[parseInt(player.team.id, 10)] : "#" } alt="Player"></img></StyledTableCell>
+                                    <StyledTableCell>{ player.person.fullName }</StyledTableCell>
+                                    <StyledTableCell>{ player.value }</StyledTableCell>
                                 </TableRow>
                             ))
                         }
                     </TableBody>
                 </Table>
-            </TableContainer>
+            </StyledTableContainer>
           </div>
           : <></>
     );
