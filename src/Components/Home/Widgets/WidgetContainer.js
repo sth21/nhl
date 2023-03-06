@@ -23,6 +23,9 @@ export default function WidgetContainer(props) {
     const winsLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=wins&limit=8");
     const savePercentLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=savePct&limit=8");
     
+    // For Draft Widget
+    const draftStandings = useFetch("https://statsapi.web.nhl.com/api/v1/standings/byLeague");
+
     // For TeamStatsWidget
     const teamLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/teams?expand=team.stats&season=20222023");
 
@@ -50,7 +53,11 @@ export default function WidgetContainer(props) {
                     />
                 :  <></>
             }
-            <DraftWidget />
+            {
+                ( draftStandings )
+                ? <DraftWidget teams = { draftStandings.records[0].teamRecords } logos = { props.logos } />
+                : <></>
+            }
             <PlayersWidget />
             {
                 ( teamLeaders )
