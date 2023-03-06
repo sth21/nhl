@@ -3,10 +3,10 @@ import { StyledWidgetContainer } from '../../../StyledComponents/Home/WidgetComp
 import useFetch from './../../../Utils/useFetch';
 import StandingsWidget from './StandingsWidget';
 import HeadlinesWidget from './HeadlinesWidget';
-import StatsWidget from './StatsWidget';
+import PlayerStatsWidget from './PlayerStatsWidget';
 import DraftWidget from './DraftWidget';
 import PlayersWidget from './PlayersWidget';
-import FantasyWidget from './FantasyWidget';
+import TeamStatsWidget from './TeamStatsWidget';
 
 export default function WidgetContainer(props) {
     
@@ -16,13 +16,16 @@ export default function WidgetContainer(props) {
     // For HeadlinesWidget
     const todaysHeadlines = useFetch("https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/news");
 
-    // For StatsWidget
-    const goalLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=goals&limit=5");
-    const assistLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=assists&limit=5");
-    const pointsLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=points&limit=5");
-    const winsLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=wins&limit=5");
-    const savePercentLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=savePct&limit=5");
-        
+    // For PlayerStatsWidget
+    const goalLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=goals&limit=8");
+    const assistLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=assists&limit=8");
+    const pointsLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=points&limit=8");
+    const winsLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=wins&limit=8");
+    const savePercentLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=savePct&limit=8");
+    
+    // For TeamStatsWidget
+    const teamLeaders = useFetch("https://statsapi.web.nhl.com/api/v1/teams?expand=team.stats&season=20222023");
+
     return (
         <StyledWidgetContainer>
             {
@@ -37,7 +40,7 @@ export default function WidgetContainer(props) {
             }
             {
                 ( goalLeaders && assistLeaders && pointsLeaders && winsLeaders && savePercentLeaders )
-                ?  <StatsWidget 
+                ?  <PlayerStatsWidget 
                         goalLeaders = { goalLeaders } 
                         assistsLeaders = { assistLeaders }
                         pointsLeaders = { pointsLeaders }
@@ -49,7 +52,11 @@ export default function WidgetContainer(props) {
             }
             <DraftWidget />
             <PlayersWidget />
-            <FantasyWidget />
+            {
+                ( teamLeaders )
+                ? <TeamStatsWidget teams = { teamLeaders.teams } logos = { props.logos } />
+                : <></>
+            }
         </StyledWidgetContainer>
     );
 

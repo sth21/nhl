@@ -5,7 +5,7 @@ import { StyledOptionContainer, StyledOption } from '../../../StyledComponents/G
 import uniqid from 'uniqid';
 import { useState } from 'react';
 
-export default function StatsWidget(props) {
+export default function PlayerStatsWidget(props) {
     const [ activeStat, setActiveStat ] = useState(props.pointsLeaders.leagueLeaders[0]);
 
     function statTypeReducer(statType) {
@@ -27,7 +27,7 @@ export default function StatsWidget(props) {
     return (
         (activeStat)
         ? <div>
-            <StyledHeader>Stats</StyledHeader>
+            <StyledHeader>Player Statistics</StyledHeader>
             <StyledOptionContainer>
                 <StyledOption bold={ (activeStat.leaderCategory === "points") } onClick={ () => setActiveStat(props.pointsLeaders.leagueLeaders[0]) }>Points</StyledOption>
                 <StyledOption bold={ (activeStat.leaderCategory === "goals") } onClick={ () => setActiveStat(props.goalLeaders.leagueLeaders[0]) }>Goals</StyledOption>
