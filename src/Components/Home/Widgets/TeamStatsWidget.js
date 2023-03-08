@@ -14,8 +14,8 @@ export default function TeamStatsWidget(props) {
 
     function sortStat(teams, statType, option = "descending") {
         return ( option === "ascending" )
-            ? teams.sort((a, b) => parseFloat(a.teamStats[0].splits[0].stat[statType]) - parseFloat(b.teamStats[0].splits[0].stat[statType])).slice(0, 8)
-            : teams.sort((a, b) => parseFloat(b.teamStats[0].splits[0].stat[statType]) - parseFloat(a.teamStats[0].splits[0].stat[statType])).slice(0, 8)
+            ? teams.sort((a, b) => parseFloat(a.teamStats[0].splits[0].stat[statType]) - parseFloat(b.teamStats[0].splits[0].stat[statType])).slice(0, 10)
+            : teams.sort((a, b) => parseFloat(b.teamStats[0].splits[0].stat[statType]) - parseFloat(a.teamStats[0].splits[0].stat[statType])).slice(0, 10)
     }
 
     function statTypeReducer(statType) {

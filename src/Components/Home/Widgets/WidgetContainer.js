@@ -5,7 +5,7 @@ import StandingsWidget from './StandingsWidget';
 import HeadlinesWidget from './HeadlinesWidget';
 import PlayerStatsWidget from './PlayerStatsWidget';
 import DraftWidget from './DraftWidget';
-import PlayersWidget from './PlayersWidget';
+import SocialMediaWidget from './SocialMediaWidget';
 import TeamStatsWidget from './TeamStatsWidget';
 
 export default function WidgetContainer(props) {
@@ -58,7 +58,7 @@ export default function WidgetContainer(props) {
                 ? <DraftWidget teams = { draftStandings.records[0].teamRecords } logos = { props.logos } />
                 : <></>
             }
-            <PlayersWidget />
+            <SocialMediaWidget />
             {
                 ( teamLeaders )
                 ? <TeamStatsWidget teams = { teamLeaders.teams } logos = { props.logos } />
