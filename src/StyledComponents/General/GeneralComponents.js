@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
@@ -71,19 +71,19 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const StyledOptionContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 1em;
-    padding: 1em 0em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1em;
+  padding: 1em 0em;
 `;
 
 const StyledOption = styled.button`
-    font-weight: ${ props => props.bold ? "bold" : "normal" } !important;
-    background: transparent;
-    border: none;
-    font: inherit;
-    cursor: pointer;
+  font-weight: ${(props) => (props.bold ? "bold" : "normal")} !important;
+  background: transparent;
+  border: none;
+  font: inherit;
+  cursor: pointer;
 `;
 
 export { GlobalStyle, StyledOptionContainer, StyledOption };
