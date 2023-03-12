@@ -1,5 +1,3 @@
 export default function Standings() {
-    return (
-        <p>Standings</p>
-    );
+  return <p>Standings</p>;
 }

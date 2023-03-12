@@ -1,5 +1,3 @@
 export default function Players() {
-    return (
-        <p>Players</p>
-    );
+  return <p>Players</p>;
 }

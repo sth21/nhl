@@ -1,5 +1,3 @@
 export default function Scores() {
-    return (
-        <p>Scores</p>
-    );
+  return <p>Scores</p>;
 }

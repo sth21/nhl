@@ -1,5 +1,3 @@
 export default function Fantasy() {
-    return (
-        <p>Fantasy</p>
-    )
+  return <p>Fantasy</p>;
 }

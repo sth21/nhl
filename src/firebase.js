@@ -8,7 +8,7 @@ const firebaseConfig = {
   projectId: "nhl-website",
   storageBucket: "nhl-website.appspot.com",
   messagingSenderId: "180172327358",
-  appId: "1:180172327358:web:415e84328d59dcb2add1ef"
+  appId: "1:180172327358:web:415e84328d59dcb2add1ef",
 };
 
 const APP = initializeApp(firebaseConfig);

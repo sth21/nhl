@@ -1,5 +1,3 @@
 export default function Stats() {
-    return (
-        <p>Stats</p>
-    );
+  return <p>Stats</p>;
 }

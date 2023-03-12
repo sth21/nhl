@@ -5,5 +5,5 @@
 */
 
 export default function getPlayerImage(id, team, year) {
-    return `https://assets.nhle.com/mugs/nhl/${year}/${team}/${id}.png`;
+  return `https://assets.nhle.com/mugs/nhl/${year}/${team}/${id}.png`;
 }
