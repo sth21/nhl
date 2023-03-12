@@ -5,8 +5,10 @@ import ScoreboardGame from "../Components/Home/Scoreboard/ScoreboardGame";
 import ScoreboardGameHeader from "../Components/Home/Scoreboard/ScoreboardGameHeader";
 
 import DraftWidget from "../Components/Home/Widgets/DraftWidget";
+import PlayerStatsWidget from "../Components/Home/Widgets/PlayerStatsWidget";
 
 import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import MockData from "./MockData";
 
 const pregameRegular = MockData("pre", 0, "Final", false);
@@ -267,42 +269,42 @@ jest.mock("../Components/Home/Widgets/DraftWidget", () => (props) => {
   );
 });
 
-const mockDraftTeams = [
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  { team: { id: 15 } },
-  { team: { id: 17 } },
-  { team: { id: 19 } },
-  { team: { id: 23 } },
-  { team: { id: 4 } },
-  { team: { id: 8 } },
-  { team: { id: 53 } },
-  { team: { id: 24 } },
-  { team: { id: 16 } },
-  { team: { id: 28 } },
-  { team: { id: 29 } },
-];
-
 describe("DraftWidget.js tests", () => {
+  const mockDraftTeams = [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    { team: { id: 15 } },
+    { team: { id: 17 } },
+    { team: { id: 19 } },
+    { team: { id: 23 } },
+    { team: { id: 4 } },
+    { team: { id: 8 } },
+    { team: { id: 53 } },
+    { team: { id: 24 } },
+    { team: { id: 16 } },
+    { team: { id: 28 } },
+    { team: { id: 29 } },
+  ];
+
   test("Slice and reverse are called correctly", () => {
     const expectedArray = [
       { team: { id: 15 } },
@@ -340,5 +342,162 @@ describe("DraftWidget.js tests", () => {
     expect(within(containers[10]).getByText("11")).toBeTruthy();
     expect(within(containers[10]).getByText("15")).toBeTruthy();
     expect(within(containers[10]).getByText("3.0%")).toBeTruthy();
+  });
+});
+
+jest.mock("../Components/Home/Widgets/PlayerStatsWidget", () => (props) => {
+  const activeStat = props[props.activeStat];
+
+  return (
+    <div>
+      <div>
+        <button
+          onClick={() =>
+            props.foo(props.pointsLeaders.leagueLeaders[0].leaderCategory)
+          }
+        >
+          Points
+        </button>
+        <button
+          onClick={() =>
+            props.foo(props.goalLeaders.leagueLeaders[0].leaderCategory)
+          }
+        >
+          Goals
+        </button>
+        <button
+          onClick={() =>
+            props.foo(props.assistsLeaders.leagueLeaders[0].leaderCategory)
+          }
+        >
+          Assists
+        </button>
+        <button
+          onClick={() =>
+            props.foo(props.winsLeaders.leagueLeaders[0].leaderCategory)
+          }
+        >
+          Wins
+        </button>
+        <button
+          onClick={() =>
+            props.foo(
+              props.savePercentageLeaders.leagueLeaders[0].leaderCategory
+            )
+          }
+        >
+          Save %
+        </button>
+      </div>
+      <div>
+        <p>{activeStat.leagueLeaders[0].leaderCategory}</p>
+        {activeStat.leagueLeaders[0].leaders.map((player, index) => (
+          <div role="complementary">
+            <p>{index + 1}</p>
+            <p>{player.person.fullName}</p>
+            <p>{player.team.id}</p>
+            <p>{player.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+});
+
+describe("PlayerStatsWidget.js tests", () => {
+  const mockPlayerStats = (type) => {
+    return {
+      leagueLeaders: [
+        {
+          leaderCategory: type,
+          leaders: [
+            {
+              person: { fullName: "Player1" },
+              value: "5",
+              team: { id: "100001" },
+            },
+            {
+              person: { fullName: "Player2" },
+              value: "4",
+              team: { id: "100002" },
+            },
+            {
+              person: { fullName: "Player3" },
+              value: "3",
+              team: { id: "100003" },
+            },
+            {
+              person: { fullName: "Player4" },
+              value: "2",
+              team: { id: "100004" },
+            },
+            {
+              person: { fullName: "Player5" },
+              value: "1",
+              team: { id: "100005" },
+            },
+          ],
+        },
+      ],
+    };
+  };
+
+  const pointsLeaders = mockPlayerStats("Points");
+  const goalLeaders = mockPlayerStats("Goals");
+  const assistsLeaders = mockPlayerStats("Assists");
+  const winsLeaders = mockPlayerStats("Wins");
+  const savePercentageLeaders = mockPlayerStats("SavePercentage");
+
+  test("Properly switches the activeStat", () => {
+    const foo = jest.fn();
+    render(
+      <PlayerStatsWidget
+        foo={foo}
+        activeStat={"pointsLeaders"}
+        pointsLeaders={pointsLeaders}
+        goalLeaders={goalLeaders}
+        assistsLeaders={assistsLeaders}
+        winsLeaders={winsLeaders}
+        savePercentageLeaders={savePercentageLeaders}
+      />
+    );
+    const buttons = screen.getAllByRole("button");
+    userEvent.click(buttons[0]);
+    userEvent.click(buttons[1]);
+    userEvent.click(buttons[2]);
+    userEvent.click(buttons[3]);
+    userEvent.click(buttons[4]);
+    expect(foo.mock.calls[0][0]).toBe("Points");
+    expect(foo.mock.calls[1][0]).toBe("Goals");
+    expect(foo.mock.calls[2][0]).toBe("Assists");
+    expect(foo.mock.calls[3][0]).toBe("Wins");
+    expect(foo.mock.calls[4][0]).toBe("SavePercentage");
+  });
+
+  test("Properly renders the correct information", () => {
+    const foo = jest.fn();
+    render(
+      <PlayerStatsWidget
+        foo={foo}
+        activeStat={"pointsLeaders"}
+        pointsLeaders={pointsLeaders}
+        goalLeaders={goalLeaders}
+        assistsLeaders={assistsLeaders}
+        winsLeaders={winsLeaders}
+        savePercentageLeaders={savePercentageLeaders}
+      />
+    );
+
+    const players = screen.getAllByRole("complementary");
+
+    expect(within(players[0]).getByText("1")).toBeTruthy();
+    expect(within(players[0]).getByText("Player1")).toBeTruthy();
+    expect(within(players[0]).getByText("100001")).toBeTruthy();
+    expect(within(players[0]).getByText("5")).toBeTruthy();
+
+    expect(within(players[3]).getByText("4")).toBeTruthy();
+    expect(within(players[3]).getByText("Player4")).toBeTruthy();
+    expect(within(players[3]).getByText("100004")).toBeTruthy();
+    expect(within(players[3]).getByText("2")).toBeTruthy();
   });
 });
