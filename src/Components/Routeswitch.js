@@ -9,6 +9,7 @@ import Standings from "./Standings";
 import Stats from "./Stats";
 import Players from "./Players";
 import Fantasy from "./Fantasy";
+import Draft from "./Draft";
 import Nav from "./Nav";
 import Footer from "./Footer";
 
@@ -33,6 +34,7 @@ export default function Routeswitch() {
           <Route path="/standings" element={<Standings />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/players" element={<Players />} />
+          <Route path="/draft" element={<Draft />} />
           <Route path="/fantasy" element={<Fantasy />} />
         </Routes>
         <Footer />
