@@ -1,35 +1,7 @@
-/* 
-  NEED TO ADD:
-    Team does not own pick
-      Team has pick protected
-      Team does not have pick protected
-*/
-
 import { useState, useEffect } from "react";
 import uniqid from "uniqid";
-
-/* Mock Obj:
-
-const teams = [
-  { name: "CBJ", odds: 0.185 },
-  { name: "SJS", odds: 0.135 },
-  { name: "ANA", odds: 0.115 },
-  { name: "CHI", odds: 0.095 },
-  { name: "MON", odds: 0.085 },
-  { name: "PHI", odds: 0.075 },
-  { name: "ARI", odds: 0.065 },
-  { name: "VAN", odds: 0.06 },
-  { name: "STL", odds: 0.05 },
-  { name: "OTT", odds: 0.035, tradedTo: "ARI", protection: 5 },
-  { name: "DET", odds: 0.03 },
-  { name: "WAS", odds: 0.025 },
-  { name: "BUF", odds: 0.02 },
-  { name: "CAL", odds: 0.015 },
-  { name: "FLA", odds: 0.005, tradedTo: "MON", protection: -1 },
-  { name: "NSH", odds: 0.005 },
-];
-
-*/
+import downArrow from "./../../Media/down-arrow.png";
+import upArrow from "./../../Media/up-arrow.png";
 
 export default function DraftSimulator(props) {
   console.log(props);
@@ -141,7 +113,6 @@ export default function DraftSimulator(props) {
         <thead>
           <tr>
             <th>Pick</th>
-            <th>Change in position</th>
             <th>Team</th>
           </tr>
         </thead>
@@ -149,8 +120,18 @@ export default function DraftSimulator(props) {
           <tbody>
             {simDraftOrder.map((team, index) => (
               <tr key={uniqid()}>
-                <td>{index + 1}</td>
-                <td>{team.positionShift}</td>
+                <td>
+                  {index + 1}
+                  {team.positionShift !== 0 && team.positionShift ? (
+                    <img
+                      src={team.positionShift > 0 ? upArrow : downArrow}
+                      alt="arrow"
+                    ></img>
+                  ) : (
+                    <></>
+                  )}
+                  {team.positionShift === 0 ? "" : team.positionShift}
+                </td>
                 <td>
                   {team.name}
                   <img
