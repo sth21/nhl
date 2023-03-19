@@ -9,7 +9,7 @@ import Standings from "./Standings";
 import Stats from "./Stats";
 import Players from "./Players";
 import Fantasy from "./Fantasy";
-import Draft from "./Draft";
+import Draft from "./Draft/Draft";
 import Nav from "./Nav";
 import Footer from "./Footer";
 

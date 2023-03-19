@@ -1,35 +1,14 @@
-/*
-
-DRAFT LOTTERY RULES:
-There are two draws
-
-A team can only move up 10 positions
-
-A team cannot win a lottery more than twice in five years
-
-if a team NOT in the top 11 positions wins the first draw, than the top team becomes "locked into" the first draft pick
-any team which wins the lottery is "locked into" their respective position
-
-if a team IN the top 11 positions wins the first draw, than only they are "locked into" any position (the first overall selection)
-
-In the second lottery, if a team which is "locked into" their position is selected, than the draft order is maintained
-
-Each team => { originalTeam, newTeam, protectionStatus, eligibility  }
-
-Odds: [ .185, .135, .115, .095, .085, .075, .065, .06, .05, .035, .03, .025, .02, .015, .005, .005 ]
-
-*/
-
 /* 
   NEED TO ADD:
     Team does not own pick
       Team has pick protected
       Team does not have pick protected
-    Change in position added to object
 */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import uniqid from "uniqid";
+
+/* Mock Obj:
 
 const teams = [
   { name: "CBJ", odds: 0.185 },
@@ -50,9 +29,15 @@ const teams = [
   { name: "NSH", odds: 0.005 },
 ];
 
-export default function Draft() {
-  const defaultDraftOrder = teams;
+*/
+
+export default function DraftSimulator(props) {
+  console.log(props);
+
+  const defaultDraftOrder = props.draftOrder;
   const [simDraftOrder, setSimDraftOrder] = useState(defaultDraftOrder);
+
+  useEffect(() => console.log(defaultDraftOrder), [defaultDraftOrder]);
 
   // Calculate a lottery winner
   function lottery() {
@@ -71,6 +56,7 @@ export default function Draft() {
         (originalTeam) => newTeam.name === originalTeam.name
       );
       newTeam.positionShift = originalIndex - newIndex;
+      return newTeam;
     });
   }
 
@@ -166,9 +152,11 @@ export default function Draft() {
                 <td>{index + 1}</td>
                 <td>{team.positionShift}</td>
                 <td>
-                  {team.locked
-                    ? team.name.toUpperCase()
-                    : team.name.toLowerCase()}
+                  {team.name}
+                  <img
+                    src={props.logos ? props.logos[parseInt(team.id, 10)] : "#"}
+                    alt="team logo"
+                  ></img>
                 </td>
               </tr>
             ))}
