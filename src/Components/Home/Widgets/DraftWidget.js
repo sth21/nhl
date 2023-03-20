@@ -1,10 +1,10 @@
 import { Table, TableBody, TableHead, TableRow } from "@mui/material";
+import { StyledHeader } from "../../../StyledComponents/Home/WidgetComponents";
 import {
-  StyledHeader,
-  StyledTableCell,
   StyledTableHeader,
   StyledTableContainer,
-} from "../../../StyledComponents/Home/WidgetComponents";
+  StyledTableCell,
+} from "../../../StyledComponents/General/GeneralComponents";
 
 import uniqid from "uniqid";
 

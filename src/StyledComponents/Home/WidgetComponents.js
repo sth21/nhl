@@ -1,4 +1,4 @@
-import { TableCell, TableContainer } from "@mui/material";
+import { StyledHeadlineWrapper } from "../General/GeneralComponents";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -19,14 +19,6 @@ const StyledWidgetContainer = styled.div`
     height: 2.5em;
     width: 2.5em;
   }
-`;
-
-const StyledHeadlineWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 3em;
-  padding: 1em 0em;
-  vertical-align: center;
 `;
 
 const StyledHeader = styled.h4`
@@ -55,23 +47,6 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const StyledTableCell = styled(TableCell)`
-  text-align: center !important;
-  padding: 0.625em !important;
-  font: inherit !important;
-  font-size: 0.9rem !important;
-  border-bottom: 1px solid var(--grey) !important;
-`;
-
-const StyledTableHeader = styled(StyledTableCell)`
-  font-weight: bold !important;
-  font-size: inherit;
-`;
-
-const StyledTableContainer = styled(TableContainer)`
-  padding: 1em 0em;
-`;
-
 const StyledSMWrapper = styled(StyledHeadlineWrapper)`
   gap: 1.8em;
 `;
@@ -85,12 +60,8 @@ const StyledSMLink = styled(StyledLink)`
 
 export {
   StyledWidgetContainer,
-  StyledHeadlineWrapper,
   StyledHeader,
   StyledLink,
-  StyledTableCell,
-  StyledTableHeader,
-  StyledTableContainer,
   StyledSMWrapper,
   StyledSMLink,
 };

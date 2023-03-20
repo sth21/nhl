@@ -1,14 +1,12 @@
 import { Table, TableBody, TableHead, TableRow } from "@mui/material";
 import {
-  StyledHeader,
-  StyledTableCell,
   StyledTableHeader,
   StyledTableContainer,
-} from "../../../StyledComponents/Home/WidgetComponents";
-import {
+  StyledTableCell,
   StyledOptionContainer,
   StyledOption,
 } from "../../../StyledComponents/General/GeneralComponents";
+import { StyledHeader } from "../../../StyledComponents/Home/WidgetComponents";
 
 import { useState } from "react";
 import uniqid from "uniqid";

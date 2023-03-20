@@ -1,8 +1,9 @@
 import {
   StyledHeader,
   StyledLink,
-  StyledHeadlineWrapper,
 } from "../../../StyledComponents/Home/WidgetComponents";
+
+import { StyledHeadlineWrapper } from "../../../StyledComponents/General/GeneralComponents";
 import uniqid from "uniqid";
 
 export default function HeadlinesWidget(props) {
