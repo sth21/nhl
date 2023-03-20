@@ -56,7 +56,7 @@ const StyledDraftRowBreak = styled(TableRow)`
     font-size: 1.1rem;
 
     & td {
-      padding: 1.5em 0em;
+      padding: 1.25em 0em;
       text-align: center;
       font-weight: bold;
     }
