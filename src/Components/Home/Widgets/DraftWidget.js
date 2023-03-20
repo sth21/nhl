@@ -10,7 +10,7 @@ import uniqid from "uniqid";
 
 export default function DraftWidget(props) {
   const firstPickOdds = [
-    "25.5%",
+    "18.5%",
     "13.5%",
     "11.5%",
     "9.5%",

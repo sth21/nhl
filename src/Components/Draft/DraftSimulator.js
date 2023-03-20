@@ -1,15 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import uniqid from "uniqid";
 import downArrow from "./../../Media/down-arrow.png";
 import upArrow from "./../../Media/up-arrow.png";
 
 export default function DraftSimulator(props) {
-  console.log(props);
-
   const defaultDraftOrder = props.draftOrder;
   const [simDraftOrder, setSimDraftOrder] = useState(defaultDraftOrder);
-
-  useEffect(() => console.log(defaultDraftOrder), [defaultDraftOrder]);
 
   // Calculate a lottery winner
   function lottery() {
@@ -89,12 +85,37 @@ export default function DraftSimulator(props) {
     // Add positionShift property to all teams in after lottery finalized
     calculatePositionShift(defaultDraftOrder, tempTeams);
 
-    // For testing purposes
-    console.log("W1: " + JSON.stringify(firstWinner));
-    console.log("W2: " + JSON.stringify(secondWinner));
-    console.table(tempTeams);
-
     return tempTeams;
+  }
+
+  function renderLotteryTable(teams, startingIndex) {
+    return teams.map((team, index) => (
+      <tr key={uniqid()}>
+        <td>
+          {index + startingIndex}
+          {team.positionShift !== 0 && team.positionShift ? (
+            <img
+              src={team.positionShift > 0 ? upArrow : downArrow}
+              alt="arrow"
+            ></img>
+          ) : (
+            <></>
+          )}
+          {team.positionShift === 0 ? "" : team.positionShift}
+        </td>
+        <td>
+          {team.name}
+          <img
+            src={props.logos ? props.logos[parseInt(team.id, 10)] : "#"}
+            alt="team logo"
+          ></img>
+        </td>
+        <td>{team.record}</td>
+        <td>{team.points}</td>
+        <td>{team.streak}</td>
+        <td>{team.odds === 0 ? "" : team.odds}</td>
+      </tr>
+    ));
   }
 
   return (
@@ -114,33 +135,27 @@ export default function DraftSimulator(props) {
           <tr>
             <th>Pick</th>
             <th>Team</th>
+            <th>Record</th>
+            <th>Points</th>
+            <th>Streak</th>
+            <th>Odds</th>
           </tr>
         </thead>
         {simDraftOrder ? (
           <tbody>
-            {simDraftOrder.map((team, index) => (
-              <tr key={uniqid()}>
-                <td>
-                  {index + 1}
-                  {team.positionShift !== 0 && team.positionShift ? (
-                    <img
-                      src={team.positionShift > 0 ? upArrow : downArrow}
-                      alt="arrow"
-                    ></img>
-                  ) : (
-                    <></>
-                  )}
-                  {team.positionShift === 0 ? "" : team.positionShift}
-                </td>
-                <td>
-                  {team.name}
-                  <img
-                    src={props.logos ? props.logos[parseInt(team.id, 10)] : "#"}
-                    alt="team logo"
-                  ></img>
-                </td>
-              </tr>
-            ))}
+            {renderLotteryTable(simDraftOrder.slice(0, 16), 1)}
+            <tr>
+              <td>End of Lottery</td>
+            </tr>
+            {renderLotteryTable(simDraftOrder.slice(16, 28), 17)}
+            <tr>
+              <td>Conference Final Losers</td>
+            </tr>
+            {renderLotteryTable(simDraftOrder.slice(28, 30), 29)}
+            <tr>
+              <td>Stanley Cup Final Teams</td>
+            </tr>
+            {renderLotteryTable(simDraftOrder.slice(30, 32), 31)}
           </tbody>
         ) : (
           <></>
