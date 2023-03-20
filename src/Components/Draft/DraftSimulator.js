@@ -109,7 +109,7 @@ export default function DraftSimulator(props) {
   function renderLotteryTable(teams, startingIndex) {
     return teams.map((team, index) => (
       <TableRow key={uniqid()}>
-        <StyledDraftTableCell>
+        <StyledDraftTableCell style={{ minWidth: "60px" }}>
           <StyledFlexCell>
             <p>{index + startingIndex}</p>
             {team.positionShift !== 0 && team.positionShift ? (
@@ -139,7 +139,7 @@ export default function DraftSimulator(props) {
         <StyledDraftTableCell>{team.points}</StyledDraftTableCell>
         <StyledDraftTableCell>{team.streak}</StyledDraftTableCell>
         <StyledDraftTableCell>
-          {team.odds === 0 ? "" : team.odds}
+          {team.odds === 0 ? "" : (team.odds * 100).toFixed(2) + "%"}
         </StyledDraftTableCell>
       </TableRow>
     ));
