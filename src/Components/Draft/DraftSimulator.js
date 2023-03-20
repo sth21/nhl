@@ -1,7 +1,25 @@
-import { useState } from "react";
-import uniqid from "uniqid";
+import {
+  StyledDraftSimWrapper,
+  StyledDraftRowBreak,
+  StyledDraftHeader,
+  StyledDraftTable,
+  StyledDraftTableCell,
+  StyledDraftTableHeader,
+  StyledMovementWrapper,
+  StyledMovementIcon,
+  StyledMovementLabel,
+} from "../../StyledComponents/Draft/DraftComponents";
+import {
+  StyledTableContainer,
+  StyledOptionContainer,
+  StyledOption,
+  StyledFlexCell,
+} from "./../../StyledComponents/General/GeneralComponents";
+import { TableBody, TableHead, TableRow } from "@mui/material";
 import downArrow from "./../../Media/down-arrow.png";
 import upArrow from "./../../Media/up-arrow.png";
+import { useState } from "react";
+import uniqid from "uniqid";
 
 export default function DraftSimulator(props) {
   const defaultDraftOrder = props.draftOrder;
@@ -90,77 +108,89 @@ export default function DraftSimulator(props) {
 
   function renderLotteryTable(teams, startingIndex) {
     return teams.map((team, index) => (
-      <tr key={uniqid()}>
-        <td>
-          {index + startingIndex}
-          {team.positionShift !== 0 && team.positionShift ? (
+      <TableRow key={uniqid()}>
+        <StyledDraftTableCell>
+          <StyledFlexCell>
+            <p>{index + startingIndex}</p>
+            {team.positionShift !== 0 && team.positionShift ? (
+              <StyledMovementWrapper>
+                <StyledMovementIcon
+                  src={team.positionShift > 0 ? upArrow : downArrow}
+                />
+                <StyledMovementLabel movement={team.positionShift}>
+                  {team.positionShift}
+                </StyledMovementLabel>
+              </StyledMovementWrapper>
+            ) : (
+              <></>
+            )}
+          </StyledFlexCell>
+        </StyledDraftTableCell>
+        <StyledDraftTableCell>
+          <StyledFlexCell>
             <img
-              src={team.positionShift > 0 ? upArrow : downArrow}
-              alt="arrow"
+              src={props.logos ? props.logos[parseInt(team.id, 10)] : "#"}
+              alt="team logo"
             ></img>
-          ) : (
-            <></>
-          )}
-          {team.positionShift === 0 ? "" : team.positionShift}
-        </td>
-        <td>
-          {team.name}
-          <img
-            src={props.logos ? props.logos[parseInt(team.id, 10)] : "#"}
-            alt="team logo"
-          ></img>
-        </td>
-        <td>{team.record}</td>
-        <td>{team.points}</td>
-        <td>{team.streak}</td>
-        <td>{team.odds === 0 ? "" : team.odds}</td>
-      </tr>
+            <p>{team.name}</p>
+          </StyledFlexCell>
+        </StyledDraftTableCell>
+        <StyledDraftTableCell>{team.record}</StyledDraftTableCell>
+        <StyledDraftTableCell>{team.points}</StyledDraftTableCell>
+        <StyledDraftTableCell>{team.streak}</StyledDraftTableCell>
+        <StyledDraftTableCell>
+          {team.odds === 0 ? "" : team.odds}
+        </StyledDraftTableCell>
+      </TableRow>
     ));
   }
 
   return (
-    <div>
-      <div>
-        <button
+    <StyledDraftSimWrapper>
+      <StyledDraftHeader>NHL Draft Lottery Simulator</StyledDraftHeader>
+      <StyledOptionContainer>
+        <StyledOption
           onClick={() => setSimDraftOrder(simDraftLottery(defaultDraftOrder))}
         >
           Simulate Lottery
-        </button>
-        <button onClick={() => setSimDraftOrder(defaultDraftOrder)}>
+        </StyledOption>
+        <StyledOption onClick={() => setSimDraftOrder(defaultDraftOrder)}>
           Reset
-        </button>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Pick</th>
-            <th>Team</th>
-            <th>Record</th>
-            <th>Points</th>
-            <th>Streak</th>
-            <th>Odds</th>
-          </tr>
-        </thead>
-        {simDraftOrder ? (
-          <tbody>
-            {renderLotteryTable(simDraftOrder.slice(0, 16), 1)}
-            <tr>
-              <td>End of Lottery</td>
-            </tr>
-            {renderLotteryTable(simDraftOrder.slice(16, 28), 17)}
-            <tr>
-              <td>Conference Final Losers</td>
-            </tr>
-            {renderLotteryTable(simDraftOrder.slice(28, 30), 29)}
-            <tr>
-              <td>Stanley Cup Final Teams</td>
-            </tr>
-            {renderLotteryTable(simDraftOrder.slice(30, 32), 31)}
-          </tbody>
-        ) : (
-          <></>
-        )}
-      </table>
-    </div>
+        </StyledOption>
+      </StyledOptionContainer>
+      <StyledTableContainer>
+        <StyledDraftTable>
+          <TableHead>
+            <TableRow>
+              <StyledDraftTableHeader>Pick</StyledDraftTableHeader>
+              <StyledDraftTableHeader>Team</StyledDraftTableHeader>
+              <StyledDraftTableHeader>Record</StyledDraftTableHeader>
+              <StyledDraftTableHeader>Points</StyledDraftTableHeader>
+              <StyledDraftTableHeader>Streak</StyledDraftTableHeader>
+              <StyledDraftTableHeader>Odds</StyledDraftTableHeader>
+            </TableRow>
+          </TableHead>
+          {simDraftOrder ? (
+            <TableBody>
+              {renderLotteryTable(simDraftOrder.slice(0, 16), 1)}
+              <StyledDraftRowBreak>
+                <td colSpan={6}>End of Lottery</td>
+              </StyledDraftRowBreak>
+              {renderLotteryTable(simDraftOrder.slice(16, 28), 17)}
+              <StyledDraftRowBreak>
+                <td colSpan={6}>Conference Final Losers</td>
+              </StyledDraftRowBreak>
+              {renderLotteryTable(simDraftOrder.slice(28, 30), 29)}
+              <StyledDraftRowBreak>
+                <td colSpan={6}>Stanley Cup Final Teams</td>
+              </StyledDraftRowBreak>
+              {renderLotteryTable(simDraftOrder.slice(30, 32), 31)}
+            </TableBody>
+          ) : (
+            <></>
+          )}
+        </StyledDraftTable>
+      </StyledTableContainer>
+    </StyledDraftSimWrapper>
   );
 }

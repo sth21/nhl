@@ -80,7 +80,9 @@ const StyledOptionContainer = styled.div`
 `;
 
 const StyledOption = styled.button`
-  font-weight: ${(props) => (props.bold ? "bold" : "normal")} !important;
+  && {
+    font-weight: ${(props) => (props.bold ? "bold" : "normal")} !important;
+  }
   background: transparent;
   border: none;
   font: inherit;
@@ -96,20 +98,32 @@ const StyledHeadlineWrapper = styled.div`
 `;
 
 const StyledTableCell = styled(TableCell)`
-  text-align: center !important;
-  padding: 0.625em !important;
-  font: inherit !important;
-  font-size: 0.9rem !important;
-  border-bottom: 1px solid var(--grey) !important;
+  && {
+    text-align: center;
+    padding: 0.625em;
+    font: inherit;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--grey);
+  }
 `;
 
 const StyledTableHeader = styled(StyledTableCell)`
-  font-weight: bold !important;
-  font-size: inherit;
+  && {
+    font-weight: bold;
+    font-size: inherit;
+  }
 `;
 
 const StyledTableContainer = styled(TableContainer)`
   padding: 1em 0em;
+`;
+
+const StyledFlexCell = styled.div`
+  && {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
 `;
 
 export {
@@ -120,4 +134,5 @@ export {
   StyledTableCell,
   StyledTableHeader,
   StyledTableContainer,
+  StyledFlexCell,
 };

@@ -1,3 +1,5 @@
+import { StyledDraftWrapper } from "../../StyledComponents/Draft/DraftComponents";
+
 import DraftSimulator from "./DraftSimulator";
 
 import { useMemo } from "react";
@@ -34,12 +36,12 @@ export default function Draft() {
   }, [draftOrder]);
 
   return (
-    <div>
+    <StyledDraftWrapper>
       {filteredDraftOrder ? (
         <DraftSimulator logos={logos} draftOrder={filteredDraftOrder} />
       ) : (
         <></>
       )}
-    </div>
+    </StyledDraftWrapper>
   );
 }
