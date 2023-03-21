@@ -142,7 +142,8 @@ export default function DraftSimulator(props) {
               team.tradedTo.protection <= index + startingIndex ||
               defaultDraftOrder === simDraftOrder ? (
                 <StyledMovementWrapper
-                  data-balloon-length="fit"
+                  data-balloon-length="medium"
+                  data-balloon-pos="up"
                   aria-label={`This pick was traded to ${team.tradedTo.name} on ${team.tradedTo.date}`}
                 >
                   <StyledMovementIcon src={tradedArrow} />
@@ -152,8 +153,9 @@ export default function DraftSimulator(props) {
                 </StyledMovementWrapper>
               ) : (
                 <StyledMovementWrapper
-                  data-balloon-length="fit"
-                  aria-label={`This pick was not traded as it is top-${team.tradedTo.protection} protected`}
+                  data-balloon-length="medium"
+                  data-balloon-pos="up"
+                  aria-label={`This pick was not traded to ${team.tradedTo.name} as it is top-${team.tradedTo.protection} protected`}
                 >
                   <StyledMovementIcon src={lock} />
                 </StyledMovementWrapper>
