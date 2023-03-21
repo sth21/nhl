@@ -1,3 +1,5 @@
+// need a default state so lock is not activated
+
 import {
   StyledDraftSimWrapper,
   StyledDraftRowBreak,
@@ -19,8 +21,10 @@ import { TableBody, TableHead, TableRow } from "@mui/material";
 import downArrow from "./../../Media/down-arrow.png";
 import upArrow from "./../../Media/up-arrow.png";
 import tradedArrow from "./../../Media/trade.png";
+import lock from "./../../Media/lock.png";
 import { useState } from "react";
 import uniqid from "uniqid";
+import "balloon-css";
 
 export default function DraftSimulator(props) {
   const defaultDraftOrder = props.draftOrder;
@@ -135,10 +139,25 @@ export default function DraftSimulator(props) {
             ></img>
             <p>{team.name}</p>
             {team.tradedTo ? (
-              <StyledMovementWrapper>
-                <StyledMovementIcon src={tradedArrow} />
-                <StyledMovementLabel>{team.tradedTo.name}</StyledMovementLabel>
-              </StyledMovementWrapper>
+              team.tradedTo.protection <= index + startingIndex ||
+              defaultDraftOrder === simDraftOrder ? (
+                <StyledMovementWrapper
+                  data-balloon-length="fit"
+                  aria-label={`This pick was traded to ${team.tradedTo.name} on ${team.tradedTo.date}`}
+                >
+                  <StyledMovementIcon src={tradedArrow} />
+                  <StyledMovementLabel>
+                    {team.tradedTo.name}
+                  </StyledMovementLabel>
+                </StyledMovementWrapper>
+              ) : (
+                <StyledMovementWrapper
+                  data-balloon-length="fit"
+                  aria-label={`This pick was not traded as it is top-${team.tradedTo.protection} protected`}
+                >
+                  <StyledMovementIcon src={lock} />
+                </StyledMovementWrapper>
+              )
             ) : (
               <></>
             )}
