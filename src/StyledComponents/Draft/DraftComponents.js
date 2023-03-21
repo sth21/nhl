@@ -76,7 +76,8 @@ const StyledMovementIcon = styled.img`
 
 const StyledMovementLabel = styled.p`
   font-size: 0.75rem;
-  color: ${(props) => (props.movement > 0 ? "#59BD5E" : "#C85959")};
+  color: ${(props) =>
+    !props.movement ? "#2E9FD3" : props.movement > 0 ? "#59BD5E" : "#C85959"};
 `;
 
 export {

@@ -18,6 +18,7 @@ import {
 import { TableBody, TableHead, TableRow } from "@mui/material";
 import downArrow from "./../../Media/down-arrow.png";
 import upArrow from "./../../Media/up-arrow.png";
+import tradedArrow from "./../../Media/trade.png";
 import { useState } from "react";
 import uniqid from "uniqid";
 
@@ -133,6 +134,14 @@ export default function DraftSimulator(props) {
               alt="team logo"
             ></img>
             <p>{team.name}</p>
+            {team.tradedTo ? (
+              <StyledMovementWrapper>
+                <StyledMovementIcon src={tradedArrow} />
+                <StyledMovementLabel>{team.tradedTo.name}</StyledMovementLabel>
+              </StyledMovementWrapper>
+            ) : (
+              <></>
+            )}
           </StyledFlexCell>
         </StyledDraftTableCell>
         <StyledDraftTableCell>{team.record}</StyledDraftTableCell>
