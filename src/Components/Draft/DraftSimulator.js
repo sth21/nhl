@@ -10,11 +10,11 @@ import {
   StyledMovementWrapper,
   StyledMovementIcon,
   StyledMovementLabel,
+  StyledDraftOption,
 } from "../../StyledComponents/Draft/DraftComponents";
 import {
   StyledTableContainer,
   StyledOptionContainer,
-  StyledOption,
   StyledFlexCell,
 } from "./../../StyledComponents/General/GeneralComponents";
 import { TableBody, TableHead, TableRow } from "@mui/material";
@@ -179,14 +179,14 @@ export default function DraftSimulator(props) {
     <StyledDraftSimWrapper>
       <StyledDraftHeader>NHL Draft Lottery Simulator</StyledDraftHeader>
       <StyledOptionContainer>
-        <StyledOption
+        <StyledDraftOption
           onClick={() => setSimDraftOrder(simDraftLottery(defaultDraftOrder))}
         >
           Simulate Lottery
-        </StyledOption>
-        <StyledOption onClick={() => setSimDraftOrder(defaultDraftOrder)}>
+        </StyledDraftOption>
+        <StyledDraftOption onClick={() => setSimDraftOrder(defaultDraftOrder)}>
           Reset
-        </StyledOption>
+        </StyledDraftOption>
       </StyledOptionContainer>
       <StyledTableContainer>
         <StyledDraftTable>

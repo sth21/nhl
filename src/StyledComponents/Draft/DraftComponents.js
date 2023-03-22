@@ -4,6 +4,7 @@ import {
   StyledFlexCell,
   StyledTableCell,
   StyledTableHeader,
+  StyledOption,
 } from "../General/GeneralComponents";
 import { StyledHeader } from "../Home/WidgetComponents";
 
@@ -80,6 +81,16 @@ const StyledMovementLabel = styled.p`
     !props.movement ? "#2E9FD3" : props.movement > 0 ? "#59BD5E" : "#C85959"};
 `;
 
+const StyledDraftOption = styled(StyledOption)`
+  font-size: 1.25rem;
+  &:hover {
+    transform scale(1.03);
+  }
+  &:active {
+    transform scale(.98)
+  }
+`;
+
 export {
   StyledDraftWrapper,
   StyledDraftSimWrapper,
@@ -91,4 +102,5 @@ export {
   StyledMovementWrapper,
   StyledMovementIcon,
   StyledMovementLabel,
+  StyledDraftOption,
 };
