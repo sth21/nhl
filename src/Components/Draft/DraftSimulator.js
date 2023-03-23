@@ -123,7 +123,7 @@ export default function DraftSimulator(props) {
                   src={team.positionShift > 0 ? upArrow : downArrow}
                 />
                 <StyledMovementLabel movement={team.positionShift}>
-                  {team.positionShift}
+                  {Math.abs(team.positionShift)}
                 </StyledMovementLabel>
               </StyledMovementWrapper>
             ) : (
