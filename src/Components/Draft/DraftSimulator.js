@@ -1,29 +1,18 @@
-// need a default state so lock is not activated
-
 import {
   StyledDraftSimWrapper,
   StyledDraftRowBreak,
   StyledDraftHeader,
   StyledDraftTable,
-  StyledDraftTableCell,
   StyledDraftTableHeader,
-  StyledMovementWrapper,
-  StyledMovementIcon,
-  StyledMovementLabel,
   StyledDraftOption,
 } from "../../StyledComponents/Draft/DraftComponents";
 import {
   StyledTableContainer,
   StyledOptionContainer,
-  StyledFlexCell,
 } from "./../../StyledComponents/General/GeneralComponents";
 import { TableBody, TableHead, TableRow } from "@mui/material";
-import downArrow from "./../../Media/down-arrow.png";
-import upArrow from "./../../Media/up-arrow.png";
-import tradedArrow from "./../../Media/trade.png";
-import lock from "./../../Media/lock.png";
+import LotteryTable from "./LotteryTable";
 import { useState } from "react";
-import uniqid from "uniqid";
 import "balloon-css";
 
 export default function DraftSimulator(props) {
@@ -111,73 +100,9 @@ export default function DraftSimulator(props) {
     return tempTeams;
   }
 
-  function renderLotteryTable(teams, startingIndex) {
-    return teams.map((team, index) => (
-      <TableRow key={uniqid()}>
-        <StyledDraftTableCell style={{ minWidth: "60px" }}>
-          <StyledFlexCell>
-            <p>{index + startingIndex}</p>
-            {team.positionShift !== 0 && team.positionShift ? (
-              <StyledMovementWrapper>
-                <StyledMovementIcon
-                  src={team.positionShift > 0 ? upArrow : downArrow}
-                />
-                <StyledMovementLabel movement={team.positionShift}>
-                  {Math.abs(team.positionShift)}
-                </StyledMovementLabel>
-              </StyledMovementWrapper>
-            ) : (
-              <></>
-            )}
-          </StyledFlexCell>
-        </StyledDraftTableCell>
-        <StyledDraftTableCell>
-          <StyledFlexCell>
-            <img
-              src={props.logos ? props.logos[parseInt(team.id, 10)] : "#"}
-              alt="team logo"
-            ></img>
-            <p>{team.name}</p>
-            {team.tradedTo ? (
-              team.tradedTo.protection <= index + startingIndex ||
-              defaultDraftOrder === simDraftOrder ? (
-                <StyledMovementWrapper
-                  data-balloon-length="medium"
-                  data-balloon-pos="up"
-                  aria-label={`This pick was traded to ${team.tradedTo.name} on ${team.tradedTo.date}`}
-                >
-                  <StyledMovementIcon src={tradedArrow} />
-                  <StyledMovementLabel>
-                    {team.tradedTo.name}
-                  </StyledMovementLabel>
-                </StyledMovementWrapper>
-              ) : (
-                <StyledMovementWrapper
-                  data-balloon-length="medium"
-                  data-balloon-pos="up"
-                  aria-label={`This pick was not traded to ${team.tradedTo.name} as it is top-${team.tradedTo.protection} protected`}
-                >
-                  <StyledMovementIcon src={lock} />
-                </StyledMovementWrapper>
-              )
-            ) : (
-              <></>
-            )}
-          </StyledFlexCell>
-        </StyledDraftTableCell>
-        <StyledDraftTableCell>{team.record}</StyledDraftTableCell>
-        <StyledDraftTableCell>{team.points}</StyledDraftTableCell>
-        <StyledDraftTableCell>{team.streak}</StyledDraftTableCell>
-        <StyledDraftTableCell>
-          {team.odds === 0 ? "" : (team.odds * 100).toFixed(2) + "%"}
-        </StyledDraftTableCell>
-      </TableRow>
-    ));
-  }
-
   return (
     <StyledDraftSimWrapper>
-      <StyledDraftHeader>NHL Draft Lottery Simulator</StyledDraftHeader>
+      <StyledDraftHeader>Draft Lottery Simulator</StyledDraftHeader>
       <StyledOptionContainer>
         <StyledDraftOption
           onClick={() => setSimDraftOrder(simDraftLottery(defaultDraftOrder))}
@@ -202,19 +127,46 @@ export default function DraftSimulator(props) {
           </TableHead>
           {simDraftOrder ? (
             <TableBody>
-              {renderLotteryTable(simDraftOrder.slice(0, 16), 1)}
+              <LotteryTable
+                originalDraftOrder={defaultDraftOrder}
+                teams={simDraftOrder.slice(0, 16)}
+                startingIndex={1}
+                isDefault={defaultDraftOrder === simDraftOrder}
+                logos={props.logos}
+              />
               <StyledDraftRowBreak>
                 <td colSpan={6}>End of Lottery</td>
               </StyledDraftRowBreak>
-              {renderLotteryTable(simDraftOrder.slice(16, 28), 17)}
+              <LotteryTable
+                originalDraftOrder={defaultDraftOrder}
+                simDraftOrder={simDraftOrder}
+                teams={simDraftOrder.slice(16, 28)}
+                startingIndex={17}
+                isDefault={defaultDraftOrder === simDraftOrder}
+                logos={props.logos}
+              />
               <StyledDraftRowBreak>
                 <td colSpan={6}>Conference Final Losers</td>
               </StyledDraftRowBreak>
-              {renderLotteryTable(simDraftOrder.slice(28, 30), 29)}
+              <LotteryTable
+                originalDraftOrder={defaultDraftOrder}
+                simDraftOrder={simDraftOrder}
+                teams={simDraftOrder.slice(28, 30)}
+                startingIndex={29}
+                isDefault={defaultDraftOrder === simDraftOrder}
+                logos={props.logos}
+              />
               <StyledDraftRowBreak>
                 <td colSpan={6}>Stanley Cup Final Teams</td>
               </StyledDraftRowBreak>
-              {renderLotteryTable(simDraftOrder.slice(30, 32), 31)}
+              <LotteryTable
+                originalDraftOrder={defaultDraftOrder}
+                simDraftOrder={simDraftOrder}
+                teams={simDraftOrder.slice(30, 32)}
+                startingIndex={31}
+                isDefault={defaultDraftOrder === simDraftOrder}
+                logos={props.logos}
+              />
             </TableBody>
           ) : (
             <></>

@@ -40,8 +40,6 @@ export default function Draft() {
     });
   }, [draftOrder, trades]);
 
-  console.log(filteredDraftOrder);
-
   return (
     <StyledDraftWrapper>
       {filteredDraftOrder ? (
