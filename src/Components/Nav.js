@@ -23,7 +23,6 @@ export default function Nav() {
         <StyledLink to="/stats">Stats</StyledLink>
         <StyledLink to="/players">Players</StyledLink>
         <StyledLink to="draft">Draft</StyledLink>
-        <StyledLink to="fantasy">Fantasy</StyledLink>
       </StyledNavWrapper>
       <StyledNavWrapper>
         <StyledLink to="https://shop.nhl.com/" target="_blank">

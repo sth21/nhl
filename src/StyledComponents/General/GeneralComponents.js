@@ -114,6 +114,14 @@ const StyledTableHeader = styled(StyledTableCell)`
   }
 `;
 
+const StyledHeader = styled.h4`
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 100%;
+  padding-bottom: 1em;
+  border-bottom: 1px solid var(--grey);
+`;
+
 const StyledTableContainer = styled(TableContainer)`
   padding: 1em 0em;
 `;
@@ -126,6 +134,30 @@ const StyledFlexCell = styled.div`
   }
 `;
 
+const StyledPageHeader = styled(StyledHeader)`
+  font-size: 2.5rem;
+  text-align: center;
+`;
+
+const StyledPageWrapper = styled.div`
+  padding: 3em;
+  display: flex;
+  justify-content: center;
+
+  & > div {
+    background: var(--white);
+    padding: 3em 6em;
+    box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+  }
+`;
+
+const StyledPageContentWrapper = styled.div`
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export {
   GlobalStyle,
   StyledOptionContainer,
@@ -135,4 +167,8 @@ export {
   StyledTableHeader,
   StyledTableContainer,
   StyledFlexCell,
+  StyledHeader,
+  StyledPageHeader,
+  StyledPageWrapper,
+  StyledPageContentWrapper,
 };

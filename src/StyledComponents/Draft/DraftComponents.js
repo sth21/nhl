@@ -6,26 +6,6 @@ import {
   StyledTableHeader,
   StyledOption,
 } from "../General/GeneralComponents";
-import { StyledHeader } from "../Home/WidgetComponents";
-
-const StyledDraftWrapper = styled.div`
-  padding: 3em;
-  display: flex;
-  justify-content: center;
-
-  & > div {
-    background: var(--white);
-    padding: 3em 6em;
-    box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
-  }
-`;
-
-const StyledDraftSimWrapper = styled.div`
-  padding: 3em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const StyledDraftTable = styled(Table)`
   min-width: 800px;
@@ -37,11 +17,6 @@ const StyledDraftTableCell = styled(StyledTableCell)`
     padding: 1em;
     font-size: 1rem;
   }
-`;
-
-const StyledDraftHeader = styled(StyledHeader)`
-  font-size: 2.5rem;
-  text-align: center;
 `;
 
 const StyledDraftTableHeader = styled(StyledTableHeader)`
@@ -92,12 +67,9 @@ const StyledDraftOption = styled(StyledOption)`
 `;
 
 export {
-  StyledDraftWrapper,
-  StyledDraftSimWrapper,
   StyledDraftTable,
   StyledDraftTableCell,
   StyledDraftTableHeader,
-  StyledDraftHeader,
   StyledDraftRowBreak,
   StyledMovementWrapper,
   StyledMovementIcon,

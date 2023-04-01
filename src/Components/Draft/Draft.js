@@ -1,4 +1,4 @@
-import { StyledDraftWrapper } from "../../StyledComponents/Draft/DraftComponents";
+import { StyledPageWrapper } from "../../StyledComponents/General/GeneralComponents";
 
 import DraftSimulator from "./DraftSimulator";
 
@@ -41,12 +41,12 @@ export default function Draft() {
   }, [draftOrder, trades]);
 
   return (
-    <StyledDraftWrapper>
+    <StyledPageWrapper>
       {filteredDraftOrder ? (
         <DraftSimulator logos={logos} draftOrder={filteredDraftOrder} />
       ) : (
         <></>
       )}
-    </StyledDraftWrapper>
+    </StyledPageWrapper>
   );
 }

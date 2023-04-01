@@ -5,8 +5,8 @@ import {
   StyledTableCell,
   StyledOptionContainer,
   StyledOption,
+  StyledHeader,
 } from "../../../StyledComponents/General/GeneralComponents";
-import { StyledHeader } from "../../../StyledComponents/Home/WidgetComponents";
 
 import { useState } from "react";
 import uniqid from "uniqid";

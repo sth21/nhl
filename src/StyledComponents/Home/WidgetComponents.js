@@ -21,14 +21,6 @@ const StyledWidgetContainer = styled.div`
   }
 `;
 
-const StyledHeader = styled.h4`
-  font-weight: bold;
-  font-size: 1.1rem;
-  width: 100%;
-  padding-bottom: 1em;
-  border-bottom: 1px solid var(--grey);
-`;
-
 const StyledLink = styled(Link)`
   color: inherit;
   font-weight: inherit;
@@ -58,10 +50,4 @@ const StyledSMLink = styled(StyledLink)`
   align-items: center;
 `;
 
-export {
-  StyledWidgetContainer,
-  StyledHeader,
-  StyledLink,
-  StyledSMWrapper,
-  StyledSMLink,
-};
+export { StyledWidgetContainer, StyledLink, StyledSMWrapper, StyledSMLink };

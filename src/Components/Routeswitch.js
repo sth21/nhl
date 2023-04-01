@@ -5,10 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home/Home";
 import Scores from "./Scores";
 import Schedule from "./Schedule";
-import Standings from "./Standings";
+import Standings from "./Standings/Standings";
 import Stats from "./Stats";
 import Players from "./Players";
-import Fantasy from "./Fantasy";
 import Draft from "./Draft/Draft";
 import Nav from "./Nav";
 import Footer from "./Footer";
@@ -35,7 +34,6 @@ export default function Routeswitch() {
           <Route path="/stats" element={<Stats />} />
           <Route path="/players" element={<Players />} />
           <Route path="/draft" element={<Draft />} />
-          <Route path="/fantasy" element={<Fantasy />} />
         </Routes>
         <Footer />
       </BrowserRouter>

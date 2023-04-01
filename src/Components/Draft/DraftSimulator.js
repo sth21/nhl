@@ -1,7 +1,5 @@
 import {
-  StyledDraftSimWrapper,
   StyledDraftRowBreak,
-  StyledDraftHeader,
   StyledDraftTable,
   StyledDraftTableHeader,
   StyledDraftOption,
@@ -9,6 +7,8 @@ import {
 import {
   StyledTableContainer,
   StyledOptionContainer,
+  StyledPageHeader,
+  StyledPageContentWrapper,
 } from "./../../StyledComponents/General/GeneralComponents";
 import { TableBody, TableHead, TableRow } from "@mui/material";
 import LotteryTable from "./LotteryTable";
@@ -101,8 +101,8 @@ export default function DraftSimulator(props) {
   }
 
   return (
-    <StyledDraftSimWrapper>
-      <StyledDraftHeader>Draft Lottery Simulator</StyledDraftHeader>
+    <StyledPageContentWrapper>
+      <StyledPageHeader>Draft Lottery Simulator</StyledPageHeader>
       <StyledOptionContainer>
         <StyledDraftOption
           onClick={() => setSimDraftOrder(simDraftLottery(defaultDraftOrder))}
@@ -173,6 +173,6 @@ export default function DraftSimulator(props) {
           )}
         </StyledDraftTable>
       </StyledTableContainer>
-    </StyledDraftSimWrapper>
+    </StyledPageContentWrapper>
   );
 }

@@ -10,10 +10,11 @@ import Tiktok from "./../../../Media/tiktok.png";
 import Snapchat from "./../../../Media/snapchat.png";
 
 import {
-  StyledHeader,
   StyledSMLink,
   StyledSMWrapper,
 } from "../../../StyledComponents/Home/WidgetComponents";
+
+import { StyledHeader } from "../../../StyledComponents/General/GeneralComponents";
 
 export default function SocialMediaWidget(props) {
   return (
