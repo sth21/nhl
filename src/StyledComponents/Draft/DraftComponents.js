@@ -1,29 +1,10 @@
-import { Table, TableRow } from "@mui/material";
+import { TableRow } from "@mui/material";
 import styled from "styled-components";
 import {
   StyledFlexCell,
-  StyledTableCell,
   StyledTableHeader,
   StyledOption,
 } from "../General/GeneralComponents";
-
-const StyledDraftTable = styled(Table)`
-  min-width: 800px;
-`;
-
-const StyledDraftTableCell = styled(StyledTableCell)`
-  && {
-    text-align: left;
-    padding: 1em;
-    font-size: 1rem;
-  }
-`;
-
-const StyledDraftTableHeader = styled(StyledTableHeader)`
-  && {
-    text-align: left;
-  }
-`;
 
 const StyledDraftRowBreak = styled(TableRow)`
   && {
@@ -67,9 +48,6 @@ const StyledDraftOption = styled(StyledOption)`
 `;
 
 export {
-  StyledDraftTable,
-  StyledDraftTableCell,
-  StyledDraftTableHeader,
   StyledDraftRowBreak,
   StyledMovementWrapper,
   StyledMovementIcon,

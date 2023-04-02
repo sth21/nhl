@@ -1,10 +1,12 @@
 import {
-  StyledDraftTableCell,
   StyledMovementWrapper,
   StyledMovementIcon,
   StyledMovementLabel,
 } from "../../StyledComponents/Draft/DraftComponents";
-import { StyledFlexCell } from "./../../StyledComponents/General/GeneralComponents";
+import {
+  StyledFlexCell,
+  StyledPageTableCell as StyledDraftTableCell,
+} from "./../../StyledComponents/General/GeneralComponents";
 import { TableRow } from "@mui/material";
 import downArrow from "./../../Media/down-arrow.png";
 import upArrow from "./../../Media/up-arrow.png";

@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { TableCell, TableContainer } from "@mui/material";
+import { Table, TableCell, TableContainer } from "@mui/material";
 
 const GlobalStyle = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
@@ -158,6 +158,24 @@ const StyledPageContentWrapper = styled.div`
   align-items: center;
 `;
 
+const StyledPageTableCell = styled(StyledTableCell)`
+  && {
+    text-align: left;
+    padding: 1em;
+    font-size: 1rem;
+  }
+`;
+
+const StyledPageTable = styled(Table)`
+  min-width: 1000px;
+`;
+
+const StyledPageTableHeader = styled(StyledTableHeader)`
+  && {
+    text-align: left;
+  }
+`;
+
 export {
   GlobalStyle,
   StyledOptionContainer,
@@ -171,4 +189,7 @@ export {
   StyledPageHeader,
   StyledPageWrapper,
   StyledPageContentWrapper,
+  StyledPageTableCell,
+  StyledPageTable,
+  StyledPageTableHeader,
 };

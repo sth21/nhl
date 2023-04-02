@@ -25,13 +25,10 @@ export default function StandingsYearOptions(props) {
   }
 
   return (
-    <FormControl>
-      <InputLabel id="year-select-label">Year</InputLabel>
+    <FormControl variant="standard" style={{ padding: "1em" }}>
       <Select
         onChange={handleChange}
         defaultValue={CURRENTYEAR}
-        labelId="year-select-label"
-        label="Year"
         autowidth="true"
         MenuProps={{
           anchorOrigin: {
@@ -44,7 +41,7 @@ export default function StandingsYearOptions(props) {
           },
           PaperProps: {
             style: {
-              maxHeight: "300px",
+              maxHeight: "175px",
             },
           },
         }}

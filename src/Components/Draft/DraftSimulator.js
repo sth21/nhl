@@ -1,7 +1,5 @@
 import {
   StyledDraftRowBreak,
-  StyledDraftTable,
-  StyledDraftTableHeader,
   StyledDraftOption,
 } from "../../StyledComponents/Draft/DraftComponents";
 import {
@@ -9,6 +7,8 @@ import {
   StyledOptionContainer,
   StyledPageHeader,
   StyledPageContentWrapper,
+  StyledPageTable as StyledDraftTable,
+  StyledPageTableHeader as StyledDraftTableHeader,
 } from "./../../StyledComponents/General/GeneralComponents";
 import { TableBody, TableHead, TableRow } from "@mui/material";
 import LotteryTable from "./LotteryTable";

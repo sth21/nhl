@@ -2,6 +2,7 @@ import {
   StyledOptionContainer,
   StyledOption,
 } from "../../StyledComponents/General/GeneralComponents";
+import StandingsYearOptions from "./StandingsYearOptions";
 import { useEffect, useState } from "react";
 
 export default function StandingsOption(props) {
