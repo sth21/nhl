@@ -40,10 +40,10 @@ export default function StandingsOption(props) {
     <StyledOptionContainer>
       <StyledOption
         onClick={() =>
-          props.setStandingsOptions((cur) => {
-            cur.type = "byLeague";
-            return cur;
-          })
+          props.setStandingsOptions((prev) => ({
+            ...prev,
+            type: "byLeague",
+          }))
         }
       >
         League

@@ -1,36 +1,38 @@
 import {
   StyledTableContainer,
   StyledPageTable,
-  StyledPageTableHeader,
+  StyledTableHeader,
   StyledPageTableCell,
   StyledFlexCell,
+  StyledPageTableHead,
 } from "./../../StyledComponents/General/GeneralComponents";
 import { TableHead, TableBody, TableRow } from "@mui/material";
 import uniqid from "uniqid";
 
 export default function StandingsTable(props) {
   const standingsType = props.data.records[0].standingsType;
+  const wildCardIndexOrder = [2, 3, 0, 4, 5, 1]; // the order to be used when displaying wild card standings
 
   function createTable(teams, tableName) {
     return (
       <StyledTableContainer>
         <StyledPageTable>
           <TableHead>
-            <TableRow>
-              <StyledPageTableHeader>{tableName}</StyledPageTableHeader>
-              <StyledPageTableHeader>GP</StyledPageTableHeader>
-              <StyledPageTableHeader>W</StyledPageTableHeader>
-              <StyledPageTableHeader>L</StyledPageTableHeader>
-              <StyledPageTableHeader>OT</StyledPageTableHeader>
-              <StyledPageTableHeader>PTS</StyledPageTableHeader>
-              <StyledPageTableHeader>P%</StyledPageTableHeader>
-              <StyledPageTableHeader>RW</StyledPageTableHeader>
-              <StyledPageTableHeader>ROW</StyledPageTableHeader>
-              <StyledPageTableHeader>GF</StyledPageTableHeader>
-              <StyledPageTableHeader>GA</StyledPageTableHeader>
-              <StyledPageTableHeader>DIFF</StyledPageTableHeader>
-              <StyledPageTableHeader>STRK</StyledPageTableHeader>
-            </TableRow>
+            <StyledPageTableHead>
+              <StyledTableHeader>{tableName}</StyledTableHeader>
+              <StyledTableHeader>GP</StyledTableHeader>
+              <StyledTableHeader>W</StyledTableHeader>
+              <StyledTableHeader>L</StyledTableHeader>
+              <StyledTableHeader>OT</StyledTableHeader>
+              <StyledTableHeader>PTS</StyledTableHeader>
+              <StyledTableHeader>P%</StyledTableHeader>
+              <StyledTableHeader>RW</StyledTableHeader>
+              <StyledTableHeader>ROW</StyledTableHeader>
+              <StyledTableHeader>GF</StyledTableHeader>
+              <StyledTableHeader>GA</StyledTableHeader>
+              <StyledTableHeader>DIFF</StyledTableHeader>
+              <StyledTableHeader>STRK</StyledTableHeader>
+            </StyledPageTableHead>
           </TableHead>
           <TableBody>
             {teams.map((team, index) => (
@@ -88,30 +90,55 @@ export default function StandingsTable(props) {
     );
   }
 
-  return standingsType === "byLeague" ? (
-    createTable(props.data.records[0].teamRecords, "National Hockey League")
-  ) : standingsType === "byConference" ? (
-    [
-      createTable(props.data.records[0].teamRecords, "Eastern"),
-      createTable(props.data.records[1].teamRecords, "Western"),
-    ]
+  function getTableName(recordsIndex) {
+    const info = props.data.records[recordsIndex];
+    if (info.standingsType === "wildCard") {
+      return "Wild Card";
+    } else if (
+      info.standingsType === "byDivision" ||
+      info.standingsType === "divisionLeaders"
+    ) {
+      return info.division.name;
+    } else if (info.standingsType === "byConference") {
+      return info.conference.name;
+    } else {
+      return "National Hockey League";
+    }
+  }
+
+  return standingsType === "wildCard" ? (
+    <>
+      <p>Eastern</p>
+      {wildCardIndexOrder
+        .slice(0, 4)
+        .map((val) =>
+          createTable(props.data.records[val].teamRecords, getTableName(val))
+        )}
+      <p>Western</p>
+      {wildCardIndexOrder
+        .slice(3)
+        .map((val) =>
+          createTable(props.data.records[val].teamRecords, getTableName(val))
+        )}
+    </>
   ) : standingsType === "byDivision" ? (
-    [
-      createTable(props.data.records[0].teamRecords, "Metropolitan"),
-      createTable(props.data.records[1].teamRecords, "Atlantic"),
-      createTable(props.data.records[2].teamRecords, "Central"),
-      createTable(props.data.records[3].teamRecords, "Pacific"),
-    ]
-  ) : standingsType === "wildCard" ? (
-    [
-      createTable(props.data.records[2].teamRecords, "Metropolitan"),
-      createTable(props.data.records[3].teamRecords, "Atlantic"),
-      createTable(props.data.records[0].teamRecords, "Wild Card"),
-      createTable(props.data.records[4].teamRecords, "Central"),
-      createTable(props.data.records[5].teamRecords, "Pacific"),
-      createTable(props.data.records[1].teamRecords, "Wild Card"),
-    ]
+    <>
+      <p>Eastern</p>
+      {props.data.records
+        .slice(0, 3)
+        .map((dataset, index) =>
+          createTable(dataset.teamRecords, getTableName(index))
+        )}
+      <p>Western</p>
+      {props.data.records
+        .slice(3)
+        .map((dataset, index) =>
+          createTable(dataset.teamRecords, getTableName(index))
+        )}
+    </>
   ) : (
-    <></>
+    props.data.records.map((dataset, index) =>
+      createTable(dataset.teamRecords, getTableName(index))
+    )
   );
 }
