@@ -2,7 +2,6 @@ import {
   StyledOptionContainer,
   StyledOption,
 } from "../../StyledComponents/General/GeneralComponents";
-import StandingsYearOptions from "./StandingsYearOptions";
 import { useEffect, useState } from "react";
 
 export default function StandingsOption(props) {
@@ -39,18 +38,39 @@ export default function StandingsOption(props) {
 
   return (
     <StyledOptionContainer>
-      <StyledOption onClick={() => props.setStandingType("byLeague")}>
+      <StyledOption
+        onClick={() =>
+          props.setStandingsOptions((cur) => {
+            cur.type = "byLeague";
+            return cur;
+          })
+        }
+      >
         League
       </StyledOption>
       {areConferences ? (
-        <StyledOption onClick={() => props.setStandingType("byConference")}>
+        <StyledOption
+          onClick={() =>
+            props.setStandingsOptions((prev) => ({
+              ...prev,
+              type: "byConference",
+            }))
+          }
+        >
           Conference
         </StyledOption>
       ) : (
         <></>
       )}
       {areDivisions ? (
-        <StyledOption onClick={() => props.setStandingType("byDivision")}>
+        <StyledOption
+          onClick={() =>
+            props.setStandingsOptions((prev) => ({
+              ...prev,
+              type: "byDivision",
+            }))
+          }
+        >
           Division
         </StyledOption>
       ) : (
@@ -58,7 +78,12 @@ export default function StandingsOption(props) {
       )}
       {areWildCards ? (
         <StyledOption
-          onClick={() => props.setStandingType("wildCardWithLeaders")}
+          onClick={() =>
+            props.setStandingsOptions((prev) => ({
+              ...prev,
+              type: "wildCardWithLeaders",
+            }))
+          }
         >
           Wildcard
         </StyledOption>
