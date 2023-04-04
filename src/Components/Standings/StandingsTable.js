@@ -5,6 +5,8 @@ import {
   StyledPageTableCell,
   StyledFlexCell,
   StyledPageTableHead,
+  StyledStandingsHeader,
+  StyledPageTeamCell,
 } from "./../../StyledComponents/General/GeneralComponents";
 import { TableHead, TableBody, TableRow } from "@mui/material";
 import uniqid from "uniqid";
@@ -15,7 +17,7 @@ export default function StandingsTable(props) {
 
   function createTable(teams, tableName) {
     return (
-      <StyledTableContainer>
+      <StyledTableContainer key={uniqid()}>
         <StyledPageTable>
           <TableHead>
             <StyledPageTableHead>
@@ -37,7 +39,7 @@ export default function StandingsTable(props) {
           <TableBody>
             {teams.map((team, index) => (
               <TableRow key={uniqid()}>
-                <StyledPageTableCell>
+                <StyledPageTeamCell>
                   <StyledFlexCell>
                     <p style={{ minWidth: "30px" }}>{index + 1}</p>
                     <img
@@ -53,7 +55,7 @@ export default function StandingsTable(props) {
                       {team.team.name}
                     </p>
                   </StyledFlexCell>
-                </StyledPageTableCell>
+                </StyledPageTeamCell>
                 <StyledPageTableCell>{team.gamesPlayed}</StyledPageTableCell>
                 <StyledPageTableCell>
                   {team.leagueRecord.wins}
@@ -108,13 +110,13 @@ export default function StandingsTable(props) {
 
   return standingsType === "wildCard" ? (
     <>
-      <p>Eastern</p>
+      <StyledStandingsHeader>Eastern</StyledStandingsHeader>
       {wildCardIndexOrder
         .slice(0, 4)
         .map((val) =>
           createTable(props.data.records[val].teamRecords, getTableName(val))
         )}
-      <p>Western</p>
+      <StyledStandingsHeader>Western</StyledStandingsHeader>
       {wildCardIndexOrder
         .slice(3)
         .map((val) =>
@@ -123,15 +125,15 @@ export default function StandingsTable(props) {
     </>
   ) : standingsType === "byDivision" ? (
     <>
-      <p>Eastern</p>
+      <StyledStandingsHeader>Eastern</StyledStandingsHeader>
       {props.data.records
-        .slice(0, 3)
+        .slice(0, 2)
         .map((dataset, index) =>
           createTable(dataset.teamRecords, getTableName(index))
         )}
-      <p>Western</p>
+      <StyledStandingsHeader>Western</StyledStandingsHeader>
       {props.data.records
-        .slice(3)
+        .slice(2, 4)
         .map((dataset, index) =>
           createTable(dataset.teamRecords, getTableName(index))
         )}

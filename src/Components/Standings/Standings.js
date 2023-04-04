@@ -39,6 +39,7 @@ export default function Standings() {
               setStandingsOptions={setStandingsOptions}
             />
             <StandingsOptionsContainer
+              type={standingsOptions.type}
               year={standingsOptions.year}
               setStandingsOptions={setStandingsOptions}
             />

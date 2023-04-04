@@ -1,10 +1,6 @@
 import { TableRow } from "@mui/material";
 import styled from "styled-components";
-import {
-  StyledFlexCell,
-  StyledTableHeader,
-  StyledOption,
-} from "../General/GeneralComponents";
+import { StyledFlexCell } from "../General/GeneralComponents";
 
 const StyledDraftRowBreak = styled(TableRow)`
   && {
@@ -37,20 +33,9 @@ const StyledMovementLabel = styled.p`
     !props.movement ? "#2E9FD3" : props.movement > 0 ? "#59BD5E" : "#C85959"};
 `;
 
-const StyledDraftOption = styled(StyledOption)`
-  font-size: 1.25rem;
-  &:hover {
-    transform scale(1.03);
-  }
-  &:active {
-    transform scale(.98)
-  }
-`;
-
 export {
   StyledDraftRowBreak,
   StyledMovementWrapper,
   StyledMovementIcon,
   StyledMovementLabel,
-  StyledDraftOption,
 };

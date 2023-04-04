@@ -64,6 +64,7 @@ const GlobalStyle = createGlobalStyle`
         min-height: 100vh;
         font-family: 'Sintony', sans-serif;
         --grey: #ECECEC;
+        --darkgrey: #F7F7F7;
         --black: #000000;
         --white: #FFFFFF;
         --red: #d00;
@@ -81,7 +82,7 @@ const StyledOptionContainer = styled.div`
 
 const StyledOption = styled.button`
   && {
-    font-weight: ${(props) => (props.bold ? "bold" : "normal")} !important;
+    font-weight: ${(props) => (props.bold ? "bold" : "normal")};
   }
   background: transparent;
   border: none;
@@ -182,9 +183,32 @@ const StyledPageTableHead = styled(TableRow)`
 
     & > th {
       color: var(--white);
-      padding: 1em 0em;
+      padding: 1.5em 0em;
     }
   }
+`;
+
+const StyledPageOption = styled(StyledOption)`
+  font-size: 1.25rem;
+  &:hover {
+    transform scale(1.03);
+  }
+  &:active {
+    transform scale(.98)
+  }
+  &:disabled {
+    color: var(--black);
+    font-weight: bold;
+    cursor: not-allowed;
+  }
+`;
+
+const StyledStandingsHeader = styled(StyledHeader)`
+  padding-top: 2em;
+`;
+
+const StyledPageTeamCell = styled(StyledPageTableCell)`
+  background: var(--darkgrey);
 `;
 
 export {
@@ -204,4 +228,7 @@ export {
   StyledPageTable,
   StyledPageTableHeader,
   StyledPageTableHead,
+  StyledPageOption,
+  StyledStandingsHeader,
+  StyledPageTeamCell,
 };

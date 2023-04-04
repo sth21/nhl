@@ -9,7 +9,11 @@ export default function StandingsYearOptions(props) {
     const menuItems = [];
     for (let i = CURRENTYEAR, j = 0; i >= FIRSTYEAR; i--, j++) {
       menuItems[j] = (
-        <MenuItem value={i} key={uniqid()}>
+        <MenuItem
+          value={i}
+          key={uniqid()}
+          style={{ fontFamily: "Sintony, sans-serif" }}
+        >
           {i}-{i + 1}
         </MenuItem>
       );
@@ -30,6 +34,7 @@ export default function StandingsYearOptions(props) {
         onChange={handleChange}
         defaultValue={CURRENTYEAR}
         autowidth="true"
+        style={{ fontSize: "1.25rem", fontFamily: "Sintony, sans-serif" }}
         MenuProps={{
           anchorOrigin: {
             vertical: "bottom",

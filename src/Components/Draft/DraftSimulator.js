@@ -1,7 +1,4 @@
-import {
-  StyledDraftRowBreak,
-  StyledDraftOption,
-} from "../../StyledComponents/Draft/DraftComponents";
+import { StyledDraftRowBreak } from "../../StyledComponents/Draft/DraftComponents";
 import {
   StyledTableContainer,
   StyledOptionContainer,
@@ -9,6 +6,7 @@ import {
   StyledPageContentWrapper,
   StyledPageTable as StyledDraftTable,
   StyledPageTableHeader as StyledDraftTableHeader,
+  StyledPageOption as StyledDraftOption,
 } from "./../../StyledComponents/General/GeneralComponents";
 import { TableBody, TableHead, TableRow } from "@mui/material";
 import LotteryTable from "./LotteryTable";

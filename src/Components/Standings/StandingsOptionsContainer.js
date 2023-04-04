@@ -1,6 +1,6 @@
 import {
   StyledOptionContainer,
-  StyledOption,
+  StyledPageOption,
 } from "../../StyledComponents/General/GeneralComponents";
 import { useEffect, useState } from "react";
 
@@ -38,55 +38,59 @@ export default function StandingsOption(props) {
 
   return (
     <StyledOptionContainer>
-      <StyledOption
+      <StyledPageOption
         onClick={() =>
           props.setStandingsOptions((prev) => ({
             ...prev,
             type: "byLeague",
           }))
         }
+        disabled={props.type === "byLeague"}
       >
         League
-      </StyledOption>
+      </StyledPageOption>
       {areConferences ? (
-        <StyledOption
+        <StyledPageOption
           onClick={() =>
             props.setStandingsOptions((prev) => ({
               ...prev,
               type: "byConference",
             }))
           }
+          disabled={props.type === "byConference"}
         >
           Conference
-        </StyledOption>
+        </StyledPageOption>
       ) : (
         <></>
       )}
       {areDivisions ? (
-        <StyledOption
+        <StyledPageOption
           onClick={() =>
             props.setStandingsOptions((prev) => ({
               ...prev,
               type: "byDivision",
             }))
           }
+          disabled={props.type === "byDivision"}
         >
           Division
-        </StyledOption>
+        </StyledPageOption>
       ) : (
         <></>
       )}
       {areWildCards ? (
-        <StyledOption
+        <StyledPageOption
           onClick={() =>
             props.setStandingsOptions((prev) => ({
               ...prev,
               type: "wildCardWithLeaders",
             }))
           }
+          disabled={props.type === "wildCardWithLeaders"}
         >
           Wildcard
-        </StyledOption>
+        </StyledPageOption>
       ) : (
         <></>
       )}
