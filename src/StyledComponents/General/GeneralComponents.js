@@ -168,7 +168,7 @@ const StyledPageTableCell = styled(StyledTableCell)`
 `;
 
 const StyledPageTable = styled(Table)`
-  min-width: 1000px;
+  min-width: 800px;
 `;
 
 const StyledPageTableHeader = styled(StyledTableHeader)`

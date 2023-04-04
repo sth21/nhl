@@ -7,8 +7,9 @@ import {
   StyledPageTable as StyledDraftTable,
   StyledPageTableHeader as StyledDraftTableHeader,
   StyledPageOption as StyledDraftOption,
+  StyledPageTableHead,
 } from "./../../StyledComponents/General/GeneralComponents";
-import { TableBody, TableHead, TableRow } from "@mui/material";
+import { TableBody, TableHead } from "@mui/material";
 import LotteryTable from "./LotteryTable";
 import { useState } from "react";
 import "balloon-css";
@@ -114,14 +115,14 @@ export default function DraftSimulator(props) {
       <StyledTableContainer>
         <StyledDraftTable>
           <TableHead>
-            <TableRow>
+            <StyledPageTableHead>
               <StyledDraftTableHeader>Pick</StyledDraftTableHeader>
               <StyledDraftTableHeader>Team</StyledDraftTableHeader>
               <StyledDraftTableHeader>Record</StyledDraftTableHeader>
               <StyledDraftTableHeader>Points</StyledDraftTableHeader>
               <StyledDraftTableHeader>Streak</StyledDraftTableHeader>
               <StyledDraftTableHeader>Odds</StyledDraftTableHeader>
-            </TableRow>
+            </StyledPageTableHead>
           </TableHead>
           {simDraftOrder ? (
             <TableBody>

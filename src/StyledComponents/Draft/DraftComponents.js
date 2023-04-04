@@ -4,9 +4,10 @@ import { StyledFlexCell } from "../General/GeneralComponents";
 
 const StyledDraftRowBreak = styled(TableRow)`
   && {
-    background-color: var(--grey);
+    background-color: var(--black);
     grid-column: 1 / -1;
     font-size: 1.1rem;
+    color: var(--white);
 
     & td {
       padding: 1.25em 0em;

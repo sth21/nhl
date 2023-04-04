@@ -6,6 +6,7 @@ import {
 import {
   StyledFlexCell,
   StyledPageTableCell as StyledDraftTableCell,
+  StyledPageTeamCell,
 } from "./../../StyledComponents/General/GeneralComponents";
 import { TableRow } from "@mui/material";
 import downArrow from "./../../Media/down-arrow.png";
@@ -39,7 +40,7 @@ export default function LotteryTable(props) {
 
     return (
       <TableRow key={uniqid()}>
-        <StyledDraftTableCell style={{ minWidth: "60px" }}>
+        <StyledDraftTableCell style={{ minWidth: "55px" }}>
           <StyledFlexCell>
             <p>{index + props.startingIndex}</p>
             {team.positionShift !== 0 && team.positionShift ? (
@@ -56,7 +57,7 @@ export default function LotteryTable(props) {
             )}
           </StyledFlexCell>
         </StyledDraftTableCell>
-        <StyledDraftTableCell>
+        <StyledPageTeamCell>
           <StyledFlexCell>
             <img
               src={props.logos ? props.logos[parseInt(team.id, 10)] : "#"}
@@ -90,7 +91,7 @@ export default function LotteryTable(props) {
               <></>
             )}
           </StyledFlexCell>
-        </StyledDraftTableCell>
+        </StyledPageTeamCell>
         <StyledDraftTableCell>{team.record}</StyledDraftTableCell>
         <StyledDraftTableCell>{team.points}</StyledDraftTableCell>
         <StyledDraftTableCell>{team.streak}</StyledDraftTableCell>
