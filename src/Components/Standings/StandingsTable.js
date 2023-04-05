@@ -116,7 +116,7 @@ export default function StandingsTable(props) {
     <>
       <StyledStandingsHeader>Eastern Conference</StyledStandingsHeader>
       {wildCardIndexOrder
-        .slice(0, 4)
+        .slice(0, 3)
         .map((val) =>
           createTable(props.data.records[val].teamRecords, getTableName(val))
         )}
