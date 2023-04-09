@@ -7,8 +7,11 @@ import {
   StyledPageTableHead,
   StyledStandingsHeader,
   StyledPageTeamCell,
+  StyledSmallIcon,
 } from "./../../StyledComponents/General/GeneralComponents";
 import { TableHead, TableBody, TableRow } from "@mui/material";
+import upArrow from "./../../Media/up-arrow-white.png";
+import downArrow from "./../../Media/down-arrow-white.png";
 import uniqid from "uniqid";
 
 export default function StandingsTable(props) {
@@ -29,46 +32,125 @@ export default function StandingsTable(props) {
     }));
   }
 
+  function isActiveStat(stat) {
+    if (!props.standingsOptions.sortInfo) return false;
+    return stat === props.standingsOptions.sortInfo.stat;
+  }
+
+  function arrowSelector() {
+    return props.standingsOptions.sortInfo.option === "A" ? downArrow : upArrow;
+  }
+
   function createTable(teams, tableName) {
     return (
       <StyledTableContainer key={uniqid()}>
         <StyledPageTable>
           <TableHead>
             <StyledPageTableHead>
-              <StyledTableHeader>{tableName}</StyledTableHeader>
+              <StyledTableHeader>Team</StyledTableHeader>
               <StyledTableHeader onClick={() => handleSort("gamesPlayed")}>
-                GP
+                <StyledFlexCell>
+                  <p>GP</p>
+                  {isActiveStat("gamesPlayed") ? (
+                    <StyledSmallIcon src={arrowSelector()} />
+                  ) : (
+                    <></>
+                  )}
+                </StyledFlexCell>
               </StyledTableHeader>
               <StyledTableHeader
                 onClick={() => handleSort("leagueRecord.wins")}
               >
-                W
+                <StyledFlexCell>
+                  <p>W</p>
+                  {isActiveStat("leagueRecord.wins") ? (
+                    <StyledSmallIcon src={arrowSelector()} />
+                  ) : (
+                    <></>
+                  )}
+                </StyledFlexCell>
               </StyledTableHeader>
               <StyledTableHeader
                 onClick={() => handleSort("leagueRecord.losses")}
               >
-                L
+                <StyledFlexCell>
+                  <p>L</p>
+                  {isActiveStat("leagueRecord.losses") ? (
+                    <StyledSmallIcon src={arrowSelector()} />
+                  ) : (
+                    <></>
+                  )}
+                </StyledFlexCell>
               </StyledTableHeader>
               <StyledTableHeader onClick={() => handleSort("leagueRecord.ot")}>
-                OT
+                <StyledFlexCell>
+                  <p>OT</p>
+                  {isActiveStat("leagueRecord.ot") ? (
+                    <StyledSmallIcon src={arrowSelector()} />
+                  ) : (
+                    <></>
+                  )}
+                </StyledFlexCell>
               </StyledTableHeader>
               <StyledTableHeader onClick={() => handleSort("points")}>
-                PTS
+                <StyledFlexCell>
+                  <p>PTS</p>
+                  {isActiveStat("points") ? (
+                    <StyledSmallIcon src={arrowSelector()} />
+                  ) : (
+                    <></>
+                  )}
+                </StyledFlexCell>
               </StyledTableHeader>
               <StyledTableHeader onClick={() => handleSort("pointsPercentage")}>
-                P%
+                <StyledFlexCell>
+                  <p>P%</p>
+                  {isActiveStat("pointsPercentage") ? (
+                    <StyledSmallIcon src={arrowSelector()} />
+                  ) : (
+                    <></>
+                  )}
+                </StyledFlexCell>
               </StyledTableHeader>
               <StyledTableHeader onClick={() => handleSort("regulationWins")}>
-                RW
+                <StyledFlexCell>
+                  <p>RW</p>
+                  {isActiveStat("regulationWins") ? (
+                    <StyledSmallIcon src={arrowSelector()} />
+                  ) : (
+                    <></>
+                  )}
+                </StyledFlexCell>
               </StyledTableHeader>
               <StyledTableHeader onClick={() => handleSort("row")}>
-                ROW
+                <StyledFlexCell>
+                  <p>ROW</p>
+                  {isActiveStat("row") ? (
+                    <StyledSmallIcon src={arrowSelector()} />
+                  ) : (
+                    <></>
+                  )}
+                </StyledFlexCell>
               </StyledTableHeader>
               <StyledTableHeader onClick={() => handleSort("goalsScored")}>
-                GF
+                <StyledFlexCell>
+                  <p>GF</p>
+                  {isActiveStat("goalsScored") ? (
+                    <StyledSmallIcon src={arrowSelector()} />
+                  ) : (
+                    <></>
+                  )}
+                </StyledFlexCell>
               </StyledTableHeader>
               <StyledTableHeader onClick={() => handleSort("goalsAgainst")}>
-                GA
+                <StyledFlexCell>
+                  <p>GA</p>
+                  {isActiveStat("goalsAgainst") ? (
+                    <StyledSmallIcon src={arrowSelector()} />
+                  ) : (
+                    <></>
+                  )}
+                </StyledFlexCell>
               </StyledTableHeader>
               <StyledTableHeader>DIFF</StyledTableHeader>
               <StyledTableHeader>STRK</StyledTableHeader>

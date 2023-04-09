@@ -112,6 +112,11 @@ const StyledTableHeader = styled(StyledTableCell)`
   && {
     font-weight: bold;
     font-size: inherit;
+
+    & > div {
+      justify-content: center;
+      cursor: pointer;
+    }
   }
 `;
 
@@ -131,7 +136,7 @@ const StyledFlexCell = styled.div`
   && {
     display: flex;
     align-items: center;
-    gap: 1em;
+    gap: 0.5em;
   }
 `;
 
@@ -211,6 +216,13 @@ const StyledPageTeamCell = styled(StyledPageTableCell)`
   background: var(--darkgrey);
 `;
 
+const StyledSmallIcon = styled.img`
+  && {
+    height: 1em;
+    width: 1em;
+  }
+`;
+
 export {
   GlobalStyle,
   StyledOptionContainer,
@@ -231,4 +243,5 @@ export {
   StyledPageOption,
   StyledStandingsHeader,
   StyledPageTeamCell,
+  StyledSmallIcon,
 };
