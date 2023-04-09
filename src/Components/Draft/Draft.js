@@ -15,7 +15,7 @@ export default function Draft() {
   const trades = useTrades();
 
   const filteredDraftOrder = useMemo(() => {
-    if (!draftOrder || !trades) return null;
+    if (!(draftOrder && trades)) return null;
 
     const draftOdds = [
       0.185, 0.135, 0.115, 0.095, 0.085, 0.075, 0.065, 0.06, 0.05, 0.035, 0.03,

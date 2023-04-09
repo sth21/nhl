@@ -11,13 +11,23 @@ import {
 import { TableHead, TableBody, TableRow } from "@mui/material";
 import uniqid from "uniqid";
 
-import { useState } from "react";
-
 export default function StandingsTable(props) {
-  console.log(props.data);
-
   const standingsType = props.data.records[0].standingsType;
   const wildCardIndexOrder = [2, 3, 0, 4, 5, 1]; // the order to be used when displaying wild card standings
+
+  function handleSort(stat) {
+    let option = "D";
+    if (
+      props.standingsOptions.sortInfo &&
+      props.standingsOptions.sortInfo.stat === stat
+    ) {
+      option = props.standingsOptions.sortInfo.option === "A" ? "D" : "A";
+    }
+    props.setStandingsOptions((prev) => ({
+      ...prev,
+      sortInfo: { option: option, stat: stat },
+    }));
+  }
 
   function createTable(teams, tableName) {
     return (
@@ -26,16 +36,40 @@ export default function StandingsTable(props) {
           <TableHead>
             <StyledPageTableHead>
               <StyledTableHeader>{tableName}</StyledTableHeader>
-              <StyledTableHeader>GP</StyledTableHeader>
-              <StyledTableHeader>W</StyledTableHeader>
-              <StyledTableHeader>L</StyledTableHeader>
-              <StyledTableHeader>OT</StyledTableHeader>
-              <StyledTableHeader>PTS</StyledTableHeader>
-              <StyledTableHeader>P%</StyledTableHeader>
-              <StyledTableHeader>RW</StyledTableHeader>
-              <StyledTableHeader>ROW</StyledTableHeader>
-              <StyledTableHeader>GF</StyledTableHeader>
-              <StyledTableHeader>GA</StyledTableHeader>
+              <StyledTableHeader onClick={() => handleSort("gamesPlayed")}>
+                GP
+              </StyledTableHeader>
+              <StyledTableHeader
+                onClick={() => handleSort("leagueRecord.wins")}
+              >
+                W
+              </StyledTableHeader>
+              <StyledTableHeader
+                onClick={() => handleSort("leagueRecord.losses")}
+              >
+                L
+              </StyledTableHeader>
+              <StyledTableHeader onClick={() => handleSort("leagueRecord.ot")}>
+                OT
+              </StyledTableHeader>
+              <StyledTableHeader onClick={() => handleSort("points")}>
+                PTS
+              </StyledTableHeader>
+              <StyledTableHeader onClick={() => handleSort("pointsPercentage")}>
+                P%
+              </StyledTableHeader>
+              <StyledTableHeader onClick={() => handleSort("regulationWins")}>
+                RW
+              </StyledTableHeader>
+              <StyledTableHeader onClick={() => handleSort("row")}>
+                ROW
+              </StyledTableHeader>
+              <StyledTableHeader onClick={() => handleSort("goalsScored")}>
+                GF
+              </StyledTableHeader>
+              <StyledTableHeader onClick={() => handleSort("goalsAgainst")}>
+                GA
+              </StyledTableHeader>
               <StyledTableHeader>DIFF</StyledTableHeader>
               <StyledTableHeader>STRK</StyledTableHeader>
             </StyledPageTableHead>
@@ -114,55 +148,65 @@ export default function StandingsTable(props) {
     }
   }
 
-  return standingsType === "wildCard" ? (
-    <>
-      <StyledStandingsHeader>
-        {props.data.records[0].conference
-          ? props.data.records[0].conference.name
-          : ""}
-      </StyledStandingsHeader>
-      {wildCardIndexOrder
-        .slice(0, 3)
-        .map((val) =>
-          createTable(props.data.records[val].teamRecords, getTableName(val))
-        )}
-      <StyledStandingsHeader>
-        {props.data.records[props.data.records.length - 1].conference
-          ? props.data.records[props.data.records.length - 1].conference.name
-          : ""}
-      </StyledStandingsHeader>
-      {wildCardIndexOrder
-        .slice(3)
-        .map((val) =>
-          createTable(props.data.records[val].teamRecords, getTableName(val))
-        )}
-    </>
-  ) : standingsType === "byDivision" ? (
-    <>
-      <StyledStandingsHeader>
-        {props.data.records[0].conference
-          ? props.data.records[0].conference.name
-          : ""}
-      </StyledStandingsHeader>
-      {props.data.records
-        .slice(0, 2)
-        .map((dataset, index) =>
-          createTable(dataset.teamRecords, getTableName(index))
-        )}
-      <StyledStandingsHeader>
-        {props.data.records[props.data.records.length - 1].conference
-          ? props.data.records[props.data.records.length - 1].conference.name
-          : ""}
-      </StyledStandingsHeader>
-      {props.data.records
-        .slice(2, 4)
-        .map((dataset, index) =>
-          createTable(dataset.teamRecords, getTableName(index))
-        )}
-    </>
-  ) : (
-    props.data.records.map((dataset, index) =>
-      createTable(dataset.teamRecords, getTableName(index))
-    )
-  );
+  function createDivisionTable() {
+    return (
+      <>
+        <StyledStandingsHeader>
+          {props.data.records[0].conference
+            ? props.data.records[0].conference.name
+            : ""}
+        </StyledStandingsHeader>
+        {props.data.records
+          .slice(0, 2)
+          .map((dataset, index) =>
+            createTable(dataset.teamRecords, getTableName(index))
+          )}
+        <StyledStandingsHeader>
+          {props.data.records[props.data.records.length - 1].conference
+            ? props.data.records[props.data.records.length - 1].conference.name
+            : ""}
+        </StyledStandingsHeader>
+        {props.data.records
+          .slice(2, 4)
+          .map((dataset, index) =>
+            createTable(dataset.teamRecords, getTableName(index))
+          )}
+      </>
+    );
+  }
+
+  function createWildcardTable() {
+    return (
+      <>
+        <StyledStandingsHeader>
+          {props.data.records[0].conference
+            ? props.data.records[0].conference.name
+            : ""}
+        </StyledStandingsHeader>
+        {wildCardIndexOrder
+          .slice(0, 3)
+          .map((val) =>
+            createTable(props.data.records[val].teamRecords, getTableName(val))
+          )}
+        <StyledStandingsHeader>
+          {props.data.records[props.data.records.length - 1].conference
+            ? props.data.records[props.data.records.length - 1].conference.name
+            : ""}
+        </StyledStandingsHeader>
+        {wildCardIndexOrder
+          .slice(3)
+          .map((val) =>
+            createTable(props.data.records[val].teamRecords, getTableName(val))
+          )}
+      </>
+    );
+  }
+
+  return standingsType === "wildCard"
+    ? createWildcardTable()
+    : standingsType === "byDivision"
+    ? createDivisionTable()
+    : props.data.records.map((dataset, index) =>
+        createTable(dataset.teamRecords, getTableName(index))
+      );
 }

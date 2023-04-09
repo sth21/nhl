@@ -7,7 +7,7 @@ import StandingsOptionsContainer from "./StandingsOptionsContainer";
 import StandingsYearOptions from "./StandingsYearOptions";
 import StandingsTable from "./StandingsTable";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import useLogos from "../../Utils/useLogos";
 import useFetch from "../../Utils/useFetch";
 
@@ -26,6 +26,27 @@ export default function Standings() {
       standingsOptions.type
     }?season=${standingsOptions.year}${parseInt(standingsOptions.year, 10) + 1}`
   );
+  const sortedStandings = useMemo(() => {
+    if (!(standings && standingsOptions)) return null;
+    if (!standingsOptions.sortInfo) return standings;
+    const bool =
+      standingsOptions.sortInfo.option === "D"
+        ? (a, b) => b - a
+        : (a, b) => a - b;
+    standings.records.map((section) => {
+      const statFn = (team) =>
+        standingsOptions.sortInfo.stat
+          .split(".")
+          .reduce((obj, key) => obj[key], team);
+      return {
+        ...section,
+        teamRecords: section.teamRecords.sort((teamA, teamB) =>
+          bool(statFn(teamA), statFn(teamB))
+        ),
+      };
+    });
+    return standings;
+  }, [standings, standingsOptions]);
 
   return standings ? (
     <StyledPageWrapper>
@@ -47,8 +68,13 @@ export default function Standings() {
         ) : (
           <></>
         )}
-        {standings ? (
-          <StandingsTable data={standings} logos={nhlLogos} />
+        {sortedStandings && standingsOptions && setStandingsOptions ? (
+          <StandingsTable
+            standingsOptions={standingsOptions}
+            setStandingsOptions={setStandingsOptions}
+            data={sortedStandings}
+            logos={nhlLogos}
+          />
         ) : (
           <></>
         )}
