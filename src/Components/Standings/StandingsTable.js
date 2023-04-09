@@ -47,7 +47,7 @@ export default function StandingsTable(props) {
         <StyledPageTable>
           <TableHead>
             <StyledPageTableHead>
-              <StyledTableHeader>Team</StyledTableHeader>
+              <StyledTableHeader>{tableName}</StyledTableHeader>
               <StyledTableHeader onClick={() => handleSort("gamesPlayed")}>
                 <StyledFlexCell>
                   <p>GP</p>
@@ -251,7 +251,7 @@ export default function StandingsTable(props) {
         {props.data.records
           .slice(2, 4)
           .map((dataset, index) =>
-            createTable(dataset.teamRecords, getTableName(index))
+            createTable(dataset.teamRecords, getTableName(index + 2))
           )}
       </>
     );
