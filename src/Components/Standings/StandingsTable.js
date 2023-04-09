@@ -14,6 +14,8 @@ import uniqid from "uniqid";
 import { useState } from "react";
 
 export default function StandingsTable(props) {
+  console.log(props.data);
+
   const standingsType = props.data.records[0].standingsType;
   const wildCardIndexOrder = [2, 3, 0, 4, 5, 1]; // the order to be used when displaying wild card standings
 
@@ -56,7 +58,7 @@ export default function StandingsTable(props) {
                     ></img>
                     <p>
                       {team.clinchIndicator ? team.clinchIndicator + "-" : ""}
-                      {team.team.name}
+                      {team.team.name.replace(/\s*\([^)]*\)/g, "")}
                     </p>
                   </StyledFlexCell>
                 </StyledPageTeamCell>
@@ -114,13 +116,21 @@ export default function StandingsTable(props) {
 
   return standingsType === "wildCard" ? (
     <>
-      <StyledStandingsHeader>Eastern Conference</StyledStandingsHeader>
+      <StyledStandingsHeader>
+        {props.data.records[0].conference
+          ? props.data.records[0].conference.name
+          : ""}
+      </StyledStandingsHeader>
       {wildCardIndexOrder
         .slice(0, 3)
         .map((val) =>
           createTable(props.data.records[val].teamRecords, getTableName(val))
         )}
-      <StyledStandingsHeader>Western Conference</StyledStandingsHeader>
+      <StyledStandingsHeader>
+        {props.data.records[props.data.records.length - 1].conference
+          ? props.data.records[props.data.records.length - 1].conference.name
+          : ""}
+      </StyledStandingsHeader>
       {wildCardIndexOrder
         .slice(3)
         .map((val) =>
@@ -129,13 +139,21 @@ export default function StandingsTable(props) {
     </>
   ) : standingsType === "byDivision" ? (
     <>
-      <StyledStandingsHeader>Eastern Conference</StyledStandingsHeader>
+      <StyledStandingsHeader>
+        {props.data.records[0].conference
+          ? props.data.records[0].conference.name
+          : ""}
+      </StyledStandingsHeader>
       {props.data.records
         .slice(0, 2)
         .map((dataset, index) =>
           createTable(dataset.teamRecords, getTableName(index))
         )}
-      <StyledStandingsHeader>Western Conference</StyledStandingsHeader>
+      <StyledStandingsHeader>
+        {props.data.records[props.data.records.length - 1].conference
+          ? props.data.records[props.data.records.length - 1].conference.name
+          : ""}
+      </StyledStandingsHeader>
       {props.data.records
         .slice(2, 4)
         .map((dataset, index) =>

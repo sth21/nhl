@@ -54,8 +54,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     img {
-        height: 2em;
-        width: 2em;
+        height: 2.5em;
+        width: 2.5em;
     }
 
     :root {
