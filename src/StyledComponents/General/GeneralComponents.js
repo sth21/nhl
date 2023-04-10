@@ -155,6 +155,7 @@ const StyledPageWrapper = styled.div`
     background: var(--white);
     padding: 3em 6em;
     box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+    max-width: 1000px;
   }
 `;
 
@@ -163,10 +164,7 @@ const StyledPageContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  & > * {
-    min-width: 800px;
-  }
+  min-width: 1000px;
 `;
 
 const StyledPageTable = Table;
@@ -227,24 +225,33 @@ const StyledSmallIcon = styled.img`
 `;
 
 const StyledLegendWrapper = styled.div`
-  padding: 1em 0em;
-`;
-
-const StyledSmallHeader = styled.h3`
-  font-weight: bold;
-  font-size: 1.5rem;
+  && {
+    margin: 5em 0em;
+  }
 `;
 
 const StyledLegend = styled.ul`
   && {
     column-count: 3;
     column-gap: 3em;
-    width: 100%;
-    padding: 1em;
+    padding: 2em;
 
     & > li {
       list-style-type: none;
-      margin-bottom: 0.5em;
+      margin-bottom: 1em;
+    }
+  }
+`;
+
+const StyledRules = styled.ol`
+  && {
+    padding: 2em;
+
+    & > li {
+      font-size: 1.1em;
+      margin-bottom: 2em;
+      list-style-type: normal;
+      padding-left: 1em;
     }
   }
 `;
@@ -275,8 +282,8 @@ export {
   StyledStandingsHeader,
   StyledPageTeamCell,
   StyledSmallIcon,
-  StyledSmallHeader,
   StyledLegend,
   StyledBoldWrapper,
   StyledLegendWrapper,
+  StyledRules,
 };

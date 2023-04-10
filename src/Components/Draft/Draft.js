@@ -1,6 +1,10 @@
-import { StyledPageWrapper } from "../../StyledComponents/General/GeneralComponents";
+import {
+  StyledPageWrapper,
+  StyledPageContentWrapper,
+} from "../../StyledComponents/General/GeneralComponents";
 
 import DraftSimulator from "./DraftSimulator";
+import DraftRules from "./DraftRules";
 
 import { useMemo } from "react";
 import useFetch from "./../../Utils/useFetch";
@@ -42,11 +46,14 @@ export default function Draft() {
 
   return (
     <StyledPageWrapper>
-      {filteredDraftOrder ? (
-        <DraftSimulator logos={logos} draftOrder={filteredDraftOrder} />
-      ) : (
-        <></>
-      )}
+      <StyledPageContentWrapper>
+        {filteredDraftOrder ? (
+          <DraftSimulator logos={logos} draftOrder={filteredDraftOrder} />
+        ) : (
+          <></>
+        )}
+        <DraftRules />
+      </StyledPageContentWrapper>
     </StyledPageWrapper>
   );
 }

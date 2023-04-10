@@ -3,7 +3,6 @@ import {
   StyledTableContainer,
   StyledOptionContainer,
   StyledPageHeader,
-  StyledPageContentWrapper,
   StyledPageTable as StyledDraftTable,
   StyledPageTableHeader as StyledDraftTableHeader,
   StyledPageOption as StyledDraftOption,
@@ -100,7 +99,7 @@ export default function DraftSimulator(props) {
   }
 
   return (
-    <StyledPageContentWrapper>
+    <>
       <StyledPageHeader>Draft Lottery Simulator</StyledPageHeader>
       <StyledOptionContainer>
         <StyledDraftOption
@@ -172,6 +171,6 @@ export default function DraftSimulator(props) {
           )}
         </StyledDraftTable>
       </StyledTableContainer>
-    </StyledPageContentWrapper>
+    </>
   );
 }

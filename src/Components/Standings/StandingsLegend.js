@@ -1,5 +1,5 @@
 import {
-  StyledSmallHeader,
+  StyledPageHeader,
   StyledLegend,
   StyledBoldWrapper,
   StyledLegendWrapper,
@@ -8,7 +8,7 @@ import {
 export default function StandingsLegend() {
   return (
     <StyledLegendWrapper>
-      <StyledSmallHeader>Legend</StyledSmallHeader>
+      <StyledPageHeader>Legend</StyledPageHeader>
       <StyledLegend>
         <li>
           <StyledBoldWrapper>x - </StyledBoldWrapper>Clinched Playoff Spot
