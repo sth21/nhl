@@ -6,6 +6,7 @@ import {
 import StandingsOptionsContainer from "./StandingsOptionsContainer";
 import StandingsYearOptions from "./StandingsYearOptions";
 import StandingsTable from "./StandingsTable";
+import StandingsLegend from "./StandingsLegend";
 
 import { useState, useMemo } from "react";
 import useLogos from "../../Utils/useLogos";
@@ -78,6 +79,7 @@ export default function Standings() {
         ) : (
           <></>
         )}
+        <StandingsLegend />
       </StyledPageContentWrapper>
     </StyledPageWrapper>
   ) : (

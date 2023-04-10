@@ -148,7 +148,8 @@ const StyledPageHeader = styled(StyledHeader)`
 const StyledPageWrapper = styled.div`
   padding: 3em;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   & > div {
     background: var(--white);
@@ -162,7 +163,13 @@ const StyledPageContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  & > * {
+    min-width: 800px;
+  }
 `;
+
+const StyledPageTable = Table;
 
 const StyledPageTableCell = styled(StyledTableCell)`
   && {
@@ -170,10 +177,6 @@ const StyledPageTableCell = styled(StyledTableCell)`
     padding: 1em;
     font-size: 1rem;
   }
-`;
-
-const StyledPageTable = styled(Table)`
-  min-width: 800px;
 `;
 
 const StyledPageTableHeader = styled(StyledTableHeader)`
@@ -223,6 +226,34 @@ const StyledSmallIcon = styled.img`
   }
 `;
 
+const StyledLegendWrapper = styled.div`
+  padding: 1em 0em;
+`;
+
+const StyledSmallHeader = styled.h3`
+  font-weight: bold;
+  font-size: 1.5rem;
+`;
+
+const StyledLegend = styled.ul`
+  && {
+    column-count: 3;
+    column-gap: 3em;
+    width: 100%;
+    padding: 1em;
+
+    & > li {
+      list-style-type: none;
+      margin-bottom: 0.5em;
+    }
+  }
+`;
+
+const StyledBoldWrapper = styled.span`
+  font-weight: bold;
+  font-size: 1.25rem;
+`;
+
 export {
   GlobalStyle,
   StyledOptionContainer,
@@ -244,4 +275,8 @@ export {
   StyledStandingsHeader,
   StyledPageTeamCell,
   StyledSmallIcon,
+  StyledSmallHeader,
+  StyledLegend,
+  StyledBoldWrapper,
+  StyledLegendWrapper,
 };
