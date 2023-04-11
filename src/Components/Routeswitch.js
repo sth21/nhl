@@ -22,6 +22,7 @@ export default function Routeswitch() {
           href="https://fonts.googleapis.com/css2?family=Sintony:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" type="image/x-icon" href="./favicon.ico"></link>
       </Helmet>
       <GlobalStyle />
       <BrowserRouter>
