@@ -13,7 +13,6 @@ const StyledRink = styled.img`
 `;
 
 const StyledCenterIceLogo = styled.img`
-  opacity: 0.9;
   bottom: 0;
   right: 0;
   left: 0;
@@ -25,8 +24,8 @@ const StyledCenterIceLogo = styled.img`
 `;
 
 const StyledPlayPNG = styled.img`
-  height: 4em;
-  width: 4em;
+  height: auto;
+  width: 3%;
   position: absolute;
   top: ${(props) => (props.top ? props.top : 0)};
   right: ${(props) => (props.right ? props.right : 0)};

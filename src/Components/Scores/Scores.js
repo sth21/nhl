@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 export default function Scores() {
   const scores = useFetch(
-    "https://statsapi.web.nhl.com/api/v1/game/2022021292/feed/live"
+    "https://statsapi.web.nhl.com/api/v1/game/2022021302/feed/live"
   );
 
   const logos = useLogos("nhl");

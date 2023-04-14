@@ -12,8 +12,8 @@ import getTeamColor from "./../../Utils/getTeamColor";
 
 export default function PlayLocationMarker(props) {
   const play = props.play;
-  const Y_INIT = 42.5;
-  const X_INIT = 100;
+  const Y_INIT = 44.5;
+  const X_INIT = 102;
 
   // to be used for the top attribute on the svg
   function getVerticalPosition() {
