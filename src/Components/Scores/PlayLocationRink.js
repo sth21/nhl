@@ -23,7 +23,6 @@ export default function PlayLocationRink(props) {
   useEffect(() => {
     if (!rinkRef.current) return;
     const handleResize = () => {
-      console.log(rinkRef.current);
       setRinkHeight(rinkRef.current.offsetHeight);
       setRinkWidth(rinkRef.current.offsetWidth);
     };
