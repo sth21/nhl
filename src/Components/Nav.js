@@ -21,7 +21,6 @@ export default function Nav() {
         <StyledLink to="/schedule">Schedule</StyledLink>
         <StyledLink to="/standings">Standings</StyledLink>
         <StyledLink to="/stats">Stats</StyledLink>
-        <StyledLink to="/players">Players</StyledLink>
         <StyledLink to="draft">Draft</StyledLink>
       </StyledNavWrapper>
       <StyledNavWrapper>

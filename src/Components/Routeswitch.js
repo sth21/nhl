@@ -3,11 +3,10 @@ import { Helmet } from "react-helmet";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home/Home";
-import Scores from "./Scores";
+import Scores from "./Scores/Scores";
 import Schedule from "./Schedule";
 import Standings from "./Standings/Standings";
 import Stats from "./Stats";
-import Players from "./Players";
 import Draft from "./Draft/Draft";
 import Nav from "./Nav";
 import Footer from "./Footer";
@@ -33,7 +32,6 @@ export default function Routeswitch() {
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/standings" element={<Standings />} />
           <Route path="/stats" element={<Stats />} />
-          <Route path="/players" element={<Players />} />
           <Route path="/draft" element={<Draft />} />
         </Routes>
         <Footer />
