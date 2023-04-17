@@ -88,12 +88,14 @@ const StyledToolTip = styled(({ className, ...props }) => (
   [`& .${tooltipClasses.tooltip}`]: {
     padding: "0",
     margin: "0",
+    backgroundColor: "var(--white)",
   },
 }));
 
 const StyledToolTipWrapper = styled.div`
   && {
     display: flex;
+    border-radius: 15px;
     flex-direction: column;
     background-color: var(--white);
     color: var(--black);

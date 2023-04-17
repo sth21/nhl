@@ -21,11 +21,6 @@ const StyledLogo = styled.img`
   width: 4.5em;
 `;
 
-const StyledIcon = styled(StyledLogo)`
-  height: 1.5em;
-  width: 1.5em;
-`;
-
 const StyledNavWrapper = styled.div`
   display: flex;
   gap: 3em;
@@ -51,16 +46,4 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const StyledLoginContainer = styled(StyledNavWrapper)`
-  gap: 1em;
-  margin-right: 0;
-`;
-
-export {
-  StyledNav,
-  StyledLogo,
-  StyledIcon,
-  StyledNavWrapper,
-  StyledLink,
-  StyledLoginContainer,
-};
+export { StyledNav, StyledLogo, StyledNavWrapper, StyledLink };

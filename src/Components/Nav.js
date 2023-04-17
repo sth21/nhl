@@ -1,13 +1,10 @@
 import NHL_LOGO from "../Media/nhl.svg";
-import GOOGLE_LOGO from "../Media/google.png";
 
 import {
   StyledNav,
   StyledLogo,
-  StyledIcon,
   StyledNavWrapper,
   StyledLink,
-  StyledLoginContainer,
 } from "../StyledComponents/NavComponents";
 
 export default function Nav() {
@@ -18,7 +15,6 @@ export default function Nav() {
       </StyledLink>
       <StyledNavWrapper pushRight>
         <StyledLink to="/scores">Scores</StyledLink>
-        <StyledLink to="/schedule">Schedule</StyledLink>
         <StyledLink to="/standings">Standings</StyledLink>
         <StyledLink to="/stats">Stats</StyledLink>
         <StyledLink to="draft">Draft</StyledLink>
@@ -33,10 +29,6 @@ export default function Nav() {
         <StyledLink to="https://plus.espn.com/nhl" target="_blank">
           Streaming
         </StyledLink>
-        <StyledLoginContainer>
-          <p>Log in</p>
-          <StyledIcon src={GOOGLE_LOGO} alt="The Google logo"></StyledIcon>
-        </StyledLoginContainer>
       </StyledNavWrapper>
     </StyledNav>
   );

@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home/Home";
 import Scores from "./Scores/Scores";
-import Schedule from "./Schedule";
 import Standings from "./Standings/Standings";
 import Stats from "./Stats";
 import Draft from "./Draft/Draft";
@@ -29,7 +28,6 @@ export default function Routeswitch() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/scores" element={<Scores />} />
-          <Route path="/schedule" element={<Schedule />} />
           <Route path="/standings" element={<Standings />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/draft" element={<Draft />} />
