@@ -50,8 +50,8 @@ export default function PlayLocationMarker(props) {
     <StyledToolTip
       title={
         <StyledToolTipWrapper>
-          <div>
-            <img src="#" alt="#" />
+          <div style={{ fontWeight: "bold" }}>
+            <img src={props.logos[play.team.id]} alt="team logo" />
             <p>
               {play.about.periodTimeRemaining} - {play.about.ordinalNum}
             </p>

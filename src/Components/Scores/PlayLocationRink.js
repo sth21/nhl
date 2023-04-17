@@ -59,15 +59,12 @@ export default function PlayLocationRink(props) {
   return (
     <StyledRinkWrapper>
       <StyledRink src={rink} ref={rinkRef} />
-      {props.homeTeamLogo ? (
-        <StyledCenterIceLogo
-          src={props.homeTeamLogo ? props.homeTeamLogo : "#"}
-        />
-      ) : (
-        <></>
-      )}
+      <StyledCenterIceLogo
+        src={props.homeTeamLogo ? props.homeTeamLogo : "#"}
+      />
       {getMeaningfulPlaysWithCoordinates().map((play) => (
         <PlayLocationMarker
+          logos={props.logos}
           key={uniqid()}
           play={play}
           containerWidth={rinkWidth}

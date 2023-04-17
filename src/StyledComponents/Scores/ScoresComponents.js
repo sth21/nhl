@@ -16,15 +16,57 @@ const StyledRink = styled.img`
 `;
 
 const StyledCenterIceLogo = styled.img`
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-  margin: auto;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
   position: absolute;
   min-width: 15%;
   height: auto;
 `;
+
+const StyledSideIceLogo = styled(StyledCenterIceLogo).attrs((props) => ({
+  style: {
+    left: props.side === "L" ? "25%" : "75%",
+  },
+}))`
+  top: 50%,
+  min-width: 10%;
+  opacity: 0.5;
+`;
+
+const GenericPlayerWrapper = styled.div`
+  translate: -50% -50%;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledGoalieOnIceWrapper = styled(GenericPlayerWrapper).attrs(
+  (props) => ({
+    style: {
+      left: props.side === "L" ? "3.33%" : "96.66%",
+    },
+  })
+);
+
+const StyledDefensemanOnIceWrapper = styled(GenericPlayerWrapper).attrs(
+  (props) => ({
+    style: {
+      left: props.side === "L" ? "22%" : "78%",
+    },
+  })
+);
+
+const StyledForwardOnIceWrapper = styled(GenericPlayerWrapper).attrs(
+  (props) => ({
+    style: {
+      left: props.side === "L" ? "40%" : "60%",
+    },
+  })
+);
 
 const StyledPlayPNG = styled.img.attrs((props) => ({
   style: {
@@ -55,14 +97,21 @@ const StyledToolTipWrapper = styled.div`
     flex-direction: column;
     background-color: var(--white);
     color: var(--black);
-    font-size: 1rem;
-    font-weight: bold;
-    box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+    font-size: 1.1rem;
+    gap: 1em;
+    word-wrap: break-word;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
     padding: 1em;
 
     & > div {
       display: flex;
+      align-items: center;
       justify-content: space-between;
+
+      & > img {
+        height: 3em;
+        width: 3em;
+      }
     }
   }
 `;
@@ -74,4 +123,8 @@ export {
   StyledPlayPNG,
   StyledToolTip,
   StyledToolTipWrapper,
+  StyledSideIceLogo,
+  StyledGoalieOnIceWrapper,
+  StyledDefensemanOnIceWrapper,
+  StyledForwardOnIceWrapper,
 };
