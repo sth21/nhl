@@ -1,4 +1,22 @@
-// NEED TO MAKE ON TUESDAY WHEN THE CAR / NYI GAME IS ACTIVE!!!!!!
+/* 
+props.homePlayers
+            .forwards
+            .defenseman
+            .goalies
+
+props.awayPlayers
+            .forwards
+            .defenseman
+            .goalies
+
+props.homeInfo
+            .logo
+            .side
+props.awaySide
+            .logo
+            .side
+
+*/
 
 import rink from "./../../Media/rink.svg";
 import {
