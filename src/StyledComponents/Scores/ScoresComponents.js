@@ -68,6 +68,20 @@ const StyledForwardOnIceWrapper = styled(GenericPlayerWrapper).attrs(
   })
 );
 
+const StyledPlayerImgWrapper = styled.div`
+  && {
+    height: 3em;
+    width: 3em;
+    border: 1px solid var(--grey);
+    border-radius: 50%;
+
+    & > img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+`;
+
 const StyledPlayPNG = styled.img.attrs((props) => ({
   style: {
     top: props.top ? props.top : 0,
@@ -129,4 +143,5 @@ export {
   StyledGoalieOnIceWrapper,
   StyledDefensemanOnIceWrapper,
   StyledForwardOnIceWrapper,
+  StyledPlayerImgWrapper,
 };

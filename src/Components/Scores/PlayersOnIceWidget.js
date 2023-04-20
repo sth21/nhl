@@ -1,8 +1,10 @@
 import PlayersOnIceRink from "./PlayersOnIceRink";
 
-// props.teamInfo === scores.liveData.boxscore.teams
+// props.logos
+// props.liveData = scores.liveData
 export default function PlayersOnIceWidget(props) {
-  const teamsInfo = props.teamsInfo;
+  const teamsInfo = props.liveData.boxscore.teams;
+  const period = props.liveData.linescore.currentPeriod;
 
   // option is "L" or "R"
   // sorts forwards according to side of rink team is on
@@ -40,7 +42,7 @@ export default function PlayersOnIceWidget(props) {
     );
 
     return {
-      forwards: sortForwards(forwards, getTeamSide(option)),
+      forwards: sortForwards(forwards, getTeamSide(period, option)),
       defenseman: defenseman,
       goalies: goalies,
     };
@@ -56,5 +58,20 @@ export default function PlayersOnIceWidget(props) {
     }
   }
 
-  return <PlayersOnIceRink />;
+  // option is "home" or "away"
+  function getTeamInfo(option) {
+    return {
+      logo: props.logos[teamsInfo[option].team.id],
+      side: getTeamSide(period, option),
+    };
+  }
+
+  return (
+    <PlayersOnIceRink
+      homePlayers={getTeamPlayersOnIce("home")}
+      awayPlayers={getTeamPlayersOnIce("away")}
+      homeInfo={getTeamInfo("home")}
+      awayInfo={getTeamInfo("away")}
+    />
+  );
 }
