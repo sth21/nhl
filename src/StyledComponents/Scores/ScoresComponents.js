@@ -25,15 +25,20 @@ const StyledCenterIceLogo = styled.img`
   height: auto;
 `;
 
-const StyledSideIceLogo = styled(StyledCenterIceLogo).attrs((props) => ({
-  style: {
-    left: props.side === "L" ? "13.75%" : "65.5%",
-  },
-}))`
+const StyledSideIceLogoWrapper = styled.div`
+  position: absolute;
   top: 50%;
-  min-width: 25%;
-  transform: translateY(-50%);
-  translate: 0;
+  left: 50%;
+  width: 80%;
+  translate: -50% -50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const StyledSideIceLogo = styled.img`
+  min-width: 30%;
+  height: auto;
   opacity: 0.2;
 `;
 
@@ -175,6 +180,7 @@ export {
   StyledPlayPNG,
   StyledToolTip,
   StyledToolTipWrapper,
+  StyledSideIceLogoWrapper,
   StyledSideIceLogo,
   StyledGoalieOnIceWrapper,
   StyledDefensemanOnIceWrapper,
