@@ -27,57 +27,73 @@ const StyledCenterIceLogo = styled.img`
 
 const StyledSideIceLogo = styled(StyledCenterIceLogo).attrs((props) => ({
   style: {
-    left: props.side === "L" ? "25%" : "75%",
+    left: props.side === "L" ? "13.75%" : "65.5%",
   },
 }))`
-  top: 50%,
-  min-width: 10%;
-  opacity: 0.5;
+  top: 50%;
+  min-width: 25%;
+  transform: translateY(-50%);
+  translate: 0;
+  opacity: 0.2;
 `;
 
-const GenericPlayerWrapper = styled.div`
-  translate: -50% -50%;
-  top: 50%;
+const StyledGoalieOnIceWrapper = styled.div.attrs((props) => ({
+  style: {
+    left: props.side === "L" ? "6.5%" : "87.5%",
+  },
+}))`
   display: flex;
+  top: 50%;
+  bottom: 50%;
+  position: absolute;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 
-const StyledGoalieOnIceWrapper = styled(GenericPlayerWrapper).attrs(
-  (props) => ({
-    style: {
-      left: props.side === "L" ? "3.33%" : "96.66%",
-    },
-  })
-);
+const StyledDefensemanOnIceWrapper = styled.div.attrs((props) => ({
+  style: {
+    left: props.side === "L" ? "22.5%" : "72%",
+  },
+}))`
+  display: flex;
+  top: 50%;
+  bottom: 50%;
+  gap: 5em;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
-const StyledDefensemanOnIceWrapper = styled(GenericPlayerWrapper).attrs(
-  (props) => ({
-    style: {
-      left: props.side === "L" ? "22%" : "78%",
-    },
-  })
-);
-
-const StyledForwardOnIceWrapper = styled(GenericPlayerWrapper).attrs(
-  (props) => ({
-    style: {
-      left: props.side === "L" ? "40%" : "60%",
-    },
-  })
-);
+const StyledForwardOnIceWrapper = styled.div.attrs((props) => ({
+  style: {
+    left: props.side === "L" ? "41%" : "53.5%",
+  },
+}))`
+  display: flex;
+  top: 50%;
+  bottom: 50%;
+  gap: 5em;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 const StyledPlayerImgWrapper = styled.div`
   && {
-    height: 3em;
-    width: 3em;
-    border: 1px solid var(--grey);
+    height: 6em;
+    width: 6em;
+    position: relative;
+    border: 2px solid var(--grey);
     border-radius: 50%;
 
     & > img {
       height: 100%;
       width: 100%;
+      border-radius: 50%;
+      overflow: hidden;
     }
   }
 `;
@@ -121,6 +137,7 @@ const StyledToolTipWrapper = styled.div`
 
     & > div {
       display: flex;
+      gap: 0.5em;
       align-items: center;
       justify-content: space-between;
 
@@ -130,6 +147,25 @@ const StyledToolTipWrapper = styled.div`
       }
     }
   }
+`;
+
+const StyledPlayerLabel = styled.p.attrs((props) => ({
+  style: {
+    borderTop: props.color
+      ? `4px solid ${props.color}`
+      : "4px solid var(--grey)",
+  },
+}))`
+  position: absolute;
+  padding: 0.25em;
+  bottom: -40%;
+  border: 1px solid var(--grey);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 1rem;
+  background: var(--white);
+  width: auto;
 `;
 
 export {
@@ -144,4 +180,5 @@ export {
   StyledDefensemanOnIceWrapper,
   StyledForwardOnIceWrapper,
   StyledPlayerImgWrapper,
+  StyledPlayerLabel,
 };

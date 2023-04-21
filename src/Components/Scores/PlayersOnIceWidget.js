@@ -63,6 +63,7 @@ export default function PlayersOnIceWidget(props) {
     return {
       logo: props.logos[teamsInfo[option].team.id],
       side: getTeamSide(period, option),
+      triCode: teamsInfo[option].team.triCode,
     };
   }
 
