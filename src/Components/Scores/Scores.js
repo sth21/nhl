@@ -1,4 +1,4 @@
-import RinkWidget from "./GameCenter/RinkWidget/RinkWidget";
+import GameCenter from "./GameCenter/GameCenter";
 import useFetch from "./../../Utils/useFetch";
 import useLogos from "./../../Utils/useLogos";
 
@@ -13,7 +13,7 @@ export default function Scores() {
 
   return scores && logos ? (
     <>
-      <RinkWidget scores={scores} logos={logos} />
+      <GameCenter scores={scores} logos={logos} />
     </>
   ) : (
     <></>

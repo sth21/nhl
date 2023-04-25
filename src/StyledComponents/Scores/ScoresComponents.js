@@ -3,8 +3,6 @@ import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 
 const StyledRinkWrapper = styled.div`
   position: relative;
-  padding: 3em;
-  margin: 3em 0em;
   max-width: 100%;
 `;
 
@@ -43,7 +41,7 @@ const StyledSideIceLogo = styled.img`
 
 const StyledGoalieOnIceWrapper = styled.div.attrs((props) => ({
   style: {
-    left: props.side === "L" ? "9%" : "86%",
+    left: props.side === "L" ? "9%" : "82%",
   },
 }))`
   display: flex;
@@ -57,7 +55,7 @@ const StyledGoalieOnIceWrapper = styled.div.attrs((props) => ({
 
 const StyledDefensemanOnIceWrapper = styled.div.attrs((props) => ({
   style: {
-    left: props.side === "L" ? "28%" : "67%",
+    left: props.side === "L" ? "24%" : "67%",
   },
 }))`
   display: flex;
@@ -72,7 +70,7 @@ const StyledDefensemanOnIceWrapper = styled.div.attrs((props) => ({
 
 const StyledForwardOnIceWrapper = styled.div.attrs((props) => ({
   style: {
-    left: props.side === "L" ? "42%" : "53%",
+    left: props.side === "L" ? "38%" : "53%",
   },
 }))`
   display: flex;
@@ -87,8 +85,8 @@ const StyledForwardOnIceWrapper = styled.div.attrs((props) => ({
 
 const StyledPlayerImgWrapper = styled.div`
   && {
-    height: 5em;
-    width: 5em;
+    height: 4em;
+    width: 4em;
     position: relative;
     border: 2px solid var(--grey);
     border-radius: 50%;
@@ -172,6 +170,21 @@ const StyledPlayerLabel = styled.p.attrs((props) => ({
   width: auto;
 `;
 
+const StyledGameCenterGrid = styled.div`
+  display: grid;
+  min-height: 100%;
+  max-width: 100%;
+  grid-template: 1fr 1fr 1fr / 3fr 7fr;
+  grid-gap: 2em;
+  padding: 4em;
+`;
+
+const StyledScoresWidgetWrapper = styled.div`
+  background: var(--white);
+  padding: 2em;
+  box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+`;
+
 export {
   StyledRinkWrapper,
   StyledRink,
@@ -186,4 +199,6 @@ export {
   StyledForwardOnIceWrapper,
   StyledPlayerImgWrapper,
   StyledPlayerLabel,
+  StyledGameCenterGrid,
+  StyledScoresWidgetWrapper,
 };
