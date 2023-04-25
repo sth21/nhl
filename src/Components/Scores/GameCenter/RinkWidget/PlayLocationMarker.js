@@ -20,10 +20,19 @@ export default function PlayLocationMarker(props) {
   const Y_INIT = 43;
   const X_INIT = 100;
 
+  function verticalError() {
+    return props.containerHeight * (12.5 / 436.12);
+  }
+
+  function horizontalError() {
+    return props.containerWidth * (15 / 966);
+  }
+
   // to be used for the top attribute on the svg
   function getVerticalPosition() {
     return (
-      (Y_INIT - play.coordinates.y) * (props.containerHeight / (Y_INIT * 2)) +
+      (Y_INIT - play.coordinates.y) * (props.containerHeight / (Y_INIT * 2)) -
+      verticalError() +
       "px"
     );
   }
@@ -31,7 +40,8 @@ export default function PlayLocationMarker(props) {
   // to be used for the right attribute on the svg
   function getHorizontalPosition() {
     return (
-      (X_INIT - play.coordinates.x) * (props.containerWidth / (X_INIT * 2)) +
+      (X_INIT - play.coordinates.x) * (props.containerWidth / (X_INIT * 2)) -
+      horizontalError() +
       "px"
     );
   }

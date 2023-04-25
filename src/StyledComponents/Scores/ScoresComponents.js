@@ -110,7 +110,7 @@ const StyledPlayPNG = styled.img.attrs((props) => ({
   },
 }))`
   height: auto;
-  width: 3.25%;
+  width: 3.5%;
   position: absolute;
 `;
 
