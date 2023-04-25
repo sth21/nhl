@@ -1,7 +1,5 @@
 import {
-  StyledGoalieOnIceWrapper,
-  StyledDefensemanOnIceWrapper,
-  StyledForwardOnIceWrapper,
+  StyledPlayerOnIceWrapper,
   StyledPlayerImgWrapper,
   StyledPlayerLabel,
   StyledToolTip,
@@ -74,9 +72,24 @@ export default function TeamPlayersOnIceWrapper(props) {
     );
   }
 
+  function getGoaliePosition() {
+    return 0.1 * props.rinkWidth;
+  }
+
+  function getDefensemanPosition() {
+    return 0.25 * props.rinkWidth;
+  }
+
+  function getForwardPosition() {
+    return 0.4 * props.rinkWidth;
+  }
+
   return (
     <>
-      <StyledGoalieOnIceWrapper side={props.teamInfo.side}>
+      <StyledPlayerOnIceWrapper
+        side={props.teamInfo.side}
+        distance={getGoaliePosition()}
+      >
         {props.players.goalies.map((goalie) => (
           <PlayerWrapper
             key={uniqid}
@@ -85,8 +98,11 @@ export default function TeamPlayersOnIceWrapper(props) {
             logo={props.teamInfo.logo}
           />
         ))}
-      </StyledGoalieOnIceWrapper>
-      <StyledDefensemanOnIceWrapper side={props.teamInfo.side}>
+      </StyledPlayerOnIceWrapper>
+      <StyledPlayerOnIceWrapper
+        side={props.teamInfo.side}
+        distance={getDefensemanPosition()}
+      >
         {props.players.defenseman.map((dman) => (
           <PlayerWrapper
             key={uniqid()}
@@ -95,8 +111,11 @@ export default function TeamPlayersOnIceWrapper(props) {
             logo={props.teamInfo.logo}
           />
         ))}
-      </StyledDefensemanOnIceWrapper>
-      <StyledForwardOnIceWrapper side={props.teamInfo.side}>
+      </StyledPlayerOnIceWrapper>
+      <StyledPlayerOnIceWrapper
+        side={props.teamInfo.side}
+        distance={getForwardPosition()}
+      >
         {props.players.forwards.map((forward) => (
           <PlayerWrapper
             key={uniqid()}
@@ -105,7 +124,7 @@ export default function TeamPlayersOnIceWrapper(props) {
             logo={props.teamInfo.logo}
           />
         ))}
-      </StyledForwardOnIceWrapper>
+      </StyledPlayerOnIceWrapper>
     </>
   );
 }

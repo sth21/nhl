@@ -73,6 +73,7 @@ export default function PlayersOnIceWidget(props) {
       awayPlayers={getTeamPlayersOnIce("away")}
       homeInfo={getTeamInfo("home")}
       awayInfo={getTeamInfo("away")}
+      rinkWidth={props.rinkWidth}
     />
   );
 }

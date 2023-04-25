@@ -45,6 +45,7 @@ export default function RinkWidget(props) {
           <PlayersOnIceWidget
             liveData={props.scores.liveData}
             logos={props.logos}
+            rinkWidth={rinkWidth}
           />
         ) : (
           <PlayLocationWrapper

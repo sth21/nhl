@@ -44,10 +44,12 @@ export default function PlayersOnIceRink(props) {
       <TeamPlayersOnIceWrapper
         players={props.homePlayers}
         teamInfo={props.homeInfo}
+        rinkWidth={props.rinkWidth}
       />
       <TeamPlayersOnIceWrapper
         players={props.awayPlayers}
         teamInfo={props.awayInfo}
+        rinkWidth={props.rinkWidth}
       />
     </>
   );

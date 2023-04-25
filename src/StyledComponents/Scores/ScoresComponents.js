@@ -39,6 +39,22 @@ const StyledSideIceLogo = styled.img`
   opacity: 0.2;
 `;
 
+const StyledPlayerOnIceWrapper = styled.div.attrs((props) => ({
+  style: {
+    left: props.side === "L" ? props.distance + "px" : "auto",
+    right: props.side === "R" ? props.distance + "px" : "auto",
+  },
+}))`
+  display: flex;
+  top: 50%;
+  bottom: 50%;
+  gap: 3em;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 const StyledGoalieOnIceWrapper = styled.div.attrs((props) => ({
   style: {
     left: props.side === "L" ? "9%" : "82%",
@@ -85,8 +101,8 @@ const StyledForwardOnIceWrapper = styled.div.attrs((props) => ({
 
 const StyledPlayerImgWrapper = styled.div`
   && {
-    height: 4em;
-    width: 4em;
+    height: 3.5em;
+    width: 3.5em;
     position: relative;
     border: 2px solid var(--grey);
     border-radius: 50%;
@@ -194,6 +210,7 @@ export {
   StyledToolTipWrapper,
   StyledSideIceLogoWrapper,
   StyledSideIceLogo,
+  StyledPlayerOnIceWrapper,
   StyledGoalieOnIceWrapper,
   StyledDefensemanOnIceWrapper,
   StyledForwardOnIceWrapper,
