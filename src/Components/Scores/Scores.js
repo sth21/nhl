@@ -1,5 +1,4 @@
-import PlayLocationRink from "./PlayLocationRink";
-import PlayersOnIceWidget from "./PlayersOnIceWidget";
+import RinkWidget from "./RinkWidget";
 import useFetch from "./../../Utils/useFetch";
 import useLogos from "./../../Utils/useLogos";
 
@@ -12,16 +11,9 @@ export default function Scores() {
   );
   const logos = useLogos("nhl");
 
-  console.log(scores);
-
   return scores && logos ? (
     <>
-      <PlayLocationRink
-        plays={scores.liveData.plays.allPlays}
-        homeTeamLogo={logos[scores.gameData.teams.home.id]}
-        logos={logos}
-      />
-      <PlayersOnIceWidget liveData={scores.liveData} logos={logos} />
+      <RinkWidget scores={scores} logos={logos} />
     </>
   ) : (
     <></>

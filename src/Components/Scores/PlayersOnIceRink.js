@@ -20,24 +20,15 @@ props.awaySide
 
 */
 
-import rink from "./../../Media/rink.svg";
 import TeamPlayersOnIceWrapper from "./TeamPlayersOnIceWrapper";
 import {
-  StyledRinkWrapper,
-  StyledRink,
   StyledSideIceLogo,
   StyledSideIceLogoWrapper,
 } from "../../StyledComponents/Scores/ScoresComponents";
 
-// https://cms.nhl.bamgrid.com/images/headshots/current/168x168/{goalie.person.id}.jpg
-
 export default function PlayersOnIceRink(props) {
-  console.log(props.homePlayers);
-  console.log(props.awayPlayers);
-
   return (
-    <StyledRinkWrapper>
-      <StyledRink src={rink} />
+    <>
       <StyledSideIceLogoWrapper>
         <StyledSideIceLogo
           src={props.homeInfo.logo}
@@ -58,6 +49,6 @@ export default function PlayersOnIceRink(props) {
         players={props.awayPlayers}
         teamInfo={props.awayInfo}
       />
-    </StyledRinkWrapper>
+    </>
   );
 }
