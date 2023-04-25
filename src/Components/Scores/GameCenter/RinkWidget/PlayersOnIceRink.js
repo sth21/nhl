@@ -24,7 +24,7 @@ import TeamPlayersOnIceWrapper from "./TeamPlayersOnIceWrapper";
 import {
   StyledSideIceLogo,
   StyledSideIceLogoWrapper,
-} from "../../StyledComponents/Scores/ScoresComponents";
+} from "../../../../StyledComponents/Scores/ScoresComponents";
 
 export default function PlayersOnIceRink(props) {
   return (

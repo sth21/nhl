@@ -3,16 +3,15 @@ import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 
 const StyledRinkWrapper = styled.div`
   position: relative;
-  height: auto;
-  width: 100%;
+  padding: 3em;
   margin: 3em 0em;
+  max-width: 100%;
 `;
 
 const StyledRink = styled.img`
   display: block;
-  margin: auto;
+  height: auto;
   width: 100%;
-  height: 100%;
 `;
 
 const StyledCenterIceLogo = styled.img`
@@ -44,7 +43,7 @@ const StyledSideIceLogo = styled.img`
 
 const StyledGoalieOnIceWrapper = styled.div.attrs((props) => ({
   style: {
-    left: props.side === "L" ? "6.5%" : "87.5%",
+    left: props.side === "L" ? "9%" : "86%",
   },
 }))`
   display: flex;
@@ -58,7 +57,7 @@ const StyledGoalieOnIceWrapper = styled.div.attrs((props) => ({
 
 const StyledDefensemanOnIceWrapper = styled.div.attrs((props) => ({
   style: {
-    left: props.side === "L" ? "22.5%" : "72%",
+    left: props.side === "L" ? "28%" : "67%",
   },
 }))`
   display: flex;
@@ -73,7 +72,7 @@ const StyledDefensemanOnIceWrapper = styled.div.attrs((props) => ({
 
 const StyledForwardOnIceWrapper = styled.div.attrs((props) => ({
   style: {
-    left: props.side === "L" ? "41%" : "53.5%",
+    left: props.side === "L" ? "42%" : "53%",
   },
 }))`
   display: flex;
@@ -88,8 +87,8 @@ const StyledForwardOnIceWrapper = styled.div.attrs((props) => ({
 
 const StyledPlayerImgWrapper = styled.div`
   && {
-    height: 6em;
-    width: 6em;
+    height: 5em;
+    width: 5em;
     position: relative;
     border: 2px solid var(--grey);
     border-radius: 50%;

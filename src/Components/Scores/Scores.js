@@ -1,4 +1,4 @@
-import RinkWidget from "./RinkWidget";
+import RinkWidget from "./GameCenter/RinkWidget/RinkWidget";
 import useFetch from "./../../Utils/useFetch";
 import useLogos from "./../../Utils/useLogos";
 

@@ -3,7 +3,7 @@
 // props.rinkHeight
 // props.rinkWidth
 
-import { StyledCenterIceLogo } from "../../StyledComponents/Scores/ScoresComponents";
+import { StyledCenterIceLogo } from "../../../../StyledComponents/Scores/ScoresComponents";
 import PlayLocationMarker from "./PlayLocationMarker";
 import uniqid from "uniqid";
 

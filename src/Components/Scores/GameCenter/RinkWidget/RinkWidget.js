@@ -2,14 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import {
   StyledRinkWrapper,
   StyledRink,
-} from "./../../StyledComponents/Scores/ScoresComponents";
-import rink from "./../../Media/rink.svg";
+} from "./../../../../StyledComponents/Scores/ScoresComponents";
+import rink from "./../../../../Media/rink.svg";
 import PlayersOnIceWidget from "./PlayersOnIceWidget";
 import PlayLocationWrapper from "./PlayLocationWrapper";
 import {
   StyledOption,
   StyledOptionContainer,
-} from "../../StyledComponents/General/GeneralComponents";
+} from "../../../../StyledComponents/General/GeneralComponents";
 
 // props.logos, props.scores
 

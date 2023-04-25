@@ -6,9 +6,9 @@ import {
   StyledPlayerLabel,
   StyledToolTip,
   StyledToolTipWrapper,
-} from "../../StyledComponents/Scores/ScoresComponents";
+} from "../../../../StyledComponents/Scores/ScoresComponents";
 import uniqid from "uniqid";
-import getTeamColor from "./../../Utils/getTeamColor";
+import getTeamColor from "./../../../../Utils/getTeamColor";
 
 // props.players && props.side
 export default function TeamPlayersOnIceWrapper(props) {
