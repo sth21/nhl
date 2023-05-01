@@ -6,9 +6,12 @@ import useLogos from "./../../Utils/useLogos";
 
 export default function Scores() {
   const scores = useFetch(
-    "https://statsapi.web.nhl.com/api/v1/game/2022030172/feed/live",
+    "https://statsapi.web.nhl.com/api/v1/game/2022030117/feed/live",
     30000
   );
+
+  console.log(scores ? scores : "");
+
   const logos = useLogos("nhl");
 
   return scores && logos ? (

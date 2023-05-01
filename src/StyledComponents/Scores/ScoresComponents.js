@@ -20,6 +20,7 @@ const StyledCenterIceLogo = styled.img`
   position: absolute;
   min-width: 15%;
   height: auto;
+  opacity: 0.7;
 `;
 
 const StyledSideIceLogoWrapper = styled.div`
@@ -49,50 +50,6 @@ const StyledPlayerOnIceWrapper = styled.div.attrs((props) => ({
   top: 50%;
   bottom: 50%;
   gap: 3em;
-  position: absolute;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StyledGoalieOnIceWrapper = styled.div.attrs((props) => ({
-  style: {
-    left: props.side === "L" ? "9%" : "82%",
-  },
-}))`
-  display: flex;
-  top: 50%;
-  bottom: 50%;
-  position: absolute;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StyledDefensemanOnIceWrapper = styled.div.attrs((props) => ({
-  style: {
-    left: props.side === "L" ? "24%" : "67%",
-  },
-}))`
-  display: flex;
-  top: 50%;
-  bottom: 50%;
-  gap: 5em;
-  position: absolute;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StyledForwardOnIceWrapper = styled.div.attrs((props) => ({
-  style: {
-    left: props.side === "L" ? "38%" : "53%",
-  },
-}))`
-  display: flex;
-  top: 50%;
-  bottom: 50%;
-  gap: 5em;
   position: absolute;
   flex-direction: column;
   align-items: center;
@@ -147,21 +104,21 @@ const StyledToolTipWrapper = styled.div`
     flex-direction: column;
     background-color: var(--white);
     color: var(--black);
-    font-size: 1.1rem;
-    gap: 1em;
+    font-size: 1rem;
+    gap: 0.5em;
     word-wrap: break-word;
     box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
     padding: 1em;
 
     & > div {
       display: flex;
-      gap: 0.5em;
+      gap: 0.25em;
       align-items: center;
       justify-content: space-between;
 
       & > img {
-        height: 3em;
-        width: 3em;
+        height: 2em;
+        width: 2em;
       }
     }
   }
@@ -176,7 +133,7 @@ const StyledPlayerLabel = styled.p.attrs((props) => ({
 }))`
   position: absolute;
   padding: 0.25em;
-  bottom: -40%;
+  bottom: -50%;
   border: 1px solid var(--grey);
   left: 50%;
   transform: translateX(-50%);
@@ -188,9 +145,8 @@ const StyledPlayerLabel = styled.p.attrs((props) => ({
 
 const StyledGameCenterGrid = styled.div`
   display: grid;
-  min-height: 100%;
   max-width: 100%;
-  grid-template: 1fr 1fr 1fr / 3fr 7fr;
+  grid-template: repeat(3, auto) / 7fr 13fr;
   grid-gap: 2em;
   padding: 4em;
 `;
@@ -211,9 +167,6 @@ export {
   StyledSideIceLogoWrapper,
   StyledSideIceLogo,
   StyledPlayerOnIceWrapper,
-  StyledGoalieOnIceWrapper,
-  StyledDefensemanOnIceWrapper,
-  StyledForwardOnIceWrapper,
   StyledPlayerImgWrapper,
   StyledPlayerLabel,
   StyledGameCenterGrid,

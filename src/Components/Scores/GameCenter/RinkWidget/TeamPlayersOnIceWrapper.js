@@ -73,15 +73,15 @@ export default function TeamPlayersOnIceWrapper(props) {
   }
 
   function getGoaliePosition() {
-    return 0.1 * props.rinkWidth;
+    return 0.07 * props.rinkWidth;
   }
 
   function getDefensemanPosition() {
-    return 0.25 * props.rinkWidth;
+    return 0.225 * props.rinkWidth;
   }
 
   function getForwardPosition() {
-    return 0.4 * props.rinkWidth;
+    return 0.375 * props.rinkWidth;
   }
 
   return (
