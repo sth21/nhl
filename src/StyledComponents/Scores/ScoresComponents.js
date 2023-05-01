@@ -143,6 +143,20 @@ const StyledPlayerLabel = styled.p.attrs((props) => ({
   width: auto;
 `;
 
+const StyledFeedPlayerLabel = styled.p`
+  && {
+    padding: 0.25em;
+    font-weight: bold;
+    font-size: 0.75rem;
+  }
+`;
+
+const StyledFeedPlayerWrapper = styled.div`
+  display: flex;
+  gap: 0.25em;
+  align-items: center;
+`;
+
 const StyledGameCenterGrid = styled.div`
   display: grid;
   max-width: 100%;
@@ -155,6 +169,38 @@ const StyledScoresWidgetWrapper = styled.div`
   background: var(--white);
   padding: 2em;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+`;
+
+const StyledPlayWrapper = styled.div`
+  display: grid;
+  grid-template: 1fr / 3fr 7fr;
+  width: 100%;
+  padding: 1em 0em;
+  border-top: 5px dashed var(--grey);
+`;
+
+const StyledPlayMainLabel = styled.div`
+  && {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0.5em;
+
+    & > div {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+    }
+  }
+`;
+
+const StyledPlaySideLabel = styled.div`
+  && {
+    display: flex;
+    padding: 0em 1em;
+    gap: 1em;
+    align-items: center;
+  }
 `;
 
 export {
@@ -171,4 +217,9 @@ export {
   StyledPlayerLabel,
   StyledGameCenterGrid,
   StyledScoresWidgetWrapper,
+  StyledFeedPlayerLabel,
+  StyledFeedPlayerWrapper,
+  StyledPlayWrapper,
+  StyledPlayMainLabel,
+  StyledPlaySideLabel,
 };

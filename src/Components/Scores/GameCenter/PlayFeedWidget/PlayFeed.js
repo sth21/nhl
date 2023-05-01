@@ -48,7 +48,10 @@ export default function PlayFeed(props) {
     }
 
     return (
-      <StyledOption onClick={() => setActivePeriod(props.period)}>
+      <StyledOption
+        disabled={props.period === activePeriod}
+        onClick={() => setActivePeriod(props.period)}
+      >
         {periodGeneralizer(props.period)}
       </StyledOption>
     );
@@ -70,7 +73,11 @@ export default function PlayFeed(props) {
           plays.playsByPeriod[activePeriod - 1].endIndex
         )
         .map((play) => (
-          <Play key={uniqid()} play={play} />
+          <Play
+            key={uniqid()}
+            play={play}
+            logo={play.team ? props.logos[play.team.id] : null}
+          />
         ))}
     </>
   );
