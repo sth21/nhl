@@ -72,6 +72,7 @@ export default function PlayFeed(props) {
           getPeriodStartIndex(plays, activePeriod - 1, plays.playsByPeriod),
           plays.playsByPeriod[activePeriod - 1].endIndex
         )
+        .reverse()
         .map((play) => (
           <Play
             key={uniqid()}
