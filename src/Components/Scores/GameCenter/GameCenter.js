@@ -3,6 +3,7 @@ import {
   StyledScoresWidgetWrapper,
 } from "../../../StyledComponents/Scores/ScoresComponents";
 import PlayFeed from "./PlayFeedWidget/PlayFeed";
+import BoxScore from "./BoxScoreWidget/BoxScore";
 import RinkWidget from "./RinkWidget/RinkWidget";
 
 /* 
@@ -20,14 +21,21 @@ import RinkWidget from "./RinkWidget/RinkWidget";
 export default function GameCenter(props) {
   return (
     <StyledGameCenterGrid>
-      <StyledScoresWidgetWrapper style={{ gridArea: "1 / 2 / 2 / 3" }}>
+      <StyledScoresWidgetWrapper style={{ gridArea: "1 / 2 / 3 / 3" }}>
         <RinkWidget scores={props.scores} logos={props.logos} />
       </StyledScoresWidgetWrapper>
-      <StyledScoresWidgetWrapper style={{ gridArea: "2 / 2 / 3 / 3" }}>
+      <StyledScoresWidgetWrapper style={{ gridArea: "3 / 2 / 11 / 3" }}>
         <PlayFeed
           liveData={props.scores.liveData}
           isPlayoff={props.scores.gameData.game.type === "P"}
           logos={props.logos}
+        />
+      </StyledScoresWidgetWrapper>
+      <StyledScoresWidgetWrapper>
+        <BoxScore
+          logos={props.logos}
+          liveData={props.scores.liveData}
+          isPlayoff={props.scores.gameData.game.type === "P"}
         />
       </StyledScoresWidgetWrapper>
     </StyledGameCenterGrid>

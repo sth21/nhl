@@ -32,6 +32,8 @@ const GlobalStyle = createGlobalStyle`
         line-height: 1;
         width: inherit;
         min-height: inherit;
+        position: absolute;
+        z-index: 2;
     }
 
     ol, ul {
@@ -60,7 +62,7 @@ const GlobalStyle = createGlobalStyle`
 
     :root {
         font-size: 14px;
-        max-width: 100vw;
+        width: 100%;
         min-height: 100vh;
         font-family: 'Sintony', sans-serif;
         --grey: #ECECEC;
@@ -261,6 +263,15 @@ const StyledBoldWrapper = styled.span`
   font-size: 1.25rem;
 `;
 
+const StyledStickyOptionContainer = styled(StyledOptionContainer)`
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  z-index: 1;
+  transform: translateY(-40%);
+  padding: 2em;
+`;
+
 export {
   GlobalStyle,
   StyledOptionContainer,
@@ -286,4 +297,5 @@ export {
   StyledBoldWrapper,
   StyledLegendWrapper,
   StyledRules,
+  StyledStickyOptionContainer,
 };

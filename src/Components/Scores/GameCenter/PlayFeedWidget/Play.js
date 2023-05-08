@@ -10,6 +10,7 @@ import {
   StyledPlayWrapper,
 } from "../../../../StyledComponents/Scores/ScoresComponents";
 import NHL_LOGO from "./../../../../Media/nhl.svg";
+import uniqid from "uniqid";
 
 export default function Play(props) {
   return (
@@ -33,7 +34,7 @@ export default function Play(props) {
         {props.play.players ? (
           <div>
             {props.play.players.map((player) => (
-              <StyledFeedPlayerWrapper>
+              <StyledFeedPlayerWrapper key={uniqid()}>
                 <StyledPlayerImgWrapper>
                   <img
                     src={`https://cms.nhl.bamgrid.com/images/headshots/current/168x168/${player.player.id}.jpg`}

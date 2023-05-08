@@ -153,6 +153,7 @@ const StyledFeedPlayerLabel = styled.p`
 
 const StyledFeedPlayerWrapper = styled.div`
   display: flex;
+  z-index: 0;
   gap: 0.25em;
   align-items: center;
 `;
@@ -160,12 +161,14 @@ const StyledFeedPlayerWrapper = styled.div`
 const StyledGameCenterGrid = styled.div`
   display: grid;
   max-width: 100%;
-  grid-template: repeat(3, auto) / 7fr 13fr;
+  grid-template: repeat(10, 200px) / 7fr 13fr;
   grid-gap: 2em;
   padding: 4em;
 `;
 
 const StyledScoresWidgetWrapper = styled.div`
+  max-height: 2000px;
+  overflow-y: scroll;
   background: var(--white);
   padding: 2em;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
@@ -203,6 +206,11 @@ const StyledPlaySideLabel = styled.div`
   }
 `;
 
+const StyledScoreboardWrapper = styled.div`
+  margin: 0 auto;
+  width: 100%;
+`;
+
 export {
   StyledRinkWrapper,
   StyledRink,
@@ -222,4 +230,5 @@ export {
   StyledPlayWrapper,
   StyledPlayMainLabel,
   StyledPlaySideLabel,
+  StyledScoreboardWrapper,
 };

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Play from "./Play";
 import {
   StyledOption,
-  StyledOptionContainer,
+  StyledStickyOptionContainer,
 } from "../../../../StyledComponents/General/GeneralComponents";
 import uniqid from "uniqid";
 
@@ -39,7 +39,6 @@ export default function PlayFeed(props) {
 
   function PeriodOptions(props) {
     function periodGeneralizer(period) {
-      console.log(period);
       if (period === 1) return "1st";
       if (period === 2) return "2nd";
       if (period === 3) return "3rd";
@@ -57,16 +56,11 @@ export default function PlayFeed(props) {
     );
   }
 
-  console.log("____PERIOD START INDEX________");
-  console.log(
-    getPeriodStartIndex(plays, activePeriod - 1, plays.playsByPeriod)
-  );
-
   return (
     <>
-      <StyledOptionContainer>
+      <StyledStickyOptionContainer>
         {createPeriodOptions(activePeriod)}
-      </StyledOptionContainer>
+      </StyledStickyOptionContainer>
       {plays.allPlays
         .slice(
           getPeriodStartIndex(plays, activePeriod - 1, plays.playsByPeriod),
