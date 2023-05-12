@@ -5,6 +5,7 @@ import {
 import PlayFeed from "./PlayFeedWidget/PlayFeed";
 import BoxScore from "./BoxScoreWidget/BoxScore";
 import RinkWidget from "./RinkWidget/RinkWidget";
+import TeamsStatsWidget from "./TeamStatsWidget/TeamsStatsWidget";
 
 /* 
           import BoxScoreWidget from "./BoxScoreWidget/BoxScoreWidget";
@@ -36,6 +37,24 @@ export default function GameCenter(props) {
           logos={props.logos}
           liveData={props.scores.liveData}
           isPlayoff={props.scores.gameData.game.type === "P"}
+        />
+      </StyledScoresWidgetWrapper>
+      <StyledScoresWidgetWrapper
+        style={{
+          gridArea: "2 / 1 / 4 / 2",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <TeamsStatsWidget
+          homeTeamStats={
+            props.scores.liveData.boxscore.teams.home.teamStats.teamSkaterStats
+          }
+          homeTeamName={props.scores.liveData.boxscore.teams.home.team.triCode}
+          awayTeamStats={
+            props.scores.liveData.boxscore.teams.away.teamStats.teamSkaterStats
+          }
+          awayTeamName={props.scores.liveData.boxscore.teams.away.team.triCode}
         />
       </StyledScoresWidgetWrapper>
     </StyledGameCenterGrid>

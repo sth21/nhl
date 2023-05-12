@@ -63,7 +63,7 @@ export default function BoxScore(props) {
     const periodCells = [];
     for (let i = 0; i < totalPeriods; i++) {
       periodCells[i] = (
-        <StyledTableHeader>
+        <StyledTableHeader key={uniqid()}>
           {getPeriodOrdinal(i, props.isPlayoff, totalPeriods)}
         </StyledTableHeader>
       );
