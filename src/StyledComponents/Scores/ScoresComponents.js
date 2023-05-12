@@ -167,7 +167,7 @@ const StyledGameCenterGrid = styled.div`
 `;
 
 const StyledScoresWidgetWrapper = styled.div`
-  max-height: 2000px;
+  max-height: 2500px;
   overflow-y: scroll;
   background: var(--white);
   padding: 2em;

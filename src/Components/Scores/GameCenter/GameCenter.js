@@ -5,7 +5,8 @@ import {
 import PlayFeed from "./PlayFeedWidget/PlayFeed";
 import BoxScore from "./BoxScoreWidget/BoxScore";
 import RinkWidget from "./RinkWidget/RinkWidget";
-import TeamsStatsWidget from "./TeamStatsWidget/TeamsStatsWidget";
+import TeamsStats from "./TeamStatsWidget/TeamsStats";
+import PlayerStats from "./PlayerStatsWidget/PlayerStats";
 
 /* 
           import BoxScoreWidget from "./BoxScoreWidget/BoxScoreWidget";
@@ -46,7 +47,7 @@ export default function GameCenter(props) {
           alignItems: "center",
         }}
       >
-        <TeamsStatsWidget
+        <TeamsStats
           homeTeamStats={
             props.scores.liveData.boxscore.teams.home.teamStats.teamSkaterStats
           }
@@ -55,6 +56,30 @@ export default function GameCenter(props) {
             props.scores.liveData.boxscore.teams.away.teamStats.teamSkaterStats
           }
           awayTeamName={props.scores.liveData.boxscore.teams.away.team.triCode}
+        />
+      </StyledScoresWidgetWrapper>
+      <StyledScoresWidgetWrapper
+        style={{
+          gridArea: "4 / 1 / 8 / 2",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <PlayerStats
+          teamPlayers={props.scores.liveData.boxscore.teams.home.players}
+          teamName={props.scores.liveData.boxscore.teams.home.team.triCode}
+        />
+      </StyledScoresWidgetWrapper>
+      <StyledScoresWidgetWrapper
+        style={{
+          gridArea: "8 / 1 / 12 / 2",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <PlayerStats
+          teamPlayers={props.scores.liveData.boxscore.teams.away.players}
+          teamName={props.scores.liveData.boxscore.teams.away.team.triCode}
         />
       </StyledScoresWidgetWrapper>
     </StyledGameCenterGrid>

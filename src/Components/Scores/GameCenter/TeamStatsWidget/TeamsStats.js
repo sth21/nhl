@@ -8,10 +8,11 @@ import {
   StyledTableContainer,
   StyledTableHeader,
   StyledTableCell,
+  StyledHeader,
 } from "../../../../StyledComponents/General/GeneralComponents";
 import { Table, TableHead, TableBody, TableRow } from "@mui/material";
 
-export default function TeamsStatsWidget(props) {
+export default function TeamsStats(props) {
   function StatRow({ statName, statAccessor }) {
     return (
       <TableRow>
@@ -25,6 +26,9 @@ export default function TeamsStatsWidget(props) {
   return (
     <StyledScoreboardWrapper>
       <StyledTableContainer>
+        <StyledHeader style={{ textAlign: "center", paddingBottom: "2em" }}>
+          Team Stats
+        </StyledHeader>
         <Table>
           <TableHead>
             <TableRow>
