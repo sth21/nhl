@@ -27,7 +27,7 @@ export default function Routeswitch() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/scores" element={<Scores />} />
+          <Route path="/scores/*" element={<Scores />} />
           <Route path="/standings" element={<Standings />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/draft" element={<Draft />} />

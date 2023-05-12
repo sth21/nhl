@@ -1,20 +1,16 @@
-import GameCenter from "./GameCenter/GameCenter";
+import GameFeed from "./GameFeed/GameFeed";
 import useFetch from "./../../Utils/useFetch";
 import useLogos from "./../../Utils/useLogos";
 
 // "https://statsapi.web.nhl.com/api/v1/schedule?teamId=2&opponentId=12&season=20222023"
 
 export default function Scores() {
-  const scores = useFetch(
-    "https://statsapi.web.nhl.com/api/v1/game/2022030117/feed/live",
-    30000
-  );
-
+  const games = useFetch("https://statsapi.web.nhl.com/api/v1/schedule");
   const logos = useLogos("nhl");
 
-  return scores && logos ? (
+  return games && logos ? (
     <>
-      <GameCenter scores={scores} logos={logos} />
+      <GameFeed logos={logos} games={games.dates[0].games} />
     </>
   ) : (
     <></>

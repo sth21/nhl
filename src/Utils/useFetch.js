@@ -5,6 +5,8 @@ export default function useFetch(url, interval = null) {
 
   // Run fetch, set interval if defined in params
   useEffect(() => {
+    if (url === "") return;
+
     // Convert URL to JSON to JS
     const fetchData = () =>
       fetch(url, { mode: "cors" })
