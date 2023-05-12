@@ -9,11 +9,12 @@ import {
   StyledHeader,
 } from "../../../../StyledComponents/General/GeneralComponents";
 import { Table, TableHead, TableBody, TableRow } from "@mui/material";
+import uniqid from "uniqid";
 
 export default function PlayerStats(props) {
   function SkaterRow({ player }) {
     return (
-      <TableRow>
+      <TableRow key={uniqid()}>
         <StyledTableCell>{player.jerseyNumber}</StyledTableCell>
         <StyledTableCell>{player.person.fullName}</StyledTableCell>
         <StyledTableCell>{player.stats.skaterStats.goals}</StyledTableCell>
@@ -30,7 +31,7 @@ export default function PlayerStats(props) {
 
   function GoalieRow({ goalie }) {
     return (
-      <TableRow>
+      <TableRow key={uniqid()}>
         <StyledTableCell>{goalie.jerseyNumber}</StyledTableCell>
         <StyledTableCell>{goalie.person.fullName}</StyledTableCell>
         <StyledTableCell>{goalie.stats.goalieStats.saves}</StyledTableCell>
@@ -56,8 +57,6 @@ export default function PlayerStats(props) {
         player.position.code === "G" && Object.keys(player.stats).length > 0
     )
     .sort((b, a) => b.stats.goalieStats.shots - a.stats.goalieStats.shots);
-
-  console.log(skaters);
 
   return (
     <StyledScoreboardWrapper>

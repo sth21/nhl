@@ -10,8 +10,6 @@ export default function Scores() {
     30000
   );
 
-  console.log(scores);
-
   const logos = useLogos("nhl");
 
   return scores && logos ? (
