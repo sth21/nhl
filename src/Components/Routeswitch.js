@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home/Home";
 import Scores from "./Scores/Scores";
 import Standings from "./Standings/Standings";
-import Stats from "./Stats";
+import Stats from "./Stats/Stats";
 import Draft from "./Draft/Draft";
 import Nav from "./Nav";
 import Footer from "./Footer";
