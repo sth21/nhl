@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { StyledGameFeedWrapper } from "../../../StyledComponents/Scores/ScoresComponents";
 import GameCenter from "../GameCenter/GameCenter";
 import GameView from "./GameView";
 import useLogos from "./../../../Utils/useLogos";
@@ -8,7 +9,7 @@ export default function GameFeed(props) {
   const logos = useLogos("nhl");
 
   return (
-    <div>
+    <StyledGameFeedWrapper>
       <Routes>
         <Route
           path="/"
@@ -22,6 +23,6 @@ export default function GameFeed(props) {
         />
         <Route path=":gameId" element={<GameCenter logos={props.logos} />} />
       </Routes>
-    </div>
+    </StyledGameFeedWrapper>
   );
 }

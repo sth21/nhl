@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
 import useFetch from "../../../Utils/useFetch";
+import {
+  StyledGameFeedWidgetWrapper,
+  StyledGameFeedLogo,
+  StyledGameFeedBigText,
+  StyledGameFeedFlex,
+  StyledGameViewBox,
+  StyledGameViewText,
+} from "../../../StyledComponents/Scores/ScoresComponents";
 
 export default function GameView({ gameId, logos }) {
   const scores = useFetch(
@@ -21,58 +29,68 @@ export default function GameView({ gameId, logos }) {
 
   return (
     scores && (
-      <div>
-        <div>
-          <div>
-            <img
+      <StyledGameFeedWidgetWrapper>
+        <StyledGameViewBox>
+          <StyledGameFeedFlex>
+            <StyledGameFeedLogo
               src={
                 logos ? logos[scores.liveData.boxscore.teams.home.team.id] : "#"
               }
               alt="team logo"
             />
-            <p>{scores.liveData.boxscore.teams.home.team.abbreviation}</p>
-            <p>{scores.liveData.linescore.teams.home.goals}</p>
-          </div>
-          <div>
-            <img
+            <StyledGameFeedBigText>
+              {scores.liveData.boxscore.teams.home.team.abbreviation}
+            </StyledGameFeedBigText>
+            <StyledGameFeedBigText>
+              {scores.liveData.linescore.teams.home.goals}
+            </StyledGameFeedBigText>
+          </StyledGameFeedFlex>
+          <StyledGameFeedFlex>
+            <StyledGameFeedLogo
               src={
                 logos ? logos[scores.liveData.boxscore.teams.away.team.id] : "#"
               }
               alt="team logo"
             />
-            <p>{scores.liveData.boxscore.teams.away.team.abbreviation}</p>
-            <p>{scores.liveData.linescore.teams.away.goals}</p>
-          </div>
-        </div>
-        <div>
-          <p>{`${scores.liveData.linescore.currentPeriodTimeRemaining} - ${scores.liveData.linescore.currentPeriodOrdinal}`}</p>
-          <p>{scores.gameData.venue.name}</p>
-        </div>
+            <StyledGameFeedBigText>
+              {scores.liveData.boxscore.teams.away.team.abbreviation}
+            </StyledGameFeedBigText>
+            <StyledGameFeedBigText>
+              {scores.liveData.linescore.teams.away.goals}
+            </StyledGameFeedBigText>
+          </StyledGameFeedFlex>
+        </StyledGameViewBox>
+        <StyledGameViewBox>
+          <StyledGameViewText>{`${scores.liveData.linescore.currentPeriodTimeRemaining} - ${scores.liveData.linescore.currentPeriodOrdinal}`}</StyledGameViewText>
+          <StyledGameViewText>{scores.gameData.venue.name}</StyledGameViewText>
+        </StyledGameViewBox>
         {parseInt(scores.gameData.status.statusCode, 10) !== 1 ? (
-          <div>
-            <p>
+          <StyledGameViewBox>
+            <StyledGameViewText>
               {scoreFeed(
                 scores.liveData.plays,
                 scores.gameData.teams.home.name
               )}
-            </p>
-            <p>
+            </StyledGameViewText>
+            <StyledGameViewText>
               {scoreFeed(
                 scores.liveData.plays,
                 scores.gameData.teams.away.name
               )}
-            </p>
-          </div>
+            </StyledGameViewText>
+          </StyledGameViewBox>
         ) : (
           <></>
         )}
-        <Link
-          to={`/scores/${gameId}`}
-          disabled={parseInt(scores.gameData.status.statusCode, 10) === 1}
-        >
-          GameCenter
-        </Link>
-      </div>
+        <StyledGameViewBox>
+          <Link
+            to={`/scores/${gameId}`}
+            disabled={parseInt(scores.gameData.status.statusCode, 10) === 1}
+          >
+            GameCenter
+          </Link>
+        </StyledGameViewBox>
+      </StyledGameFeedWidgetWrapper>
     )
   );
 }

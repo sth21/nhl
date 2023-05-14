@@ -5,7 +5,9 @@ import useLogos from "./../../Utils/useLogos";
 // "https://statsapi.web.nhl.com/api/v1/schedule?teamId=2&opponentId=12&season=20222023"
 
 export default function Scores() {
-  const games = useFetch("https://statsapi.web.nhl.com/api/v1/schedule");
+  const games = useFetch(
+    "https://statsapi.web.nhl.com/api/v1/schedule?date=2023-02-13"
+  );
   const logos = useLogos("nhl");
 
   return games && logos ? (

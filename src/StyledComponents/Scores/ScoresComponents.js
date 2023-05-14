@@ -211,6 +211,50 @@ const StyledScoreboardWrapper = styled.div`
   width: 100%;
 `;
 
+const StyledGameFeedWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding: 2em;
+  min-height: 100vh;
+`;
+
+const StyledGameFeedLogo = styled.img`
+  height: 3.5em;
+  width: 3.5em;
+`;
+
+const StyledGameFeedBigText = styled.p`
+  font-weight: bold;
+  font-size: 1.5rem;
+`;
+
+const StyledGameFeedFlex = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1em;
+`;
+
+const StyledGameViewText = styled.p`
+  line-height: 1.25;
+  font-size: 1.1rem;
+`;
+
+const StyledGameFeedWidgetWrapper = styled(StyledScoresWidgetWrapper)`
+  display: grid;
+  grid-template: 1fr / 1fr 1fr 2fr 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 3em;
+`;
+
+const StyledGameViewBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+`;
+
 export {
   StyledRinkWrapper,
   StyledRink,
@@ -231,4 +275,11 @@ export {
   StyledPlayMainLabel,
   StyledPlaySideLabel,
   StyledScoreboardWrapper,
+  StyledGameFeedWrapper,
+  StyledGameFeedLogo,
+  StyledGameFeedBigText,
+  StyledGameFeedFlex,
+  StyledGameFeedWidgetWrapper,
+  StyledGameViewBox,
+  StyledGameViewText,
 };
