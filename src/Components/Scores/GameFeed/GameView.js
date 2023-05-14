@@ -25,6 +25,14 @@ export default function GameView({ gameId, logos }) {
     return goals.join(" | ");
   }
 
+  function convertUTCtoLocalTime(utcDateString) {
+    const date = new Date(utcDateString);
+    const options = { hour: "numeric", minute: "numeric", hour12: true };
+    return date.toLocaleTimeString(undefined, options);
+  }
+
+  console.log(scores);
+
   return (
     scores && (
       <StyledGameFeedWidgetWrapper>
@@ -59,7 +67,13 @@ export default function GameView({ gameId, logos }) {
           </StyledGameFeedFlex>
         </StyledGameViewBox>
         <StyledGameViewBox>
-          <StyledGameViewText>{`${scores.liveData.linescore.currentPeriodTimeRemaining} - ${scores.liveData.linescore.currentPeriodOrdinal}`}</StyledGameViewText>
+          {parseInt(scores.gameData.status.statusCode, 10) === 1 ? (
+            <StyledGameViewText>
+              {convertUTCtoLocalTime(scores.gameData.datetime.dateTime)}
+            </StyledGameViewText>
+          ) : (
+            <StyledGameViewText>{`${scores.liveData.linescore.currentPeriodTimeRemaining} - ${scores.liveData.linescore.currentPeriodOrdinal}`}</StyledGameViewText>
+          )}
           <StyledGameViewText>{scores.gameData.venue.name}</StyledGameViewText>
         </StyledGameViewBox>
         {parseInt(scores.gameData.status.statusCode, 10) !== 1 ? (
@@ -82,10 +96,16 @@ export default function GameView({ gameId, logos }) {
         )}
         <StyledGameViewBox>
           <Link
+            style={
+              parseInt(scores.gameData.status.statusCode, 10) === 1
+                ? { pointerEvents: "none" }
+                : null
+            }
             to={`/scores/${gameId}`}
-            disabled={parseInt(scores.gameData.status.statusCode, 10) === 1}
           >
-            GameCenter
+            {parseInt(scores.gameData.status.statusCode, 10) === 1
+              ? "Gamecenter Unavailable Pregame"
+              : "GameCenter"}
           </Link>
         </StyledGameViewBox>
       </StyledGameFeedWidgetWrapper>

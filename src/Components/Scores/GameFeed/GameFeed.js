@@ -22,34 +22,32 @@ export default function GameFeed(props) {
   }
 
   return (
-    <StyledGameFeedWrapper>
-      <StyledScoresSettingsWrapper>
-        <StyledGameFeedBigText>
-          {moment(props.date).format("LL")}
-        </StyledGameFeedBigText>
-        <DayPicker
-          mode="single"
-          selected={props.date}
-          onSelect={dateSelected}
-        />
-      </StyledScoresSettingsWrapper>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              {props.games.map((game) => (
-                <GameView
-                  gameId={game.gamePk}
-                  logos={props.logos}
-                  key={uniqid()}
-                />
-              ))}
-            </>
-          }
-        />
-        <Route path=":gameId" element={<GameCenter logos={props.logos} />} />
-      </Routes>
-    </StyledGameFeedWrapper>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <StyledGameFeedWrapper>
+            <StyledScoresSettingsWrapper>
+              <StyledGameFeedBigText>
+                {moment(props.date).format("LL")}
+              </StyledGameFeedBigText>
+              <DayPicker
+                mode="single"
+                selected={props.date}
+                onSelect={dateSelected}
+              />
+            </StyledScoresSettingsWrapper>
+            {props.games.map((game) => (
+              <GameView
+                gameId={game.gamePk}
+                logos={props.logos}
+                key={uniqid()}
+              />
+            ))}
+          </StyledGameFeedWrapper>
+        }
+      />
+      <Route path=":gameId" element={<GameCenter logos={props.logos} />} />
+    </Routes>
   );
 }
