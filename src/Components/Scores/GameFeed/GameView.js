@@ -14,8 +14,6 @@ export default function GameView({ gameId, logos }) {
     `https://statsapi.web.nhl.com/api/v1/game/${gameId}/feed/live`
   );
 
-  console.log(scores);
-
   function scoreFeed(plays, team) {
     const goals = plays.scoringPlays
       .filter((playIndex) => plays.allPlays[playIndex].team.name === team)

@@ -255,6 +255,10 @@ const StyledGameViewBox = styled.div`
   gap: 1em;
 `;
 
+const StyledScoresSettingsWrapper = styled(StyledGameFeedWidgetWrapper)`
+  grid-template: 1fr / 1fr 1fr;
+`;
+
 export {
   StyledRinkWrapper,
   StyledRink,
@@ -282,4 +286,5 @@ export {
   StyledGameFeedWidgetWrapper,
   StyledGameViewBox,
   StyledGameViewText,
+  StyledScoresSettingsWrapper,
 };
