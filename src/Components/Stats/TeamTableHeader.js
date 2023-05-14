@@ -1,0 +1,127 @@
+import { StyledPageTableHead } from "../../StyledComponents/General/GeneralComponents";
+import SortableHeader from "./SortableHeader";
+import UnSortableHeader from "./UnSortableHeader";
+import { TableHead } from "@mui/material";
+
+export default function TeamTableSortableHeader({
+  tableOptions,
+  setTableOptions,
+}) {
+  return (
+    <TableHead>
+      <StyledPageTableHead>
+        <UnSortableHeader text="Rank" />
+        <UnSortableHeader text="Team" />
+        <UnSortableHeader text="Season" />
+        <SortableHeader
+          text="GP"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="W"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="L"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="T"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="P"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="P%"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="RW"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="ROW"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="S/O"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="GF"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="GA"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="GF/GP"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="GA/GP"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="PP%"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="PK%"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="Shots/GP"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="SA/GP"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="FOW%"
+          accessCode=""
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+      </StyledPageTableHead>
+    </TableHead>
+  );
+}
