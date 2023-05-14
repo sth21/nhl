@@ -1,18 +1,13 @@
-import uniqid from "uniqid";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import GameCenter from "../GameCenter/GameCenter";
+import GameView from "./GameView";
+import useLogos from "./../../../Utils/useLogos";
+import uniqid from "uniqid";
 
 export default function GameFeed(props) {
-  function GameView({ game }) {
-    return (
-      <Link to={`/scores/${game.gamePk}`}>
-        <p>{game.teams.home.team.name}</p>
-        <p>{game.teams.away.team.name}</p>
-      </Link>
-    );
-  }
+  const logos = useLogos("nhl");
 
-  console.log(props.games);
+  console.log(props);
 
   return (
     <div>
@@ -22,7 +17,7 @@ export default function GameFeed(props) {
           element={
             <>
               {props.games.map((game) => (
-                <GameView key={uniqid()} game={game} />
+                <GameView gameId={game.gamePk} logos={logos} key={uniqid()} />
               ))}
             </>
           }

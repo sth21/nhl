@@ -14,7 +14,7 @@ import uniqid from "uniqid";
 export default function PlayerStats(props) {
   function SkaterRow({ player }) {
     return (
-      <TableRow key={uniqid()}>
+      <TableRow>
         <StyledTableCell>{player.jerseyNumber}</StyledTableCell>
         <StyledTableCell>{player.person.fullName}</StyledTableCell>
         <StyledTableCell>{player.stats.skaterStats.goals}</StyledTableCell>
@@ -31,13 +31,15 @@ export default function PlayerStats(props) {
 
   function GoalieRow({ goalie }) {
     return (
-      <TableRow key={uniqid()}>
+      <TableRow>
         <StyledTableCell>{goalie.jerseyNumber}</StyledTableCell>
         <StyledTableCell>{goalie.person.fullName}</StyledTableCell>
         <StyledTableCell>{goalie.stats.goalieStats.saves}</StyledTableCell>
         <StyledTableCell>{goalie.stats.goalieStats.shots}</StyledTableCell>
         <StyledTableCell>
-          {Math.trunc(goalie.stats.goalieStats.savePercentage * 10) / 1000}
+          {goalie.stats.goalieStats.savePercentage
+            ? Math.trunc(goalie.stats.goalieStats.savePercentage * 10) / 1000
+            : "N/A"}
         </StyledTableCell>
         <StyledTableCell>{goalie.stats.goalieStats.timeOnIce}</StyledTableCell>
       </TableRow>
@@ -79,7 +81,7 @@ export default function PlayerStats(props) {
           </TableHead>
           <TableBody>
             {skaters.map((skater) => (
-              <SkaterRow player={skater} />
+              <SkaterRow player={skater} key={uniqid()} />
             ))}
           </TableBody>
         </Table>
@@ -96,7 +98,7 @@ export default function PlayerStats(props) {
           </TableHead>
           <TableBody>
             {goalies.map((goalie) => (
-              <GoalieRow goalie={goalie} />
+              <GoalieRow goalie={goalie} key={uniqid()} />
             ))}
           </TableBody>
         </Table>
