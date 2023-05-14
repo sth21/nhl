@@ -6,7 +6,18 @@ export default function GameView({ gameId, logos }) {
     `https://statsapi.web.nhl.com/api/v1/game/${gameId}/feed/live`
   );
 
-  function scoreFeed() {}
+  console.log(scores);
+
+  function scoreFeed(plays, team) {
+    const goals = plays.scoringPlays
+      .filter((playIndex) => plays.allPlays[playIndex].team.name === team)
+      .map(
+        (playIndex) =>
+          `${plays.allPlays[playIndex].about.periodTimeRemaining} ${plays.allPlays[playIndex].about.ordinalNum}: ${plays.allPlays[playIndex].players[0].player.fullName} 
+          (${plays.allPlays[playIndex].players[0].seasonTotal})`
+      );
+    return goals.join(" | ");
+  }
 
   return (
     scores && (
@@ -39,8 +50,18 @@ export default function GameView({ gameId, logos }) {
         </div>
         {parseInt(scores.gameData.status.statusCode, 10) !== 1 ? (
           <div>
-            <p>home scoring</p>
-            <p>away scoring</p>
+            <p>
+              {scoreFeed(
+                scores.liveData.plays,
+                scores.gameData.teams.home.name
+              )}
+            </p>
+            <p>
+              {scoreFeed(
+                scores.liveData.plays,
+                scores.gameData.teams.away.name
+              )}
+            </p>
           </div>
         ) : (
           <></>

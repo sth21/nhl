@@ -7,8 +7,6 @@ import uniqid from "uniqid";
 export default function GameFeed(props) {
   const logos = useLogos("nhl");
 
-  console.log(props);
-
   return (
     <div>
       <Routes>
