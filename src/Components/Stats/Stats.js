@@ -2,6 +2,11 @@ import moment from "moment";
 import useFetch from "./../../Utils/useFetch";
 import { useState, useMemo } from "react";
 import StatsTable from "./StatsTable";
+import {
+  StyledPageWrapper,
+  StyledPageContentWrapper,
+  StyledPageHeader,
+} from "../../StyledComponents/General/GeneralComponents";
 
 export default function Stats() {
   const currentYear = moment().year();
@@ -11,10 +16,10 @@ export default function Stats() {
       : `${currentYear - 1}${currentYear}`;
 
   const [tableOptions, setTableOptions] = useState({
-    type: "team",
+    type: "Team",
     year: formattedCurrentYear,
     sortParam: "pts",
-    sortType: "D",
+    sortType: "A",
   });
 
   const teamStats = useFetch(
@@ -51,11 +56,16 @@ export default function Stats() {
   }
 
   return sortedTeamStats && tableOptions && setTableOptions ? (
-    <StatsTable
-      teamStats={sortedTeamStats}
-      tableOptions={tableOptions}
-      setTableOptions={setTableOptions}
-    />
+    <StyledPageWrapper>
+      <StyledPageContentWrapper>
+        <StyledPageHeader>{tableOptions.type + " Statistics"}</StyledPageHeader>
+        <StatsTable
+          teamStats={sortedTeamStats}
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+      </StyledPageContentWrapper>
+    </StyledPageWrapper>
   ) : (
     <></>
   );
