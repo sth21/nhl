@@ -15,109 +15,79 @@ export default function TeamTableSortableHeader({
         <UnSortableHeader text="Season" />
         <SortableHeader
           text="GP"
-          accessCode=""
+          accessCode="gamesPlayed"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />
         <SortableHeader
           text="W"
-          accessCode=""
+          accessCode="wins"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />
         <SortableHeader
           text="L"
-          accessCode=""
-          tableOptions={tableOptions}
-          setTableOptions={setTableOptions}
-        />
-        <SortableHeader
-          text="T"
-          accessCode=""
+          accessCode="losses"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />
         <SortableHeader
           text="P"
-          accessCode=""
+          accessCode="pts"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />
         <SortableHeader
           text="P%"
-          accessCode=""
-          tableOptions={tableOptions}
-          setTableOptions={setTableOptions}
-        />
-        <SortableHeader
-          text="RW"
-          accessCode=""
-          tableOptions={tableOptions}
-          setTableOptions={setTableOptions}
-        />
-        <SortableHeader
-          text="ROW"
-          accessCode=""
-          tableOptions={tableOptions}
-          setTableOptions={setTableOptions}
-        />
-        <SortableHeader
-          text="S/O"
-          accessCode=""
-          tableOptions={tableOptions}
-          setTableOptions={setTableOptions}
-        />
-        <SortableHeader
-          text="GF"
-          accessCode=""
-          tableOptions={tableOptions}
-          setTableOptions={setTableOptions}
-        />
-        <SortableHeader
-          text="GA"
-          accessCode=""
+          accessCode="ptPctg"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />
         <SortableHeader
           text="GF/GP"
-          accessCode=""
+          accessCode="goalsPerGame"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />
         <SortableHeader
           text="GA/GP"
-          accessCode=""
+          accessCode="goalsAgainstPerGame"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />
         <SortableHeader
           text="PP%"
-          accessCode=""
+          accessCode="powerPlayPercentage"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />
         <SortableHeader
           text="PK%"
-          accessCode=""
+          accessCode="penaltyKillPercentage"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />
         <SortableHeader
           text="Shots/GP"
-          accessCode=""
+          accessCode="shotsPerGame"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />
         <SortableHeader
           text="SA/GP"
-          accessCode=""
+          accessCode="shotsAllowed"
+          tableOptions={tableOptions}
+          setTableOptions={setTableOptions}
+        />
+        <SortableHeader
+          text="S%"
+          accessCode="shootingPercentage"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />
         <SortableHeader
           text="FOW%"
-          accessCode=""
+          accessCode="faceOffWinPercentage"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}
         />

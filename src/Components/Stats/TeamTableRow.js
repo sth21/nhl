@@ -3,30 +3,34 @@ import { StyledPageTableCell } from "../../StyledComponents/General/GeneralCompo
 
 // team.team.name.replace(/\s*\([^)]*\)/g, "")
 
-export default function TeamTableRow({ team }) {
+export default function TeamTableRow({ team, index, year }) {
+  const teamInfo = team.teamStats[0].splits[0];
+  const teamStats = teamInfo.stat;
+
   return (
     <TableRow>
-      <StyledPageTableCell>Rank</StyledPageTableCell>
-      <StyledPageTableCell>Team</StyledPageTableCell>
-      <StyledPageTableCell>Season</StyledPageTableCell>
-      <StyledPageTableCell>GP</StyledPageTableCell>
-      <StyledPageTableCell>W</StyledPageTableCell>
-      <StyledPageTableCell>L</StyledPageTableCell>
-      <StyledPageTableCell>T</StyledPageTableCell>
-      <StyledPageTableCell>P</StyledPageTableCell>
-      <StyledPageTableCell>P%</StyledPageTableCell>
-      <StyledPageTableCell>RW</StyledPageTableCell>
-      <StyledPageTableCell>ROW</StyledPageTableCell>
-      <StyledPageTableCell>S/O</StyledPageTableCell>
-      <StyledPageTableCell>GF</StyledPageTableCell>
-      <StyledPageTableCell>GA</StyledPageTableCell>
-      <StyledPageTableCell>GF/GP</StyledPageTableCell>
-      <StyledPageTableCell>GA/GP</StyledPageTableCell>
-      <StyledPageTableCell>PP%</StyledPageTableCell>
-      <StyledPageTableCell>PK%</StyledPageTableCell>
-      <StyledPageTableCell>Shots/GP</StyledPageTableCell>
-      <StyledPageTableCell>SA/GP</StyledPageTableCell>
-      <StyledPageTableCell>FOW%</StyledPageTableCell>
+      <StyledPageTableCell>{index}</StyledPageTableCell>
+      <StyledPageTableCell>{teamInfo.team.name}</StyledPageTableCell>
+      <StyledPageTableCell>
+        {year.slice(0, 4) + "-" + year.slice(4)}
+      </StyledPageTableCell>
+      <StyledPageTableCell>{teamStats.gamesPlayed}</StyledPageTableCell>
+      <StyledPageTableCell>{teamStats.wins}</StyledPageTableCell>
+      <StyledPageTableCell>{teamStats.losses}</StyledPageTableCell>
+      <StyledPageTableCell>{teamStats.pts}</StyledPageTableCell>
+      <StyledPageTableCell>{teamStats.ptPctg}</StyledPageTableCell>
+      <StyledPageTableCell>{teamStats.goalsPerGame}</StyledPageTableCell>
+      <StyledPageTableCell>{teamStats.goalsAgainstPerGame}</StyledPageTableCell>
+      <StyledPageTableCell>{teamStats.powerPlayPercentage}</StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.penaltyKillPercentage}
+      </StyledPageTableCell>
+      <StyledPageTableCell>{teamStats.shotsPerGame}</StyledPageTableCell>
+      <StyledPageTableCell>{teamStats.shotsAllowed}</StyledPageTableCell>
+      <StyledPageTableCell>{teamStats.shootingPctg}</StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.faceOffWinPercentage}
+      </StyledPageTableCell>
     </TableRow>
   );
 }
