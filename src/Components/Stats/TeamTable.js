@@ -2,30 +2,28 @@ import { TableBody } from "@mui/material";
 import {
   StyledTableContainer,
   StyledPageTable,
-  TeamTableHeader,
-  TeamTableRow,
 } from "../../StyledComponents/General/GeneralComponents";
 import uniqid from "uniqid";
 import { useMemo, useState } from "react";
 import Sort from "./../../Utils/Sort";
+import TeamTableRow from "./TeamTableRow";
+import TeamTableHeader from "./TeamTableHeader";
 
 // season => formatted one
-export default function TeamTable({ teamData, season }) {
-  const [tableSettings, setTableSettings] = useState({
-    type: "Team",
-    year: season,
+export default function TeamTable({ teamData, tableSettings }) {
+  const [teamTableSettings, setteamTableSettings] = useState({
     sortParam: "pts",
     sortType: "A",
   });
 
   const sortedTeamStats = useMemo(() => {
     if (teamData === null) return;
-    if (tableSettings.sortType === "A") {
+    if (teamTableSettings.sortType === "A") {
       return [...teamData.teams].sort((a, b) =>
         Sort.ascending(
           a.teamStats[0].splits[0].stat,
           b.teamStats[0].splits[0].stat,
-          tableSettings.sortParam
+          teamTableSettings.sortParam
         )
       );
     } else {
@@ -33,26 +31,26 @@ export default function TeamTable({ teamData, season }) {
         Sort.descending(
           a.teamStats[0].splits[0].stat,
           b.teamStats[0].splits[0].stat,
-          tableSettings.sortParam
+          teamTableSettings.sortParam
         )
       );
     }
-  }, [teamData, tableSettings.sortType, tableSettings.sortParam]);
+  }, [teamData, teamTableSettings.sortType, teamTableSettings.sortParam]);
 
   return (
     sortedTeamStats && (
       <StyledTableContainer>
         <StyledPageTable>
           <TeamTableHeader
-            tableOptions={tableSettings}
-            setTableOptions={setTableSettings}
+            tableOptions={teamTableSettings}
+            setTableOptions={setteamTableSettings}
           />
           <TableBody>
             {sortedTeamStats.map((team, index) => (
               <TeamTableRow
                 team={team}
                 index={index + 1}
-                year={season}
+                year={tableSettings.season}
                 key={uniqid()}
               />
             ))}

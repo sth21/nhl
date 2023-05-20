@@ -1,4 +1,4 @@
-export default function Sort() {
+export default (function Sort() {
   function ascending(a, b, accessor) {
     return a[accessor] - b[accessor];
   }
@@ -8,4 +8,4 @@ export default function Sort() {
   }
 
   return { ascending, descending };
-}
+})();
