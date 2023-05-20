@@ -8,13 +8,18 @@ import { useMemo, useState } from "react";
 import Sort from "./../../Utils/Sort";
 import TeamTableRow from "./TeamTableRow";
 import TeamTableHeader from "./TeamTableHeader";
+import useFetch from "../../Utils/useFetch";
 
 // season => formatted one
-export default function TeamTable({ teamData, tableSettings }) {
+export default function TeamTable({ tableSettings }) {
   const [teamTableSettings, setteamTableSettings] = useState({
     sortParam: "pts",
     sortType: "A",
   });
+
+  const teamData = useFetch(
+    `https://statsapi.web.nhl.com/api/v1/teams?expand=team.stats&season=${tableSettings.season}`
+  );
 
   const sortedTeamStats = useMemo(() => {
     if (teamData === null) return;

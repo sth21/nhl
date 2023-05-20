@@ -4,6 +4,8 @@ export default function usePlayerList(playerIds, season) {
   const [playerData, setPlayerData] = useState(null);
 
   useEffect(() => {
+    if (playerIds === []) return;
+
     const url = (playerId, season) =>
       `https://statsapi.web.nhl.com/api/v1/people/${playerId}/stats?stats=statsSingleSeason&season=${season}`;
 

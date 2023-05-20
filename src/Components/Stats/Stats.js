@@ -1,5 +1,4 @@
 import moment from "moment";
-import useFetch from "./../../Utils/useFetch";
 import { useState } from "react";
 import {
   StyledPageWrapper,
@@ -19,17 +18,13 @@ export default function Stats() {
         : `${currentYear - 1}${currentYear}`,
   });
 
-  const teamData = useFetch(
-    `https://statsapi.web.nhl.com/api/v1/teams?expand=team.stats&season=${tableSettings.season}`
-  );
-
-  return tableSettings && teamData ? (
+  return tableSettings ? (
     <StyledPageWrapper>
       <StyledPageContentWrapper>
         <StyledPageHeader>
           {tableSettings.type + " Statistics"}
         </StyledPageHeader>
-        <TeamTable teamData={teamData} tableSettings={tableSettings} />
+        <TeamTable tableSettings={tableSettings} />
       </StyledPageContentWrapper>
     </StyledPageWrapper>
   ) : (
