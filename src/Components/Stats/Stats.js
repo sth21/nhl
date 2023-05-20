@@ -20,6 +20,7 @@ export default function Stats() {
     year: formattedCurrentYear,
     sortParam: "pts",
     sortType: "A",
+    playerEndIndex: 49,
   });
 
   const teamStats = useFetch(
