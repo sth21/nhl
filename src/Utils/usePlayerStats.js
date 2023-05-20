@@ -1,25 +1,32 @@
 import { useEffect, useState } from "react";
 
-export default function usePlayerList(playerIds, season) {
+export default function usePlayerList(players, season) {
   const [playerData, setPlayerData] = useState(null);
 
   useEffect(() => {
-    if (playerIds === []) return;
+    if (players === []) return;
 
     const url = (playerId, season) =>
       `https://statsapi.web.nhl.com/api/v1/people/${playerId}/stats?stats=statsSingleSeason&season=${season}`;
 
     const fetchPlayerData = () =>
       Promise.all(
-        playerIds.map((playerId) =>
-          fetch(url(playerId, season), { mode: "cors" })
+        players.map((player) =>
+          fetch(url(player.id, season), { mode: "cors" })
             .then((res) => res.json())
-            .then((res) => res.stats[0].splits[0].stat)
+            .then((res) => {
+              return {
+                rank: player.rank,
+                fullName: player.fullName,
+                team: player.team,
+                stats: res.stats[0].splits[0].stat,
+              };
+            })
         )
       ).then((res) => setPlayerData(res));
 
     fetchPlayerData();
-  }, [playerIds, season]);
+  }, [players, season]);
 
   return playerData;
 }
