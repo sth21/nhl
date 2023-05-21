@@ -1,8 +1,6 @@
-import { useState, useMemo, useEffect } from "react";
-import lodash from "lodash";
+import { useState, useEffect } from "react";
 import useFetch from "../../Utils/useFetch";
 import usePlayerStats from "../../Utils/usePlayerStats";
-import Sort from "../../Utils/Sort";
 import uniqid from "uniqid";
 import {
   StyledTableContainer,
@@ -16,7 +14,7 @@ export default function SkaterTable({ tableSettings }) {
   // Define player table settings
   const [skaterTableSettings, setSkaterTableSettings] = useState({
     sortParam: "points",
-    sortType: "A",
+    sortType: "D",
     startIndex: 0,
     endIndex: 25,
   });
@@ -32,8 +30,6 @@ export default function SkaterTable({ tableSettings }) {
     skaterTableSettings,
     tableSettings.season
   );
-
-  console.log(skaterList);
 
   useEffect(() => {
     if (skaterList === null) return;
@@ -56,26 +52,7 @@ export default function SkaterTable({ tableSettings }) {
     }
   }, [skaterTableSettings.sortType, skaterList]);
 
-  // Sort statistics based on table settings
-  const sortedSkaterStats = useMemo(() => {
-    if (!skaterData) return [];
-
-    if (skaterTableSettings.sortType === "A") {
-      return lodash
-        .cloneDeep(skaterData)
-        .sort((a, b) =>
-          Sort.ascending(a["stats"], b["stats"], skaterTableSettings.sortParam)
-        );
-    } else {
-      return lodash
-        .cloneDeep(skaterData)
-        .sort((a, b) =>
-          Sort.descending(a["stats"], b["stats"], skaterTableSettings.sortParam)
-        );
-    }
-  }, [skaterData, skaterTableSettings.sortParam, skaterTableSettings.sortType]);
-
-  return sortedSkaterStats && sortedSkaterStats.length > 0 ? (
+  return skaterData && skaterData.length > 0 ? (
     <StyledTableContainer>
       <StyledPageTable>
         <SkaterTableHeader
@@ -83,7 +60,7 @@ export default function SkaterTable({ tableSettings }) {
           setTableOptions={setSkaterTableSettings}
         />
         <TableBody>
-          {sortedSkaterStats.map((skater) => (
+          {skaterData.map((skater) => (
             <SkaterTableRow
               skater={skater}
               year={tableSettings.season}

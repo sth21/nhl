@@ -22,7 +22,12 @@ export default function SortableHeader({
         setTableOptions((prevOptions) => ({
           ...prevOptions,
           sortParam: accessCode,
-          sortType: prevOptions.sortType === "A" ? "D" : "A",
+          sortType:
+            prevOptions.sortParam !== accessCode
+              ? "D"
+              : prevOptions.sortType === "D"
+              ? "A"
+              : "D",
         }))
       }
     >
