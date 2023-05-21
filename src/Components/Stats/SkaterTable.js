@@ -1,5 +1,5 @@
-import { useState, useMemo } from "react";
-import getTeamAbbreviation from "../../Utils/getTeamAbbreviation";
+import { useState, useMemo, useEffect } from "react";
+import lodash from "lodash";
 import useFetch from "../../Utils/useFetch";
 import usePlayerStats from "../../Utils/usePlayerStats";
 import Sort from "../../Utils/Sort";
@@ -15,10 +15,10 @@ import SkaterTableHeader from "./SkaterTableHeader";
 export default function SkaterTable({ tableSettings }) {
   // Define player table settings
   const [skaterTableSettings, setSkaterTableSettings] = useState({
-    sortParam: "pts",
+    sortParam: "points",
     sortType: "A",
     startIndex: 0,
-    endIndex: 50,
+    endIndex: 25,
   });
 
   // Import raw data from api
@@ -28,54 +28,72 @@ export default function SkaterTable({ tableSettings }) {
 
   // Obtain array of skater id numbers for stat lookup
   const skaterData = usePlayerStats(
-    skaterList
-      ? skaterList.leagueLeaders[0].leaders
-          .slice(skaterTableSettings.startIndex, skaterTableSettings.endIndex)
-          .map((player) => {
-            return {
-              rank: player.rank,
-              fullName: player.person.fullName,
-              team: getTeamAbbreviation(player.team.name),
-              id: player.person.id,
-            };
-          })
-      : [],
+    skaterList,
+    skaterTableSettings,
     tableSettings.season
   );
 
+  console.log(skaterList);
+
+  useEffect(() => {
+    if (skaterList === null) return;
+    if (skaterTableSettings.sortType === "A") {
+      setSkaterTableSettings((prevSettings) => {
+        return {
+          ...prevSettings,
+          startIndex: skaterList.leagueLeaders[0].leaders.length - 50,
+          endIndex: skaterList.leagueLeaders[0].leaders.length,
+        };
+      });
+    } else {
+      setSkaterTableSettings((prevSettings) => {
+        return {
+          ...prevSettings,
+          startIndex: 0,
+          endIndex: 50,
+        };
+      });
+    }
+  }, [skaterTableSettings.sortType, skaterList]);
+
   // Sort statistics based on table settings
   const sortedSkaterStats = useMemo(() => {
-    if (skaterData === null) return;
+    if (!skaterData) return [];
+
     if (skaterTableSettings.sortType === "A") {
-      return [...skaterData].sort((a, b) =>
-        Sort.ascending(a, b, skaterTableSettings.sortParam)
-      );
+      return lodash
+        .cloneDeep(skaterData)
+        .sort((a, b) =>
+          Sort.ascending(a["stats"], b["stats"], skaterTableSettings.sortParam)
+        );
     } else {
-      return [...skaterData].sort((a, b) =>
-        Sort.descending(a["stats"], b["stats"], skaterTableSettings.sortParam)
-      );
+      return lodash
+        .cloneDeep(skaterData)
+        .sort((a, b) =>
+          Sort.descending(a["stats"], b["stats"], skaterTableSettings.sortParam)
+        );
     }
   }, [skaterData, skaterTableSettings.sortParam, skaterTableSettings.sortType]);
 
-  return (
-    sortedSkaterStats && (
-      <StyledTableContainer>
-        <StyledPageTable>
-          <SkaterTableHeader
-            tableOptions={skaterTableSettings}
-            setTableOptions={setSkaterTableSettings}
-          />
-          <TableBody>
-            {sortedSkaterStats.map((skater) => (
-              <SkaterTableRow
-                skater={skater}
-                year={tableSettings.season}
-                key={uniqid()}
-              />
-            ))}
-          </TableBody>
-        </StyledPageTable>
-      </StyledTableContainer>
-    )
+  return sortedSkaterStats && sortedSkaterStats.length > 0 ? (
+    <StyledTableContainer>
+      <StyledPageTable>
+        <SkaterTableHeader
+          tableOptions={skaterTableSettings}
+          setTableOptions={setSkaterTableSettings}
+        />
+        <TableBody>
+          {sortedSkaterStats.map((skater) => (
+            <SkaterTableRow
+              skater={skater}
+              year={tableSettings.season}
+              key={uniqid()}
+            />
+          ))}
+        </TableBody>
+      </StyledPageTable>
+    </StyledTableContainer>
+  ) : (
+    <></>
   );
 }

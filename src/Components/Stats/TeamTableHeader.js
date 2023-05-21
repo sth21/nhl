@@ -3,10 +3,7 @@ import SortableHeader from "./SortableHeader";
 import UnSortableHeader from "./UnSortableHeader";
 import { TableHead } from "@mui/material";
 
-export default function TeamTableSortableHeader({
-  tableOptions,
-  setTableOptions,
-}) {
+export default function TeamTableHeader({ tableOptions, setTableOptions }) {
   return (
     <TableHead>
       <StyledPageTableHead>

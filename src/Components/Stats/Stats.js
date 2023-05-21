@@ -6,12 +6,13 @@ import {
   StyledPageHeader,
 } from "../../StyledComponents/General/GeneralComponents";
 import TeamTable from "./TeamTable";
+import SkaterTable from "./SkaterTable";
 
 export default function Stats() {
   const currentYear = moment().year();
 
   const [tableSettings, setTableSettings] = useState({
-    type: "Team",
+    type: "Skater",
     season:
       moment().month() > 8
         ? `${currentYear}${currentYear + 1}`
@@ -24,7 +25,13 @@ export default function Stats() {
         <StyledPageHeader>
           {tableSettings.type + " Statistics"}
         </StyledPageHeader>
-        <TeamTable tableSettings={tableSettings} />
+        {tableSettings.type === "Team" ? (
+          <TeamTable tableSettings={tableSettings} />
+        ) : tableSettings.type === "Skater" ? (
+          <SkaterTable tableSettings={tableSettings} />
+        ) : (
+          <></>
+        )}
       </StyledPageContentWrapper>
     </StyledPageWrapper>
   ) : (

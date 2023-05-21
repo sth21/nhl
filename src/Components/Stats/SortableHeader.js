@@ -6,7 +6,7 @@ import {
 import upArrow from "./../../Media/up-arrow-white.png";
 import downArrow from "./../../Media/down-arrow-white.png";
 
-export default function Header({
+export default function SortableHeader({
   text,
   accessCode,
   tableOptions,

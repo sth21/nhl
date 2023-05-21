@@ -12,7 +12,7 @@ import useFetch from "../../Utils/useFetch";
 
 // season => formatted one
 export default function TeamTable({ tableSettings }) {
-  const [teamTableSettings, setteamTableSettings] = useState({
+  const [teamTableSettings, setTeamTableSettings] = useState({
     sortParam: "pts",
     sortType: "A",
   });
@@ -48,7 +48,7 @@ export default function TeamTable({ tableSettings }) {
         <StyledPageTable>
           <TeamTableHeader
             tableOptions={teamTableSettings}
-            setTableOptions={setteamTableSettings}
+            setTableOptions={setTeamTableSettings}
           />
           <TableBody>
             {sortedTeamStats.map((team, index) => (

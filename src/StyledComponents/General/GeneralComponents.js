@@ -157,7 +157,7 @@ const StyledPageWrapper = styled.div`
     background: var(--white);
     padding: 3em 6em;
     box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
-    max-width: 80%;
+    min-width: 90%;
   }
 `;
 
