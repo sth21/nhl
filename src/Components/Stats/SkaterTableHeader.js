@@ -77,7 +77,7 @@ export default function SkaterTableHeader({ tableOptions, setTableOptions }) {
         <UnSortableHeader text="S%" />
         <UnSortableHeader text="TOI/GP" />
         <SortableHeader
-          text="FOW"
+          text="FOW%"
           accessCode="faceOffPct"
           tableOptions={tableOptions}
           setTableOptions={setTableOptions}

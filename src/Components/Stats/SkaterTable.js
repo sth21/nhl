@@ -17,7 +17,7 @@ export default function SkaterTable({ tableSettings }) {
     sortParam: "points",
     sortType: "D",
     startIndex: 0,
-    endIndex: 25,
+    endIndex: 0,
   });
 
   // Import raw data from api
@@ -31,27 +31,6 @@ export default function SkaterTable({ tableSettings }) {
     skaterTableSettings,
     tableSettings.season
   );
-
-  useEffect(() => {
-    if (skaterList === null) return;
-    if (skaterTableSettings.sortType === "A") {
-      setSkaterTableSettings((prevSettings) => {
-        return {
-          ...prevSettings,
-          startIndex: skaterList.leagueLeaders[0].leaders.length - 49,
-          endIndex: skaterList.leagueLeaders[0].leaders.length,
-        };
-      });
-    } else {
-      setSkaterTableSettings((prevSettings) => {
-        return {
-          ...prevSettings,
-          startIndex: 0,
-          endIndex: 0,
-        };
-      });
-    }
-  }, [skaterTableSettings.sortType, skaterList]);
 
   return (
     <>
