@@ -9,6 +9,7 @@ import {
 import { TableBody } from "@mui/material";
 import SkaterTableRow from "./SkaterTableRow";
 import SkaterTableHeader from "./SkaterTableHeader";
+import PlayerPageManager from "./PlayerPageManager";
 
 export default function SkaterTable({ tableSettings }) {
   // Define player table settings
@@ -37,7 +38,7 @@ export default function SkaterTable({ tableSettings }) {
       setSkaterTableSettings((prevSettings) => {
         return {
           ...prevSettings,
-          startIndex: skaterList.leagueLeaders[0].leaders.length - 50,
+          startIndex: skaterList.leagueLeaders[0].leaders.length - 49,
           endIndex: skaterList.leagueLeaders[0].leaders.length,
         };
       });
@@ -46,31 +47,43 @@ export default function SkaterTable({ tableSettings }) {
         return {
           ...prevSettings,
           startIndex: 0,
-          endIndex: 50,
+          endIndex: 0,
         };
       });
     }
   }, [skaterTableSettings.sortType, skaterList]);
 
-  return skaterData && skaterData.length > 0 ? (
-    <StyledTableContainer>
-      <StyledPageTable>
-        <SkaterTableHeader
-          tableOptions={skaterTableSettings}
-          setTableOptions={setSkaterTableSettings}
-        />
-        <TableBody>
-          {skaterData.map((skater) => (
-            <SkaterTableRow
-              skater={skater}
-              year={tableSettings.season}
-              key={uniqid()}
+  return (
+    <>
+      <PlayerPageManager
+        tableSettings={skaterTableSettings}
+        setTableSettings={setSkaterTableSettings}
+        displayType={tableSettings.type + "s"}
+        playersAvailable={
+          skaterData ? skaterList.leagueLeaders[0].leaders.length : -1
+        }
+      />
+      {skaterData && skaterData.length > 0 ? (
+        <StyledTableContainer>
+          <StyledPageTable>
+            <SkaterTableHeader
+              tableOptions={skaterTableSettings}
+              setTableOptions={setSkaterTableSettings}
             />
-          ))}
-        </TableBody>
-      </StyledPageTable>
-    </StyledTableContainer>
-  ) : (
-    <></>
+            <TableBody>
+              {skaterData.map((skater) => (
+                <SkaterTableRow
+                  skater={skater}
+                  year={tableSettings.season}
+                  key={uniqid()}
+                />
+              ))}
+            </TableBody>
+          </StyledPageTable>
+        </StyledTableContainer>
+      ) : (
+        <></>
+      )}
+    </>
   );
 }

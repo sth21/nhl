@@ -95,6 +95,9 @@ export default function getTeamAbbreviation(fullName) {
     case "Winnipeg Jets":
       teamAbbreviation = "WPG";
       break;
+    case "Seattle Kraken":
+      teamAbbreviation = "SEA";
+      break;
     default:
       teamAbbreviation = "";
   }
