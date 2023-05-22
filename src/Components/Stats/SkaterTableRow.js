@@ -10,7 +10,9 @@ export default function SkaterTableRow({ skater, year }) {
     <TableRow>
       <StyledPageTableCell>{skater.rank}</StyledPageTableCell>
       <StyledPageTableCell>{skater.fullName}</StyledPageTableCell>
-      <StyledPageTableCell>{year}</StyledPageTableCell>
+      <StyledPageTableCell>{`${year.slice(0, 4)}-${year.slice(
+        4
+      )}`}</StyledPageTableCell>
       <StyledPageTableCell>{skater.team}</StyledPageTableCell>
       <StyledPageTableCell>{stats.games}</StyledPageTableCell>
       <StyledPageTableCell>{stats.goals}</StyledPageTableCell>

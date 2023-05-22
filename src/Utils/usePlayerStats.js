@@ -5,7 +5,12 @@ export default function usePlayerList(playerList, playerTableSettings, season) {
   const [playerData, setPlayerData] = useState(null);
 
   useEffect(() => {
-    if (!playerList || playerList.length === 0) return;
+    if (
+      !playerList ||
+      playerList.length === 0 ||
+      playerList.leagueLeaders.length === 0
+    )
+      return;
 
     const fetchPlayerData = () => {
       const playerInfo = playerList.leagueLeaders[0].leaders

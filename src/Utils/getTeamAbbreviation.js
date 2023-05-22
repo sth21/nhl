@@ -1,7 +1,10 @@
 export default function getTeamAbbreviation(fullName) {
   let teamAbbreviation;
+  const filteredFullName = fullName
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 
-  switch (fullName) {
+  switch (filteredFullName) {
     case "Anaheim Ducks":
       teamAbbreviation = "ANA";
       break;

@@ -41,7 +41,11 @@ export default function PlayerTable({ tableSettings, defaultParam }) {
         setTableSettings={setPlayerTableSettings}
         displayType={tableSettings.type + "s"}
         playersAvailable={
-          playerData ? playerList.leagueLeaders[0].leaders.length : -1
+          playerList &&
+          playerList.leagueLeaders.length !== 0 &&
+          playerList.leagueLeaders[0].leaders
+            ? playerList.leagueLeaders[0].leaders.length
+            : -1
         }
       />
       {playerData && playerData.length > 0 ? (
