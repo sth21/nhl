@@ -9,6 +9,12 @@ export default function PlayerPageManager({
   const [currentPage, setCurrentPage] = useState(1);
   const endPage = (playersAvailable - (playersAvailable % 50)) / 50 + 1;
 
+  /*
+  If any information altered, set bounds for PlayerTable
+  If descending, create bounds based off index 0
+  If ascending, create bounds based off playersAvailable count
+  */
+
   useEffect(() => {
     if (tableSettings.sortType === "D") {
       const endIndex =
@@ -34,6 +40,7 @@ export default function PlayerPageManager({
     }
   }, [playersAvailable, tableSettings.sortType, setTableSettings, currentPage]);
 
+  // If sort parameter or sort type changed, reset current page to 1
   useEffect(() => {
     setCurrentPage(1);
   }, [tableSettings.sortParam, tableSettings.sortType]);

@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import getTeamAbbreviation from "./getTeamAbbreviation";
 
-export default function usePlayerList(skaterList, skaterTableSettings, season) {
+export default function usePlayerList(playerList, playerTableSettings, season) {
   const [playerData, setPlayerData] = useState(null);
 
   useEffect(() => {
-    console.log("USE PLAYER STATS");
-    if (!skaterList || skaterList.length === 0) return;
+    if (!playerList || playerList.length === 0) return;
 
     const fetchPlayerData = () => {
-      const playerInfo = skaterList.leagueLeaders[0].leaders
-        .slice(skaterTableSettings.startIndex, skaterTableSettings.endIndex)
+      const playerInfo = playerList.leagueLeaders[0].leaders
+        .slice(playerTableSettings.startIndex, playerTableSettings.endIndex)
         .map((player) => {
           return {
             rank: player.rank,
@@ -19,7 +18,7 @@ export default function usePlayerList(skaterList, skaterTableSettings, season) {
             id: player.person.id,
           };
         });
-      if (skaterTableSettings.sortType === "A") playerInfo.reverse();
+      if (playerTableSettings.sortType === "A") playerInfo.reverse();
 
       Promise.all(
         playerInfo.map((player) =>
@@ -42,11 +41,11 @@ export default function usePlayerList(skaterList, skaterTableSettings, season) {
 
     fetchPlayerData();
   }, [
-    skaterList,
+    playerList,
     season,
-    skaterTableSettings.startIndex,
-    skaterTableSettings.endIndex,
-    skaterTableSettings.sortType,
+    playerTableSettings.startIndex,
+    playerTableSettings.endIndex,
+    playerTableSettings.sortType,
   ]);
 
   return playerData;

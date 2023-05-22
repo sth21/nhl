@@ -5,7 +5,6 @@ export default function useFetch(url, interval = null) {
 
   // Run fetch, set interval if defined in params
   useEffect(() => {
-    console.log("USE FETCH");
     if (url === "") return;
 
     // Convert URL to JSON to JS

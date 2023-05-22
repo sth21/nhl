@@ -6,7 +6,7 @@ import {
   StyledPageHeader,
 } from "../../StyledComponents/General/GeneralComponents";
 import TeamTable from "./TeamTable";
-import SkaterTable from "./SkaterTable";
+import PlayerTable from "./PlayerTable";
 
 export default function Stats() {
   const currentYear = moment().year();
@@ -28,9 +28,9 @@ export default function Stats() {
         {tableSettings.type === "Team" ? (
           <TeamTable tableSettings={tableSettings} />
         ) : tableSettings.type === "Skater" ? (
-          <SkaterTable tableSettings={tableSettings} />
+          <PlayerTable tableSettings={tableSettings} defaultParam="points" />
         ) : (
-          <></>
+          <PlayerTable tableSettings={tableSettings} defaultParam="wins" />
         )}
       </StyledPageContentWrapper>
     </StyledPageWrapper>
