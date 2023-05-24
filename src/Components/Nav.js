@@ -13,13 +13,13 @@ export default function Nav() {
       <StyledLink to="/">
         <StyledLogo src={NHL_LOGO} alt="The NHL logo" />
       </StyledLink>
-      <StyledNavWrapper pushRight>
+      <StyledNavWrapper>
         <StyledLink to="/scores">Scores</StyledLink>
         <StyledLink to="/standings">Standings</StyledLink>
         <StyledLink to="/stats">Stats</StyledLink>
         <StyledLink to="draft">Draft</StyledLink>
       </StyledNavWrapper>
-      <StyledNavWrapper>
+      <StyledNavWrapper removeable>
         <StyledLink to="https://shop.nhl.com/" target="_blank">
           Shop
         </StyledLink>

@@ -5,7 +5,7 @@ import styled from "styled-components";
 const StyledWidgetContainer = styled.div`
   display: grid;
   padding: 3em;
-  grid-template: auto / repeat(auto-fit, minmax(400px, 1fr));
+  grid-template: auto / repeat(auto-fit, minmax(350px, 1fr));
   grid-auto-flow: row;
   gap: 3em;
 

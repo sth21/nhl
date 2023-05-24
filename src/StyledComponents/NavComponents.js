@@ -3,17 +3,28 @@ import { Link } from "react-router-dom";
 
 const StyledNav = styled.nav`
   position: sticky;
+  box-sizing: border-box;
   top: 0;
   z-index: 2;
   display: flex;
   color: var(--white);
   font-weight: bold;
-  padding: 1em 3em;
+  padding: 1em 1.5em;
   background: var(--black);
   gap: 3em;
   min-height: 60px;
   align-items: center;
   max-width: 100%;
+
+  @media (max-width: 750px) {
+    gap: 2em;
+    padding: 0.67em 2em;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 550px) {
+    gap: 1em;
+  }
 `;
 
 const StyledLogo = styled.img`
@@ -25,7 +36,10 @@ const StyledNavWrapper = styled.div`
   display: flex;
   gap: 3em;
   align-items: center;
-  margin-right: ${(props) => (props.pushRight ? "auto" : 0)};
+
+  @media (max-width: 550px) {
+    display: ${(props) => (props.removeable ? "none" : "flex")};
+  }
 `;
 
 const StyledLink = styled(Link)`

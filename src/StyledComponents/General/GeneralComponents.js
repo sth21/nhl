@@ -80,6 +80,10 @@ const StyledOptionContainer = styled.div`
   justify-content: space-around;
   gap: 1em;
   padding: 1em 0em;
+
+  @media (max-width: 500px) {
+    gap: 0.25em;
+  }
 `;
 
 const StyledOption = styled.button`
