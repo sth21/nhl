@@ -156,12 +156,18 @@ const StyledPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 100%;
 
   & > div {
+    box-sizing: border-box;
     background: var(--white);
-    padding: 3em 6em;
+    padding: 3em 4em;
     box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
-    min-width: 90%;
+    min-width: 80%;
+    max-width: 100%;
+
+    @media (max-width: ) {
+    }
   }
 `;
 
@@ -170,7 +176,7 @@ const StyledPageContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 1000px;
+  max-width: 100%;
 `;
 
 const StyledPageTable = Table;
@@ -180,6 +186,10 @@ const StyledPageTableCell = styled(StyledTableCell)`
     text-align: center;
     padding: 1em;
     font-size: 1rem;
+
+    @media (max-width: 550px) {
+      font-size: 0.75rem;
+    }
   }
 `;
 
