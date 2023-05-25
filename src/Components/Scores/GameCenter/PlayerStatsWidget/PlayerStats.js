@@ -60,10 +60,12 @@ export default function PlayerStats(props) {
     )
     .sort((b, a) => b.stats.goalieStats.shots - a.stats.goalieStats.shots);
 
+  console.log(props.teamName);
+
   return (
     <StyledScoreboardWrapper>
       <StyledTableContainer>
-        <StyledHeader style={{ textAlign: "center", paddingBottom: "2em" }}>
+        <StyledHeader style={{ textAlign: "center", paddingBottom: "1em" }}>
           {props.teamName} Player Stats
         </StyledHeader>
         <Table>

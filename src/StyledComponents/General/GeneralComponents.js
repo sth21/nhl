@@ -102,6 +102,10 @@ const StyledHeadlineWrapper = styled.div`
   gap: 3em;
   padding: 1em 0em;
   vertical-align: center;
+
+  @media (max-width: 550px) {
+    gap: 2em;
+  }
 `;
 
 const StyledTableCell = styled(TableCell)`
@@ -132,6 +136,10 @@ const StyledHeader = styled.h4`
   width: 100%;
   padding-bottom: 1em;
   border-bottom: 1px solid var(--grey);
+
+  @media (max-width: 550px) {
+    padding-bottom: 0.5em;
+  }
 `;
 
 const StyledTableContainer = styled(TableContainer)`
@@ -149,6 +157,10 @@ const StyledFlexCell = styled.div`
 const StyledPageHeader = styled(StyledHeader)`
   font-size: 2.5rem;
   text-align: center;
+
+  @media (max-width: 550px) {
+    font-size: 2rem;
+  }
 `;
 
 const StyledPageWrapper = styled.div`
@@ -158,6 +170,14 @@ const StyledPageWrapper = styled.div`
   align-items: center;
   max-width: 100%;
 
+  @media (max-width: 550px) {
+    padding: 1em;
+  }
+
+  @media (max-width: 450px) {
+    padding: 0.5em;
+  }
+
   & > div {
     box-sizing: border-box;
     background: var(--white);
@@ -166,7 +186,12 @@ const StyledPageWrapper = styled.div`
     min-width: 80%;
     max-width: 100%;
 
-    @media (max-width: ) {
+    @media (max-width: 550px) {
+      padding: 1em;
+    }
+
+    @media (max-width: 450px) {
+      padding: 0.5em;
     }
   }
 `;
@@ -223,6 +248,10 @@ const StyledPageOption = styled(StyledOption)`
     font-weight: bold;
     cursor: not-allowed;
   }
+
+  @media (max-width: 500px) {
+    font-size: .75rem;
+  }
 `;
 
 const StyledStandingsHeader = styled(StyledHeader)`
@@ -255,6 +284,11 @@ const StyledLegend = styled.ul`
     & > li {
       list-style-type: none;
       margin-bottom: 1em;
+    }
+
+    @media (max-width: 550px) {
+      padding: 1em;
+      column-gap: 2em;
     }
   }
 `;

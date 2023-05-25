@@ -20,10 +20,16 @@ export default function GameCenter(props) {
   return (
     scores && (
       <StyledGameCenterGrid>
-        <StyledScoresWidgetWrapper style={{ gridArea: "1 / 2 / 3 / 3" }}>
+        <StyledScoresWidgetWrapper
+          style={{ gridArea: "1 / 2 / 3 / 3" }}
+          disappear
+        >
           <RinkWidget scores={scores} logos={props.logos} />
         </StyledScoresWidgetWrapper>
-        <StyledScoresWidgetWrapper style={{ gridArea: "3 / 2 / 11 / 3" }}>
+        <StyledScoresWidgetWrapper
+          style={{ gridArea: "3 / 2 / 11 / 3" }}
+          moveUp
+        >
           <PlayFeed
             liveData={scores.liveData}
             isPlayoff={scores.gameData.game.type === "P"}

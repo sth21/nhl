@@ -54,6 +54,14 @@ const StyledPlayerOnIceWrapper = styled.div.attrs((props) => ({
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 1500px) {
+    gap: 1.5em;
+  }
+
+  @media (max-width: 1000px) {
+    gap: 1em;
+  }
 `;
 
 const StyledPlayerImgWrapper = styled.div`
@@ -63,6 +71,16 @@ const StyledPlayerImgWrapper = styled.div`
     position: relative;
     border: 2px solid var(--grey);
     border-radius: 50%;
+
+    @media (max-width: 1500px) {
+      height: 3em;
+      width: 3em;
+    }
+
+    @media (max-width: 1000px) {
+      height: 1.5em;
+      width: 1.5em;
+    }
 
     & > img {
       height: 100%;
@@ -141,6 +159,17 @@ const StyledPlayerLabel = styled.p.attrs((props) => ({
   font-size: 1rem;
   background: var(--white);
   width: auto;
+
+  @media (max-width: 1500px) {
+    font-size: 0.75rem;
+    padding: 0.2em;
+    border-top: 0px !important;
+  }
+
+  @media (max-width: 1000px) {
+    font-size: 0.5rem;
+    padding: 0.15em;
+  }
 `;
 
 const StyledFeedPlayerLabel = styled.p`
@@ -164,6 +193,17 @@ const StyledGameCenterGrid = styled.div`
   grid-template: repeat(10, 200px) / 7fr 13fr;
   grid-gap: 2em;
   padding: 4em;
+
+  @media (max-width: 1000px) {
+    grid-template: repeat(10, 150px) / 7fr 13fr;
+    padding: 2em;
+    grid-gap: 1em;
+  }
+
+  @media (max-width: 550px) {
+    padding: 1em;
+    grid-gap: 0.5em;
+  }
 `;
 
 const StyledScoresWidgetWrapper = styled.div`
@@ -172,6 +212,20 @@ const StyledScoresWidgetWrapper = styled.div`
   background: var(--white);
   padding: 2em;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+
+  @media (max-width: 1000px) {
+    padding: 1em;
+  }
+
+  @media (max-width: 550px) {
+    padding: 0.25em;
+  }
+
+  @media (max-width: 800px) {
+    display: ${(props) => (props.disappear ? "none" : "block")};
+    grid-area: ${(props) =>
+      props.moveUp ? "1 / 2 / 11 / 3" : props.gridArea} !important;
+  }
 `;
 
 const StyledPlayWrapper = styled.div`
@@ -238,6 +292,10 @@ const StyledGameFeedFlex = styled.div`
 const StyledGameViewText = styled.p`
   line-height: 1.25;
   font-size: 1.1rem;
+
+  @media (max-width: 550px) {
+    display: ${(props) => (props.disappear ? "none" : "normal")};
+  }
 `;
 
 const StyledGameFeedWidgetWrapper = styled(StyledScoresWidgetWrapper)`
@@ -246,6 +304,10 @@ const StyledGameFeedWidgetWrapper = styled(StyledScoresWidgetWrapper)`
   align-items: center;
   justify-items: center;
   gap: 3em;
+
+  @media (max-width: 550px) {
+    gap: 2em;
+  }
 `;
 
 const StyledGameViewBox = styled.div`

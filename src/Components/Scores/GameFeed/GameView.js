@@ -78,13 +78,13 @@ export default function GameView({ gameId, logos }) {
         </StyledGameViewBox>
         {parseInt(scores.gameData.status.statusCode, 10) !== 1 ? (
           <StyledGameViewBox>
-            <StyledGameViewText>
+            <StyledGameViewText disappear>
               {scoreFeed(
                 scores.liveData.plays,
                 scores.gameData.teams.home.name
               )}
             </StyledGameViewText>
-            <StyledGameViewText>
+            <StyledGameViewText disappear>
               {scoreFeed(
                 scores.liveData.plays,
                 scores.gameData.teams.away.name
