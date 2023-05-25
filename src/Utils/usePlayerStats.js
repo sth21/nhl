@@ -28,7 +28,9 @@ export default function usePlayerList(playerList, playerTableSettings, season) {
       Promise.all(
         playerInfo.map((player) =>
           fetch(
-            `https://statsapi.web.nhl.com/api/v1/people/${player.id}/stats?stats=statsSingleSeason&season=${season}`,
+            `https://statsapi.web.nhl.com/api/v1/people/${
+              player.id
+            }/stats?stats=statsSingleSeason&season=${season}${season + 1}`,
             { mode: "cors" }
           )
             .then((res) => res.json())

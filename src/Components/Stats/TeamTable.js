@@ -18,7 +18,9 @@ export default function TeamTable({ tableSettings }) {
   });
 
   const teamData = useFetch(
-    `https://statsapi.web.nhl.com/api/v1/teams?expand=team.stats&season=${tableSettings.season}`
+    `https://statsapi.web.nhl.com/api/v1/teams?expand=team.stats&season=${
+      tableSettings.year
+    }${tableSettings.year + 1}`
   );
 
   const sortedTeamStats = useMemo(() => {
@@ -55,7 +57,7 @@ export default function TeamTable({ tableSettings }) {
               <TeamTableRow
                 team={team}
                 index={index + 1}
-                year={tableSettings.season}
+                year={tableSettings.year}
                 key={uniqid()}
               />
             ))}

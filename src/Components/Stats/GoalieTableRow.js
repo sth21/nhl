@@ -8,27 +8,49 @@ export default function SkaterTableRow({ goalie, year }) {
 
   return (
     <TableRow>
-      <StyledPageTableCell>{goalie.rank}</StyledPageTableCell>
-      <StyledPageTableCell>{goalie.fullName}</StyledPageTableCell>
-      <StyledPageTableCell>{`${year.slice(0, 4)}-${year.slice(
-        4
-      )}`}</StyledPageTableCell>
-      <StyledPageTableCell>{goalie.team}</StyledPageTableCell>
-      <StyledPageTableCell>{stats.games}</StyledPageTableCell>
-      <StyledPageTableCell>{stats.gamesStarted}</StyledPageTableCell>
-      <StyledPageTableCell>{stats.wins}</StyledPageTableCell>
-      <StyledPageTableCell>{stats.losses}</StyledPageTableCell>
-      <StyledPageTableCell>{stats.shotsAgainst}</StyledPageTableCell>
-      <StyledPageTableCell>{stats.saves}</StyledPageTableCell>
-      <StyledPageTableCell>{stats.goalsAgainst}</StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.savePercentage.toFixed(3)}
+        {goalie.rank ? goalie.rank : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.goalAgainstAverage.toFixed(2)}
+        {goalie.fullName ? goalie.fullName : "N/A"}
       </StyledPageTableCell>
-      <StyledPageTableCell>{stats.timeOnIce}</StyledPageTableCell>
-      <StyledPageTableCell>{stats.shutouts}</StyledPageTableCell>
+      <StyledPageTableCell>{`${year}-${year + 1}`}</StyledPageTableCell>
+      <StyledPageTableCell>
+        {goalie.team ? goalie.team : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {stats.games ? stats.games : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {stats.gamesStarted ? stats.gamesStarted : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {stats.wins ? stats.wins : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {stats.losses ? stats.losses : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {stats.shotsAgainst ? stats.shotsAgainst : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {stats.saves ? stats.saves : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {stats.goalsAgainst ? stats.goalsAgainst : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {stats.savePercentage ? stats.savePercentage.toFixed(3) : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {stats.savePercentage ? stats.goalAgainstAverage.toFixed(2) : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {stats.timeOnIce ? stats.timeOnIce : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {stats.shutouts ? stats.shutouts : "N/A"}
+      </StyledPageTableCell>
     </TableRow>
   );
 }

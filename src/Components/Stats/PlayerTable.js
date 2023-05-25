@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useFetch from "../../Utils/useFetch";
 import usePlayerStats from "../../Utils/usePlayerStats";
 import uniqid from "uniqid";
@@ -22,16 +22,26 @@ export default function PlayerTable({ tableSettings, defaultParam }) {
     endIndex: 0,
   });
 
-  // Import raw data from api
-  const playerList = useFetch(
-    `https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=${playerTableSettings.sortParam}&limit=1000&season=${tableSettings.season}`
+  useEffect(
+    () =>
+      setPlayerTableSettings((prevSettings) => {
+        return { ...prevSettings, sortParam: defaultParam };
+      }),
+    [defaultParam]
   );
+
+  const url = `https://statsapi.web.nhl.com/api/v1/stats/leaders?expand=leaderPlayerFirstName,leaderPlayerLastName,leaderTeam&gameTypes=R&leaderCategories=${
+    playerTableSettings.sortParam
+  }&limit=1000&season=${tableSettings.year}${tableSettings.year + 1}`;
+
+  // Import raw data from api
+  const playerList = useFetch(url);
 
   // Obtain array of player id numbers for stat lookup
   const playerData = usePlayerStats(
     playerList,
     playerTableSettings,
-    tableSettings.season
+    tableSettings.year
   );
 
   return (
@@ -67,14 +77,14 @@ export default function PlayerTable({ tableSettings, defaultParam }) {
                 ? playerData.map((player) => (
                     <SkaterTableRow
                       skater={player}
-                      year={tableSettings.season}
+                      year={tableSettings.year}
                       key={uniqid()}
                     />
                   ))
                 : playerData.map((player) => (
                     <GoalieTableRow
                       goalie={player}
-                      year={tableSettings.season}
+                      year={tableSettings.year}
                       key={uniqid()}
                     />
                   ))}

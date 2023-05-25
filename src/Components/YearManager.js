@@ -1,9 +1,9 @@
 import { FormControl, Select, MenuItem } from "@mui/material";
 import uniqid from "uniqid";
 
-export default function StandingsYearOptions(props) {
+export default function StandingsYearOptions({ currentYear, setOptions }) {
   const FIRSTYEAR = 1917;
-  const CURRENTYEAR = props.currentYear;
+  const CURRENTYEAR = currentYear;
 
   function createMenuItems(firstYear, currentYear) {
     const menuItems = [];
@@ -22,9 +22,11 @@ export default function StandingsYearOptions(props) {
   }
 
   function handleChange(e) {
-    props.setStandingsOptions({
-      type: "byLeague",
-      year: parseInt(e.target.value, 10),
+    setOptions((prevOptions) => {
+      return {
+        ...prevOptions,
+        year: parseInt(e.target.value, 10),
+      };
     });
   }
 

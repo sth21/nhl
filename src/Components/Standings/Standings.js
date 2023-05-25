@@ -4,7 +4,7 @@ import {
   StyledPageContentWrapper,
 } from "../../StyledComponents/General/GeneralComponents";
 import StandingsOptionsContainer from "./StandingsOptionsContainer";
-import StandingsYearOptions from "./StandingsYearOptions";
+import StandingsYearOptions from "../YearManager";
 import StandingsTable from "./StandingsTable";
 import StandingsLegend from "./StandingsLegend";
 
@@ -56,9 +56,8 @@ export default function Standings() {
         {standingsOptions ? (
           <>
             <StandingsYearOptions
-              year={standingsOptions.year}
               currentYear={currentYear}
-              setStandingsOptions={setStandingsOptions}
+              setOptions={setStandingsOptions}
             />
             <StandingsOptionsContainer
               type={standingsOptions.type}

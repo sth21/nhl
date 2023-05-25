@@ -11,9 +11,7 @@ export default function TeamTableRow({ team, index, year }) {
     <TableRow>
       <StyledPageTableCell>{index}</StyledPageTableCell>
       <StyledPageTableCell>{teamInfo.team.name}</StyledPageTableCell>
-      <StyledPageTableCell>
-        {year.slice(0, 4) + "-" + year.slice(4)}
-      </StyledPageTableCell>
+      <StyledPageTableCell>{`${year}-${year + 1}`}</StyledPageTableCell>
       <StyledPageTableCell>{teamStats.gamesPlayed}</StyledPageTableCell>
       <StyledPageTableCell>{teamStats.wins}</StyledPageTableCell>
       <StyledPageTableCell>{teamStats.losses}</StyledPageTableCell>
