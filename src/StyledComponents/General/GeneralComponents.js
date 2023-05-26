@@ -320,6 +320,19 @@ const StyledStickyOptionContainer = styled(StyledOptionContainer)`
   padding: 2em;
 `;
 
+const StyledPageManagerWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1em;
+`;
+
+const StyledPageManagerButton = styled.button`
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  font-size: 1.25rem;
+`;
+
 export {
   GlobalStyle,
   StyledOptionContainer,
@@ -346,4 +359,6 @@ export {
   StyledLegendWrapper,
   StyledRules,
   StyledStickyOptionContainer,
+  StyledPageManagerWrapper,
+  StyledPageManagerButton,
 };

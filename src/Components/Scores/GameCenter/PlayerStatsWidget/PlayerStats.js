@@ -60,8 +60,6 @@ export default function PlayerStats(props) {
     )
     .sort((b, a) => b.stats.goalieStats.shots - a.stats.goalieStats.shots);
 
-  console.log(props.teamName);
-
   return (
     <StyledScoreboardWrapper>
       <StyledTableContainer>

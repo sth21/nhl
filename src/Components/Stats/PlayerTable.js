@@ -19,7 +19,7 @@ export default function PlayerTable({ tableSettings, defaultParam }) {
     sortParam: defaultParam,
     sortType: "D",
     startIndex: 0,
-    endIndex: 0,
+    endIndex: 50,
   });
 
   useEffect(

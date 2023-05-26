@@ -31,8 +31,6 @@ export default function GameView({ gameId, logos }) {
     return date.toLocaleTimeString(undefined, options);
   }
 
-  console.log(scores);
-
   return (
     scores && (
       <StyledGameFeedWidgetWrapper>

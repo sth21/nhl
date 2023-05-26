@@ -1,4 +1,8 @@
 import { useState, useEffect } from "react";
+import {
+  StyledPageManagerButton,
+  StyledPageManagerWrapper,
+} from "../../StyledComponents/General/GeneralComponents";
 
 export default function PlayerPageManager({
   tableSettings,
@@ -46,21 +50,21 @@ export default function PlayerPageManager({
   }, [tableSettings.sortParam, tableSettings.sortType]);
 
   return (
-    <div>
-      <button
+    <StyledPageManagerWrapper>
+      <StyledPageManagerButton
         onClick={() => setCurrentPage((curPage) => curPage - 1)}
         disabled={currentPage === 1}
       >
-        {"<--"}
-      </button>
+        Previous
+      </StyledPageManagerButton>
       <p>{`${playersAvailable} ${displayType} Returned`}</p>
       <p>{`Page ${currentPage} of ${endPage}`}</p>
-      <button
+      <StyledPageManagerButton
         onClick={() => setCurrentPage((curPage) => curPage + 1)}
         disabled={currentPage === endPage}
       >
-        {"-->"}
-      </button>
-    </div>
+        Next
+      </StyledPageManagerButton>
+    </StyledPageManagerWrapper>
   );
 }

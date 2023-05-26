@@ -9,47 +9,51 @@ export default function SkaterTableRow({ goalie, year }) {
   return (
     <TableRow>
       <StyledPageTableCell>
-        {goalie.rank ? goalie.rank : "N/A"}
+        {goalie.rank !== undefined ? goalie.rank : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {goalie.fullName ? goalie.fullName : "N/A"}
+        {goalie.fullName !== undefined ? goalie.fullName : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>{`${year}-${year + 1}`}</StyledPageTableCell>
       <StyledPageTableCell>
-        {goalie.team ? goalie.team : "N/A"}
+        {goalie.team !== undefined ? goalie.team : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.games ? stats.games : "N/A"}
+        {stats.games !== undefined ? stats.games : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.gamesStarted ? stats.gamesStarted : "N/A"}
+        {stats.gamesStarted !== undefined ? stats.gamesStarted : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.wins ? stats.wins : "N/A"}
+        {stats.wins !== undefined ? stats.wins : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.losses ? stats.losses : "N/A"}
+        {stats.losses !== undefined ? stats.losses : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.shotsAgainst ? stats.shotsAgainst : "N/A"}
+        {stats.shotsAgainst !== undefined ? stats.shotsAgainst : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.saves ? stats.saves : "N/A"}
+        {stats.saves !== undefined ? stats.saves : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.goalsAgainst ? stats.goalsAgainst : "N/A"}
+        {stats.goalsAgainst !== undefined ? stats.goalsAgainst : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.savePercentage ? stats.savePercentage.toFixed(3) : "N/A"}
+        {stats.savePercentage !== undefined
+          ? stats.savePercentage.toFixed(3)
+          : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.savePercentage ? stats.goalAgainstAverage.toFixed(2) : "N/A"}
+        {stats.savePercentage !== undefined
+          ? stats.goalAgainstAverage.toFixed(2)
+          : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.timeOnIce ? stats.timeOnIce : "N/A"}
+        {stats.timeOnIce !== undefined ? stats.timeOnIce : "N/A"}
       </StyledPageTableCell>
       <StyledPageTableCell>
-        {stats.shutouts ? stats.shutouts : "N/A"}
+        {stats.shutouts !== undefined ? stats.shutouts : "N/A"}
       </StyledPageTableCell>
     </TableRow>
   );

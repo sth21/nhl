@@ -12,22 +12,48 @@ export default function TeamTableRow({ team, index, year }) {
       <StyledPageTableCell>{index}</StyledPageTableCell>
       <StyledPageTableCell>{teamInfo.team.name}</StyledPageTableCell>
       <StyledPageTableCell>{`${year}-${year + 1}`}</StyledPageTableCell>
-      <StyledPageTableCell>{teamStats.gamesPlayed}</StyledPageTableCell>
-      <StyledPageTableCell>{teamStats.wins}</StyledPageTableCell>
-      <StyledPageTableCell>{teamStats.losses}</StyledPageTableCell>
-      <StyledPageTableCell>{teamStats.pts}</StyledPageTableCell>
-      <StyledPageTableCell>{teamStats.ptPctg}</StyledPageTableCell>
-      <StyledPageTableCell>{teamStats.goalsPerGame}</StyledPageTableCell>
-      <StyledPageTableCell>{teamStats.goalsAgainstPerGame}</StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.gamesPlayed !== undefined ? teamStats.gamesPlayed : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.wins !== undefined ? teamStats.wins : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.losses !== undefined ? teamStats.losses : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.pts !== undefined ? teamStats.pts : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.ptPctg !== undefined ? teamStats.ptPctg : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.goalsPerGame !== undefined ? teamStats.goalsPerGame : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.goalsAgainstPerGame !== undefined
+          ? teamStats.goalsAgainstPerGame
+          : "N/A"}
+      </StyledPageTableCell>
       <StyledPageTableCell>{teamStats.powerPlayPercentage}</StyledPageTableCell>
       <StyledPageTableCell>
-        {teamStats.penaltyKillPercentage}
+        {teamStats.penaltyKillPercentage !== undefined
+          ? teamStats.penaltyKillPercentage
+          : "N/A"}
       </StyledPageTableCell>
-      <StyledPageTableCell>{teamStats.shotsPerGame}</StyledPageTableCell>
-      <StyledPageTableCell>{teamStats.shotsAllowed}</StyledPageTableCell>
-      <StyledPageTableCell>{teamStats.shootingPctg}</StyledPageTableCell>
       <StyledPageTableCell>
-        {teamStats.faceOffWinPercentage}
+        {teamStats.shotsPerGame !== undefined ? teamStats.shotsPerGame : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.shotsAllowed !== undefined ? teamStats.shotsAllowed : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.shootingPctg !== undefined ? teamStats.shootingPctg : "N/A"}
+      </StyledPageTableCell>
+      <StyledPageTableCell>
+        {teamStats.faceOffWinPercentage !== undefined
+          ? teamStats.faceOffWinPercentage
+          : "N/A"}
       </StyledPageTableCell>
     </TableRow>
   );
