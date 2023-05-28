@@ -5,6 +5,7 @@ import uniqid from "uniqid";
 import {
   StyledTableContainer,
   StyledPageTable,
+  StyledTableHeader,
 } from "../../StyledComponents/General/GeneralComponents";
 import { TableBody } from "@mui/material";
 import SkaterTableRow from "./SkaterTableRow";
@@ -92,7 +93,9 @@ export default function PlayerTable({ tableSettings, defaultParam }) {
           </StyledPageTable>
         </StyledTableContainer>
       ) : (
-        <></>
+        <StyledTableHeader style={{ paddingTop: "3em" }}>
+          Table Not Available
+        </StyledTableHeader>
       )}
     </>
   );

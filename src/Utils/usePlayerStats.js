@@ -14,7 +14,13 @@ export default function usePlayerList(playerList, playerTableSettings, season) {
 
     const fetchPlayerData = () => {
       const playerInfo = playerList.leagueLeaders[0].leaders
-        .slice(playerTableSettings.startIndex, playerTableSettings.endIndex)
+        .slice(
+          playerTableSettings.startIndex,
+          playerTableSettings.endIndex >
+            playerList.leagueLeaders[0].leaders.length
+            ? playerList.leagueLeaders[0].leaders.length
+            : playerTableSettings.endIndex
+        )
         .map((player) => {
           return {
             rank: player.rank,
