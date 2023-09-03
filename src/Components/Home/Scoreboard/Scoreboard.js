@@ -7,9 +7,12 @@ import { StyledScoreboard } from '../../../StyledComponents/Home/ScoreboardCompo
 */
 
 export default function Scoreboard(props) {
+
+    console.log(props);
+    console.log(Boolean(props.gameInformation));
         
     return (
-        ( props.gameInformation )
+        (props.gameInformation)
         ? <StyledScoreboard>
             {
                 props.gameInformation.events.map((game) => (
@@ -19,5 +22,4 @@ export default function Scoreboard(props) {
           </StyledScoreboard>
         : <></>
     );
-
 }

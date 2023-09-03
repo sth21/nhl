@@ -15,6 +15,7 @@ import downArrow from "./../../Media/down-arrow-white.png";
 import uniqid from "uniqid";
 
 export default function StandingsTable(props) {
+  const currentStandingsType = props.standingsOptions.type;
   const standingsType = props.data.records[0].standingsType;
   const wildCardIndexOrder = [2, 3, 0, 4, 5, 1]; // the order to be used when displaying wild card standings
 
@@ -284,9 +285,11 @@ export default function StandingsTable(props) {
     );
   }
 
-  return standingsType === "wildCard"
+  return standingsType !== currentStandingsType 
+    ? <p>Loading Table...</p> 
+    : standingsType === "wildCard" && currentStandingsType === "wildCard"
     ? createWildcardTable()
-    : standingsType === "byDivision"
+    : standingsType === "byDivision" && currentStandingsType === "byDivision"
     ? createDivisionTable()
     : props.data.records.map((dataset, index) =>
         createTable(dataset.teamRecords, getTableName(index))

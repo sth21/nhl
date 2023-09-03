@@ -43,12 +43,12 @@ export default function ScoreboardGameHeader(props) {
                 ( props.gameState === "pre" )
                 ? <StyledScoreboardInfo>
                     <p>{ utcToLocal(props.game.date) }</p>
-                    <p>{ (props.isPlayoff) ? gameInfo.notes[0].headline : gameInfo.broadcasts[0].names[0] } </p>
+                    <p>{ (props.isPlayoff) ? gameInfo.notes[0].headline : gameInfo.broadcasts[0] ? gameInfo.broadcasts[0].names[0] : "" }</p>
                   </StyledScoreboardInfo>
                 : ( props.gameState === "in" )
                     ? <StyledScoreboardInfo>
                         <StyledTime>{ `${ (props.game.status.period !== 0) ? `${props.game.status.displayClock} - ` : ""} ${appendSuperscriptOrdinal(props.game.status.period)}`}</StyledTime>
-                        <p>{ (props.isPlayoff) ? gameInfo.notes[0].headline : gameInfo.broadcasts[0].names[0] }</p>
+                        <p>{ (props.isPlayoff) ? gameInfo.notes[0].headline : gameInfo.broadcasts[0] ? gameInfo.broadcasts[0].names[0] : "" }</p>
                       </StyledScoreboardInfo>
                     : <StyledScoreboardInfo>
                         <p>{ props.game.status.type.detail }</p>
